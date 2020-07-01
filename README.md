@@ -83,6 +83,8 @@
 
 <img src="reademe.assets/image-20200701231534879.png" alt="image-20200701231534879" style="zoom: 50%;" />
 
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/reademe.assets/image-20200701225432000.png"/>
+
 ### 1.6.2. 中英对照
 
 因为考试采用英文试卷，为方便理解以及锻炼英语读题能力，请始终保持中英对照。
@@ -92,6 +94,8 @@
 汉化部分保持原样即可
 
 <img src="reademe.assets/image-20200701225432000.png" alt="image-20200701225432000" style="zoom: 33%;" />
+
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/reademe.assets/image-20200701225432000.png"/>
 
 ## 1.7. 目录结构
 
@@ -103,6 +107,8 @@
 
 ![image-20200701230235701](reademe.assets/image-20200701230235701.png)
 
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/reademe.assets/image-20200701230235701.png"/>
+
 ### 1.7.1. 高亮关键字
 
 为了便于区分关键字，在文中出现的（不论中英文）均需高亮。
@@ -110,6 +116,8 @@
 *（GFM语法：\=\= + 高亮内容 + \=\=）*
 
 <img src="reademe.assets/image-20200701231805482.png" alt="image-20200701231805482" style="zoom: 33%;" />
+
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/reademe.assets/image-20200701231805482.png"/>
 
 ### 1.7.2. 换行统一化
 
@@ -121,6 +129,8 @@
 
 <img src="reademe.assets/image-20200701232931156.png" alt="image-20200701232931156" style="zoom:50%;" />
 
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/reademe.assets/image-20200701232931156.png"/>
+
 ### 1.7.3. 公式独立化
 
 为保证公式（包括且不限于表结构、关系、计算式、SQL语句）的突出地位，所有公式均需单行独立显示。
@@ -130,6 +140,8 @@
 对于汉化文本中出现的单词，请用空格包裹，以增加可阅读性。
 
 <img src="reademe.assets/image-20200701232357943.png" alt="image-20200701232357943" style="zoom: 33%;" />
+
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/reademe.assets/image-20200701232357943.png"/>
 
 ### 1.7.4. 键标记统一化
 
@@ -141,17 +153,23 @@
 
 <img src="reademe.assets/image-20200701233135508.png" alt="image-20200701233135508" style="zoom:50%;" />
 
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/reademe.assets/image-20200701233135508.png"/>
+
 ### 1.7.5. 重点统一化
 
 教材内重点画的比较滥，起不到标志作用。汉化人员可以根据自己的理解加粗重点。（只加粗汉化部分即可）
 
 <img src="reademe.assets/image-20200701233552109.png" alt="image-20200701233552109" style="zoom: 33%;" />
 
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/reademe.assets/image-20200701233552109.png"/>
+
 ### 1.7.6. 表格汉化
 
 对于包含专有名词，步骤指示等重要信息的表需要进行汉化，其他普通的数据表不需要汉化。
 
 <img src="reademe.assets/image-20200701233748258.png" alt="image-20200701233748258" style="zoom: 33%;" />
+
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/reademe.assets/image-20200701233748258.png"/>
 
 ### 1.7.7. 专有名词同步
 
@@ -165,8 +183,12 @@
 
 <img src="reademe.assets/image-20200701234201186.png" alt="image-20200701234201186" style="zoom: 33%;" />
 
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/reademe.assets/image-20200701234201186.png"/>
+
 ### 1.7.9. 适当的图片大小
 
 过大的图片看着很不舒服，在Typora中右键即可调整缩放。
 
 <img src="reademe.assets/image-20200701234453950.png" alt="image-20200701234453950" style="zoom: 67%;" />
+
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/reademe.assets/image-20200701234453950.png"/>
