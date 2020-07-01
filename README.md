@@ -1,4 +1,4 @@
-# 1. 烽火计划-数据库系统原理项目
+# 烽火计划-数据库系统原理项目
 
 <!-- TOC -->
 
@@ -52,6 +52,9 @@
 用于编撰md文档。功能强大！[官网直达](https://typora.io/)
 
 <img src="reademe.assets/image-20200701231131901.png" alt="image-20200701231131901" style="zoom:67%;" />
+
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/reademe.assets/image-20200701231131901.png"/>
+
 
 ### 1.4.2. CopyTranslator
 
