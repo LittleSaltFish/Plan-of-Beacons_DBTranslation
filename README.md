@@ -64,7 +64,7 @@
 
 用于编撰md文档。功能强大！[官网直达](https://typora.io/)
 
-<img src="README.assets/image-20200701231131901.png" alt="image-20200701231131901" style="zoom:67%;" />
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/README.assets/image-20200701231131901.png" alt="image-20200701231131901" style="zoom:67%;" />
 
 ### 1.5.2. CopyTranslator
 
@@ -82,7 +82,7 @@
 
 采用Typora的设置，直接粘贴截图进文档即可
 
-<img src="README.assets/image-20200701231534879.png" alt="image-20200701231534879" style="zoom: 50%;" />
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/README.assets/image-20200701231534879.png" alt="image-20200701231534879" style="zoom: 50%;" />
 
 ### 1.6.2. 中英对照
 
@@ -92,7 +92,7 @@
 
 汉化部分保持原样即可
 
-<img src="README.assets/image-20200701225432000.png" alt="image-20200701225432000" style="zoom: 33%;" />
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/README.assets/image-20200701225432000.png" alt="image-20200701225432000" style="zoom: 33%;" />
 
 ### 1.6.3. 目录结构
 
@@ -110,7 +110,7 @@
 
 *（GFM语法：\=\= + 高亮内容 + \=\=）*
 
-<img src="README.assets/image-20200701231805482.png" alt="image-20200701231805482" style="zoom: 33%;" />
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/README.assets/image-20200701231805482.png" alt="image-20200701231805482" style="zoom: 33%;" />
 
 ### 1.6.5. 换行统一化
 
@@ -120,7 +120,7 @@
 
 为保证形式上的统一，请统一使用宽松形式的换行。
 
-<img src="README.assets/image-20200701232931156.png" alt="image-20200701232931156" style="zoom:50%;" />
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/README.assets/image-20200701232931156.png" alt="image-20200701232931156" style="zoom:50%;" />
 
 ### 1.6.6. 公式独立化
 
@@ -130,7 +130,7 @@
 
 对于汉化文本中出现的单词，请用空格包裹，以增加可阅读性。
 
-<img src="README.assets/image-20200701232357943.png" alt="image-20200701232357943" style="zoom: 33%;" />
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/README.assets/image-20200701232357943.png" alt="image-20200701232357943" style="zoom: 33%;" />
 
 ### 1.6.7. 键标记统一化
 
@@ -140,19 +140,19 @@
 
 *（GFM语法：\* + 外键 + \*）*
 
-<img src="README.assets/image-20200701233135508.png" alt="image-20200701233135508" style="zoom:50%;" />
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/README.assets/image-20200701233135508.png" alt="image-20200701233135508" style="zoom:50%;" />
 
 ### 1.6.8. 重点统一化
 
 教材内重点画的比较滥，起不到标志作用。汉化人员可以根据自己的理解加粗重点。（只加粗汉化部分即可）
 
-<img src="README.assets/image-20200701233552109.png" alt="image-20200701233552109" style="zoom: 33%;" />
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/README.assets/image-20200701233552109.png" alt="image-20200701233552109" style="zoom: 33%;" />
 
 ### 1.6.9. 表格汉化
 
 对于包含专有名词，步骤指示等重要信息的表需要进行汉化，其他普通的数据表不需要汉化。
 
-<img src="README.assets/image-20200701233748258.png" alt="image-20200701233748258" style="zoom: 33%;" />
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/README.assets/image-20200701233748258.png" alt="image-20200701233748258" style="zoom: 33%;" />
 
 ### 1.6.10. 专有名词同步
 
@@ -164,13 +164,13 @@
 
 为突出标题的作用范围，在翻译过程中，遇到”小标题“+正文的结构时，请单独将小标题放在原文前面。
 
-<img src="README.assets/image-20200701234201186.png" alt="image-20200701234201186" style="zoom: 33%;" />
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/README.assets/image-20200701234201186.png" alt="image-20200701234201186" style="zoom: 33%;" />
 
 ### 1.6.12. 适当的图片大小
 
 过大的图片看着很不舒服，在Typora中右键即可调整缩放。
 
-<img src="README.assets/image-20200701234453950.png" alt="image-20200701234453950" style="zoom: 67%;" />
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/README.assets/image-20200701234453950.png" alt="image-20200701234453950" style="zoom: 67%;" />
 
 ### 1.6.13. 代码块独立化
 
@@ -178,4 +178,4 @@
 
 *（GFM语法：\`\`\` + 代码块 + \`\`\`）*
 
-<img src="README.assets/image-20200702012631172.png" alt="image-20200702012631172" style="zoom: 80%;" />
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/README.assets/image-20200702012631172.png" alt="image-20200702012631172" style="zoom: 80%;" />

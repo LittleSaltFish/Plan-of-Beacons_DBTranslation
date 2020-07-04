@@ -1,0 +1,5142 @@
+<center><h1>数据库系统原理-2020-期末复习提纲</h1></center>
+
+<center><h3>制作：纪元 王汝婷</h3></center>
+<center><h4>本提纲遵循CC-BY-NC-SA协议</h4>(署名-非商业性-相同方式共享)</center>
+
+
+
+---
+
+<!-- TOC -->
+
+- [1. 第一章：介绍、本章目标](#1-第一章介绍本章目标)
+    - [1.1. 课程及第一部分介绍](#11-课程及第一部分介绍)
+    - [1.2. 数据库的特征](#12-数据库的特征)
+    - [1.3. 数据库的应用](#13-数据库的应用)
+        - [1.3.1. a.单用户数据库应用](#131-a单用户数据库应用)
+        - [1.3.2. b.多用户数据库应用](#132-b多用户数据库应用)
+        - [1.3.3. c.电子商务数据库应用](#133-c电子商务数据库应用)
+        - [1.3.4. d.报告和数据挖掘数据库应用程序](#134-d报告和数据挖掘数据库应用程序)
+    - [1.4. 数据库系统组成](#14-数据库系统组成)
+        - [1.4.1. 数据库应用程序和SQL的基本功能](#141-数据库应用程序和sql的基本功能)
+        - [1.4.2. DBMS](#142-dbms)
+        - [1.4.3. 数据库](#143-数据库)
+    - [1.5. 个人数据库系统和企业数据库系统比较](#15-个人数据库系统和企业数据库系统比较)
+        - [1.5.1. 什么是 Microsoft Access](#151-什么是-microsoft-access)
+        - [1.5.2. 什么是企业级数据库系统？](#152-什么是企业级数据库系统)
+        - [1.5.3. 企业级数据库系统中的数据库应用程序](#153-企业级数据库系统中的数据库应用程序)
+        - [1.5.4. 企业级数据库系统中的DBMS](#154-企业级数据库系统中的dbms)
+    - [1.6. 数据库设计简介](#16-数据库设计简介)
+        - [1.6.1. 现有数据的数据库设计](#161-现有数据的数据库设计)
+        - [1.6.2. 新系统开发的数据库设计](#162-新系统开发的数据库设计)
+        - [1.6.3. 数据库重新设计](#163-数据库重新设计)
+    - [1.7. 本课程要学习的内容](#17-本课程要学习的内容)
+    - [1.8. 数据库处理简史](#18-数据库处理简史)
+        - [1.8.1. 早期](#181-早期)
+        - [1.8.2. 关系模型的出现和主导](#182-关系模型的出现和主导)
+        - [1.8.3. 关系后发展](#183-关系后发展)
+    - [1.9. 本章小结](#19-本章小结)
+- [2. 第二章:SQL语言介绍](#2-第二章sql语言介绍)
+    - [2.1. 本章目标](#21-本章目标)
+    - [2.2. 数据仓库介绍](#22-数据仓库介绍)
+    - [2.3. Cape Codd Outdoor Sports数据集](#23-cape-codd-outdoor-sports数据集)
+        - [2.3.1. 简介](#231-简介)
+        - [2.3.2. 提取零售数据](#232-提取零售数据)
+            - [2.3.2.1. RETAIL\_ORDER，ORDER\_ITEM和SKU\_DATA：](#2321-retail\_orderorder\_item和sku\_data)
+                - [2.3.2.1.1. 零售订货表](#23211-零售订货表)
+                - [2.3.2.1.2. 订购货品表](#23212-订购货品表)
+                - [2.3.2.1.3. SKU 数据表](#23213-sku-数据表)
+        - [2.3.3. 完整的Cape Codd Data提取模式](#233-完整的cape-codd-data提取模式)
+    - [2.4. SQL背景](#24-sql背景)
+        - [2.4.1. SQL相关背景](#241-sql相关背景)
+        - [2.4.2. SQL语句分类](#242-sql语句分类)
+        - [2.4.3. 其他](#243-其他)
+    - [2.5. 本章小结](#25-本章小结)
+- [3. 第三章：SQL的技巧](#3-第三章sql的技巧)
+    - [3.1. SELECT-FROM-WHERE基本框架的用法](#31-select-from-where基本框架的用法)
+        - [3.1.1. 从单个表中指定 SQL 查询中的列顺序](#311-从单个表中指定-sql-查询中的列顺序)
+        - [3.1.2. 从单个表中读取指定的行](#312-从单个表中读取指定的行)
+        - [3.1.3. 从单个表中读取指定的列和行](#313-从单个表中读取指定的列和行)
+    - [3.2. 向MYSQL提交SQL语句](#32-向mysql提交sql语句)
+        - [3.2.1. 在 MySQL Workbench 中运行 SQL 查询](#321-在-mysql-workbench-中运行-sql-查询)
+        - [3.2.2. 保存 MySQL 5.6查询](#322-保存-mysql-56查询)
+    - [3.3. 对单表的复杂查询](#33-对单表的复杂查询)
+        - [3.3.1. 对 SQL 查询结果进行排序](#331-对-sql-查询结果进行排序)
+            - [3.3.1.1. 正序](#3311-正序)
+            - [3.3.1.2. 逆序](#3312-逆序)
+        - [3.3.2. SQL WHERE 子句选项](#332-sql-where-子句选项)
+            - [3.3.2.1. 复合 WHERE 子句](#3321-复合-where-子句)
+            - [3.3.2.2. SQL WHERE子句中的范围](#3322-sql-where子句中的范围)
+            - [3.3.2.3. SQL WHERE 子句中的通配符](#3323-sql-where-子句中的通配符)
+            - [3.3.2.4. 组合 SQL WHERE 子句和 SQL ORDER BY 子句](#3324-组合-sql-where-子句和-sql-order-by-子句)
+    - [3.4. SQL查询中的计算](#34-sql查询中的计算)
+        - [3.4.1. 使用 SQL 内置函数](#341-使用-sql-内置函数)
+        - [3.4.2. SQL Select 语句中的 SQL 表达式](#342-sql-select-语句中的-sql-表达式)
+    - [3.5. 分组统计](#35-分组统计)
+    - [3.6. 在真实的NASDAQ数据集查询](#36-在真实的nasdaq数据集查询)
+        - [3.6.1. 调查数据的特征](#361-调查数据的特征)
+        - [3.6.2. 搜索每周每天的交易模式](#362-搜索每周每天的交易模式)
+    - [3.7. 多表查询](#37-多表查询)
+        - [3.7.1. 使用子查询查询多个表](#371-使用子查询查询多个表)
+        - [3.7.2. 使用连接查询多个表](#372-使用连接查询多个表)
+        - [3.7.3. 比较子查询和联接](#373-比较子查询和联接)
+        - [3.7.4. 关于 SQL JOIN 的语法](#374-关于-sql-join-的语法)
+        - [3.7.5. 外连接](#375-外连接)
+    - [3.8. 第三章小结](#38-第三章小结)
+- [4. 第四章：关系数据库规范化理论](#4-第四章关系数据库规范化理论)
+    - [4.1. 为什么要强调数据库设计的规范](#41-为什么要强调数据库设计的规范)
+    - [4.2. 关系模型术语](#42-关系模型术语)
+        - [4.2.1. 关系](#421-关系)
+            - [4.2.1.1. 关系简述](#4211-关系简述)
+            - [4.2.1.2. 关系的特征](#4212-关系的特征)
+            - [4.2.1.3. 可替代的词汇](#4213-可替代的词汇)
+        - [4.2.2. 函数依赖](#422-函数依赖)
+        - [4.2.3. 复合函数依赖](#423-复合函数依赖)
+        - [4.2.4. 键](#424-键)
+            - [4.2.4.1. 候选键](#4241-候选键)
+            - [4.2.4.2. 主键  （表结构中用下划线标记）](#4242-主键--表结构中用下划线标记)
+            - [4.2.4.3. 代理键](#4243-代理键)
+            - [4.2.4.4. 外键  (表结构中用斜体标记)](#4244-外键--表结构中用斜体标记)
+    - [4.3. 范式](#43-范式)
+        - [4.3.1. 修正异常](#431-修正异常)
+        - [4.3.2. 范式的历史](#432-范式的历史)
+        - [4.3.3. 正规化理论](#433-正规化理论)
+        - [4.3.4. 从第一范式到 D/K 范式](#434-从第一范式到-dk-范式)
+            - [4.3.4.1. 第一范式](#4341-第一范式)
+            - [4.3.4.2. 第二范式](#4342-第二范式)
+            - [4.3.4.3. 第三范式](#4343-第三范式)
+            - [4.3.4.4. 修正的第三范式（BCNF）](#4344-修正的第三范式bcnf)
+            - [4.3.4.5. 第五范式（ PJ/NF ）](#4345-第五范式-pjnf-)
+            - [4.3.4.6. D/K范式（域/键范式）](#4346-dk范式域键范式)
+    - [4.4. 寻找函数依赖](#44-寻找函数依赖)
+            - [4.4.0.7. 用 BCNF 消除函数依赖中的异常](#4407-用-bcnf-消除函数依赖中的异常)
+    - [4.5. 规范化问题举例](#45-规范化问题举例)
+        - [4.5.1. 标准化示例1](#451-标准化示例1)
+            - [4.5.1.1. “循序渐进”法](#4511-循序渐进法)
+            - [4.5.1.2. ”直达BCNF“法](#4512-直达bcnf法)
+        - [4.5.2. 标准化示例2](#452-标准化示例2)
+        - [4.5.3. 标准化示例3](#453-标准化示例3)
+        - [4.5.4. 标准化示例4](#454-标准化示例4)
+        - [4.5.5. 标准化示例5](#455-标准化示例5)
+    - [4.6. 多值依赖](#46-多值依赖)
+    - [4.7. 小结](#47-小结)
+- [5. 第五章：用规范化理论完成数据库设计](#5-第五章用规范化理论完成数据库设计)
+    - [5.1. 评估表格结构](#51-评估表格结构)
+
+<!-- /TOC -->
+
+---
+
+# 1. 第一章：介绍、本章目标
+
+## 1.1. 课程及第一部分介绍
+
+略
+
+## 1.2. 数据库的特征
+
+> - a. *The purpose of a database is to help people keep track of things*, and the most commonly used type of database is the relational database.
+>
+> - b. A relational database stores data in tables. A table has rows and columns, like those in a spreadsheet.
+>
+> - c. Data are recorded facts and numbers.
+>
+> - d. A database usually has multiple tables, and each table contains data about a different type of thing.
+>
+> - e. Each row of a table has data about a particular occurrence or instance of the thing of interest. Each row records the data for a specific instance, rows are also known as records.
+>
+> - f. Each column of a table stores a characteristic common to all rows. Columns are also known as fields.
+> Attention : A Database has Data and Relationships(A database is not complete unless it also shows the relationships among the rows of data.)
+>
+> - g. Each row in a table is uniquely identified by a primary key, and the values of these keys are used to create the relationships between the tables.
+>
+> - h. Databases record facts and figures, so they record data. They do so, however, in a way that enables them to produce information.
+
+
+
+- a.数据库的目的是为了帮助人们获取其感兴趣的东西，目前的主流类型是关系数据库
+
+- b.关系数据库将数据存储在表(table)中。 表格具有行(row)和列(column)，就像电子表格(spreadsheet)中的表一样。
+
+- c.数据记录的是事实和数字
+
+- d.一个数据库通常有多个表，每个表包含不同类型的数据。即不同的表存放不同类型的数据
+
+- e.对于表中的每一行，其记录的是特定的事物或是一种感兴趣的现象，每一行记录的都是特定事物的数据，也将行称之为记录(records)
+
+- f.表中的每一列存储所有行共有的特征，列也称为字段(fields)
+  注意：数据库由数据和关系构成（如果数据库中没有行之间的关系，则这个数据库是不完整的）
+
+- g.表中的每一行都由主键(primary key)唯一标识，这些键的值用于创建表之间的关系
+
+- h.数据库记录的是事实和数字，所以数据库记录数据。这么做某种意义上能够促进信息的生成
+
+## 1.3. 数据库的应用
+
+### 1.3.1. a.单用户数据库应用
+
+> a.  Single-User Database applications
+
+### 1.3.2. b.多用户数据库应用
+
+> b.  Multiuser Database applications
+>
+> When more than one user employs a database application, there is always the chance that one user’s work may interfere with another’s. Special concurrency-control mechanisms are used to coordinate activity against the database to prevent such conflict.
+
+当一个以上的用户使用数据库应用程序时，一个用户的工作有可能干扰另一个人的工作。 特殊的并发控制机制（concurrency-control mechanisms）用于协调针对数据库的活动，以防止此类冲突。
+
+### 1.3.3. c.电子商务数据库应用
+
+> c.  E-Commerce Database applications
+>
+> The largest databases are those that *track customer browser behavior*.
+>
+> E-commerce companies use Web activity databases to determine which items on a Web page are popular and successful and which are not. They also can conduct experiments to determine if a purple background generates more orders than a blue one and so forth.
+
+那些最大的数据库是用来记录用户的浏览行为的。
+
+电子商务公司使用Web活动数据库来确定网页上哪些项目受欢迎，哪些项目不受欢迎；还可以进行实验以确定紫色背景是否比蓝色背景生成更多的订单，依此类推。
+
+### 1.3.4. d.报告和数据挖掘数据库应用程序
+
+> d.  Reporting and Data Mining Database applications
+>
+> These applications use the data generated by order processing and other operational systems to produce information to help manage the enterprise. Such applications do not generate new data, but instead summarize existing data to provide insights to management.
+>
+> by the way : although a database for a small business may be small, it is not necessarily simple.
+
+这些应用程序使用订单处理和其他操作系统生成的数据来生成信息以帮助企业管理。 这样的应用程序不会生成新数据，而是汇总现有数据以提供管理见解。
+
+注：虽然小型业务的数据库可能较小，但是它结构不一定简单。即不能只通过数据库大小去判断其结构复杂度。
+
+## 1.4. 数据库系统组成
+
+> A database system is typically defined to consist of four components:
+> users, the database application, the database management system (DBMS), and the database.
+>
+> However, given the importance of Structured Query Language (SQL) in database processing and the fact that database applications typically send SQL statements to the DBMS for processing, we can refine our illustration of a database system to appear as shown in Figure 1-7.
+
+数据库系统通常定义为包含四个组件：用户，数据库应用程序，数据库管理系统（DBMS）和数据库（如图1-6）。
+
+但是，鉴于结构化查询语言（SQL）在数据库处理中的重要性以及数据库应用程序通常将SQL语句发送到DBMS进行处理这一事实，我们可以改进数据库系统的组成图（如图1-7）
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701000920922.png" alt="image-20200701000920922" style="zoom:80%;" />
+
+> Definitions:
+>
+> (1)Database is a collection of related tables and other structures.
+>
+> (2)Database management system (DBMS) is a computer program used to create, process, and administer the database. The DBMS receives requests encoded in SQL and translates those requests into actions on the database. (The DBMS is a large, complicated program that is licensed from a software vendor; companies almost never write their own DBMS programs.)
+>
+> (3)Database application is a set of one or more computer programs that serves as an intermediary between the user and the DBMS. Application programs read or modify database data by sending SQL statements to the DBMS. Application programs also present data to users in the format of forms and reports.( Application programs can be acquired from software vendors, and they are also frequently written in house.)
+>
+> (4)Users The final component of a database system, employ a database application to keep track of things. They use forms to read, enter, and query data, and they produce reports to convey information.
+
+定义：
+
+（1）数据库是相关表和其他结构的集合。
+
+（2）数据库管理系统（DBMS）是用于创建，处理和管理数据库的计算机程序。  DBMS接收用SQL编码的请求，并将这些请求转换为对数据库的操作。  （DBMS是一个大型的，复杂的程序，已从软件供应商处获得许可；公司几乎从不编写自己的DBMS程序。）
+
+（3）数据库应用程序是一组一个或多个计算机程序，充当用户和DBMS之间的中介。 应用程序通过将SQL语句发送到DBMS来读取或修改数据库数据。 应用程序还以表格和报告的形式向用户显示数据。（应用程序可以从软件供应商处获得，并且也经常在内部编写。）
+
+（4）用户是数据库系统的最后组成部分，使用数据库应用程序来跟踪事物。 他们使用表格读取，输入和查询数据，并生成报告以传达信息。
+
+### 1.4.1. 数据库应用程序和SQL的基本功能
+
+> a. Database applications and SQL
+>
+> Figure 1-8 lists the basic functions of database applications.
+>
+> First, an application program creates and processes forms.
+>
+>The second function of application programs is to process user queries. The application program first generates a query request and sends it to the DBMS. Results are then formatted and returned to the user. Applications use SQL statements and pass them to the DBMS for processing.
+>
+>The third function of an application is to create and process reports. This function is somewhat similar to the second because the application program first queries the DBMS for data (again using SQL). The application then formats the query results as a report.
+>
+>In addition to generating forms, queries, and reports, the application program takes other actions to update the database in accordance with application-specific logic.
+>
+>For example: suppose a user using an order entry application requests 10 units of a particular item. Suppose further that when the application program queries the database (via the DBMS), it finds that only 8 units are in stock. What should happen? It depends on the logic of that particular application. Perhaps no units should be removed from inventory and the user should be notified, or perhaps the 8 units should be removed and 2 more placed on back order. Perhaps some other action should be taken. Whatever the case, it is the job of the application program to execute the appropriate logic.
+>
+>Finally, the last function for application programs listed in Figure 1-8 is to control the application. This is done in two ways. First, the application needs to be written so that only logical options are presented to the user. For example, the application may generate a menu with user choices. In this case, the application needs to ensure that only appropriate choices are available. Second, the application needs to control data activities with the DBMS. The application might direct the DBMS, for example, to make a certain set of data changes as a unit.
+
+图1.8列出了数据库应用的基本功能：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701232417239.png" alt="image-20200701232417239" style="zoom: 50%;" />
+
+首先，一个应用程序创建并处理表格。
+
+应用程序的第二个功能是处理用户查询。 应用程序首先生成查询请求，并将其发送到DBMS。 然后将结果格式化并返回给用户。 应用程序使用SQL语句并将它们传递给DBMS进行处理。
+
+应用程序的第三个功能是创建和处理报告。 此功能与第二个功能有些相似，因为应用程序首先（再次使用SQL）向DBMS查询数据。 然后，应用程序将查询结果格式化为报告。
+
+除了生成表单，查询和报告之外，应用程序还根据特定于应用程序的逻辑采取其他操作来更新数据库。
+
+例如：假设使用订单输入应用程序的用户请求10个单位的特定商品。 进一步假设，当应用程序（通过DBMS）查询数据库时，它发现库存只有8个单位。 应该怎么办？ 这取决于特定应用程序的逻辑。 也许不应该从库存中删除任何单位，而应该通知用户，或者应该删除8个单位，还有2个仍处于待定状态。 也许应该采取其他措施。 无论如何，执行适当的逻辑是应用程序的工作。
+
+最后，图1-8中列出的应用程序的最后一个功能是控制应用程序。 这可以通过两种方式完成。 首先，需要编写应用程序，以便仅将逻辑选项呈现给用户。 例如，应用程序可以生成带有用户选择的菜单。 在这种情况下，应用程序需要确保仅提供适当的选择。 其次，应用程序需要使用DBMS控制数据活动。 例如，应用程序可能会指导DBMS以某个单位进行一组特定的数据更改。
+
+### 1.4.2. DBMS
+
+> b.DBMS
+>
+> A DBMS(database management system)is a large, complicated product that is almost always licensed from a software vendor. The DBMS creates, processes, and administers the database.
+>
+> Figure 1-12 lists the functions of a DBMS.
+>
+> *A DBMS is used to create a database and to create the tables and other supporting structures inside that database.
+>
+> *The next two functions of a DBMS are to read and modify database data.*
+>
+> To do this, a DBMS receives SQL and other requests and transforms those requests into actions on the database files.
+>
+> *Another DBMS function is to maintain all the database structures.*
+>
+> For example, from time to time it might be necessary to change the format of a table or another supporting structure. Developers use a DBMS to make such changes.
+>
+> *With most DBMS products, it is possible to declare rules about data values and have a DBMS enforce them.*
+
+DBMS（数据库管理系统）是一种大型，复杂的产品，几乎总是从软件供应商处获得许可。  DBMS创建，处理和管理数据库。图1-12列出了数据库应用程序的基本功能。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701234004297.png" alt="image-20200701234004297" style="zoom:80%;" />
+
+前三个功能：DBMS用于创建数据库以及在该数据库内部创建表和其他支持结构（索引等）。
+
+接下来两个功能是读取和修改数据库数据。
+为此，DBMS接收SQL和其他请求，并将这些请求转换为对数据库文件的操作。
+
+DBMS的另一个功能是维护所有数据库结构。例如，有时可能需要更改表格或其他支持结构的格式。 开发人员使用DBMS进行此类更改。
+
+对于大多数DBMS产品，可以声明有关数据值的规则并让DBMS强制执行它们。
+
+>*The last three functions of a DBMS listed in Figure 1-12 have to do with database administration.*
+>
+>A DBMS controls concurrency by ensuring that one user’s work does not inappropriately interfere with another user’s work.
+>
+>*Also, a DBMS contains a security system that ensures that only authorized users perform authorized actions on the database.* For example, users can be prevented from seeing certain data. Similarly, users’ actions can be confined to making only certain types of data changes on specified data.
+>
+>*Finally, a DBMS provides facilities for backing up database data and recovering it from backups, when necessary.* The database, as a centralized repository of data, is a valuable organizational asset.
+
+图1-12中列出的DBMS的最后三个功能与数据库管理有关。
+
+DBMS通过确保一个用户的工作不会不当地干扰另一用户的工作来控制并发。
+
+此外，DBMS包含一个安全系统，可确保只有授权用户才能对数据库执行授权操作。例如，可以防止用户看到某些数据。 同样，用户的操作可以限制为仅对指定数据进行某些类型的数据更改。
+
+最后，DBMS在必要时提供了备份数据库数据并从备份中恢复数据的功能。作为集中式数据存储库，数据库是宝贵的组织资产。
+
+### 1.4.3. 数据库
+
+>The Database
+>
+>A database is a self-describing collection of integrated tables.
+>
+>Integrated tables are tables that store both data and the relationships among the data.
+
+数据库是集成表的自描述集合。
+集成表是既存储数据又存储数据之间关系的表。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets\image-20200702000407207.png" alt="image-20200702000407207" style="zoom:80%;" />
+
+> A database is ==self-describing== because it contains a description of itself. Thus, databases contain not only tables of user data, but also tables of data that describe that user data. Such descriptive data is called metadata because it is data about data. The form and format of metadata varies from DBMS to DBMS.
+>
+> For now, however, understand that indexes are structures that speed the sorting and searching of database data.
+>
+> Triggers and stored procedures are programs that are stored within the database. Triggers are used to maintain database accuracy and consistency and to enforce data constraints.
+>
+> Stored procedures are used for database administration tasks and are sometimes part of database applications.
+>
+> Security data define users, groups, and allowed permissions for users and groups.
+>
+> The particulars depend on the DBMS product in use. Finally, backup and recovery data are used to save database data to backup devices as well as to recover the database data when needed.
+
+数据库是==自描述==的，因为它包含其自身的描述。 因此，数据库不仅包含用户数据表，而且还包含描述该用户数据的数据表。 这种描述性数据称为元数据，因为它是有关数据的数据。 元数据的形式和格式随DBMS的不同而不同。（数据库包含的元素如1-14所示）
+
+到目前为止，请了解索引是可以加快数据库数据的排序和搜索速度的结构。
+
+触发器和存储过程是存储在数据库中的程序。 触发器用于维护数据库的准确性和一致性，并强制执行数据约束。
+
+存储过程用于数据库管理任务，有时是数据库应用程序的一部分。
+
+安全数据定义用户，组以及用户和组的允许权限。
+
+具体情况取决于所使用的DBMS产品。 最后，备份和恢复数据用于将数据库数据保存到备份设备，并在需要时恢复数据库数据。
+
+
+
+## 1.5. 个人数据库系统和企业数据库系统比较
+
+> We can divide database systems and DBMS products into two classes: personal database systems and enterprise-class database systems.
+
+我们可以将数据库系统和DBMS产品分为两类：个人数据库系统和企业级数据库系统。
+
+### 1.5.1. 什么是 Microsoft Access
+
+>What Is Microsoft Access?
+>
+>Microsoft Access is not just a DBMS. Rather, it is a personal database system: a DBMS plus an application generator.Microsoft Access is a low-end product intended for individuals and small workgroups.Microsoft has done all that it can to hide the underlying database technology from the user. Users interact with the application through data entry forms
+>
+>At Microsoft, the current DBMS engine within Microsoft Access is called the Access Database Engine (ADE). ADE is a Microsoft Office–specific version of Microsoft’s Joint Engine Technology (JET or Jet) database engine. Jet was used as the Microsoft Access database engine until Microsoft Office 2007 was released. Jet itself is still used in the Microsoft Windows operating system, but you seldom hear about Jet because Microsoft does not sell Jet as a separate product.
+>
+>Although hiding the technology is an effective strategy for beginners working on small databases, it will not work for database professionals who work with applications.
+>
+>The components of Microsoft Access are shown in Figure 1-15, which illustrates that the Microsoft Access form, report, and query applications create SQL statements and then pass them to the DBMS for processing.
+>
+>By The Way   Although Microsoft Access is the best-known personal database system, it is not the only one. OpenOffice.org Base is a personal database system distributed as part of the OpenOffice.org software suite and the personal database system LibreOffice Base is distributed as part of the related LibreOffice software suite.
+
+Microsoft Access不仅仅是DBMS。 而是一个“个人数据库系统”：一个DBMS加上一个应用程序生成器。Microsoft Access是面向个人和小型工作组的低端产品。Microsoft尽可能地向用户隐藏基础数据库技术。 用户通过数据输入表单与应用程序进行交互。
+
+在Microsoft，Microsoft Access目前使用的DBMS引擎称为Access数据库引擎（ADE）。  ADE是Microsoft联合引擎技术（JET或Jet）数据库引擎的特定于Microsoft Office的版本。 在发布Microsoft Office 2007之前，Jet一直用作Microsoft Access数据库引擎。  Jet本身仍在Microsoft Windows操作系统中使用，但您很少听到有关Jet的信息，因为Microsoft并未将Jet作为单独的产品出售。
+
+尽管隐藏该技术对于从事小型数据库工作的初学者来说是一种有效的策略，但对于使用应用程序的数据库专业人员而言，它不会起作用。
+
+Microsoft Access的组件如图1-15所示，该图说明Microsoft Access表单，报表和查询应用程序创建SQL语句，然后将它们传递给DBMS进行处理。
+
+注：尽管Microsoft Access是最著名的个人数据库系统，但它并不是唯一的系统。个人数据库系统 OpenOffice.org Base作为OpenOffice.org软件套件中的一部分进行分发，而个人数据库系统LibreOffice Base作为相关LibreOffice软件套件的一部分进行分发。
+
+### 1.5.2. 什么是企业级数据库系统？
+
+>  What is an Enterprise-Class Database System?
+>
+> Figure 1-16 shows the components of an enterprise-class database system.
+
+如图1-16是一个企业级数据库系统的组成
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets\image-20200702003152011.png" alt="image-20200702003152011" style="zoom:67%;" />
+
+### 1.5.3. 企业级数据库系统中的数据库应用程序
+
+> Database applications in an enterprise-Class Database System
+>
+> Such applications are sometimes called client/server applications because the application program is a client that connects to a database server. Client/server applications often are written in programming languages such as VB.NET, C++, or Java.
+>
+> A *second category of applications* in Figure 1-16 is e-commerce and other applications that run on a Web server. Users connect to such applications via Web browsers such as Microsoft Internet Explorer, Mozilla Firefox, and Google Chrome. Common Web servers include Microsoft’s Internet Information Server (IIS) and Apache. Common languages for Web server applications are PHP, Java, and the Microsoft .NET languages, such as C#.NET and VB.NET.
+
+此类应用程序有时称为客户端/服务器应用程序，因为应用程序是连接到数据库服务器的客户端。 客户端/服务器应用程序通常以VB.NET，C ++或Java等编程语言编写。
+
+图1-16中的第二类应用程序是在Web服务器上运行的电子商务和其他应用程序。 用户通过Microsoft Internet Explorer，Mozilla Firefox和Google Chrome等Web浏览器连接到此类应用程序。 常见的Web服务器包括Microsoft的Internet信息服务器（IIS）和Apache。  Web服务器应用程序的通用语言是PHP，Java和Microsoft .NET语言,例如C＃.NET和VB.NET。
+
+> A *third category of applications* is reporting applications that publish the results of database queries on a *corporate portal*or other Web site. Such reporting applications are often created using third-party report generation and digital dashboard products from vendors such as IBM (Cognos) and MicroStrategy (MicroStrategy 9).
+>
+> The *last category of applications* is XML Web services. These applications use a combination of the XML markup language and other standards to enable program-to-program communication. In this way, the code that comprises an application is distributed over several different computers. Web services can be written in Java or any of the .NET languages.
+>
+> *All of these database applications read and write database data by sending SQL statements to the DBMS.* These applications may create forms and reports, or they may send their results to other programs. They also may implement application logic that goes beyond simple form and report processing.
+
+应用程序的第三类是报告应用程序，这些应用程序将数据库查询的结果发布在企业门户（Enterprise Portal）或其他网站上。 通常使用第三方报告生成和来自IBM（Cognos）和MicroStrategy（MicroStrategy 9）等供应商的数字仪表板产品来创建此类报告应用程序。
+
+应用程序的最后一类是XML Web服务。 这些应用程序使用XML标记语言和其他标准的组合来实现程序之间的通信。 这样，组成应用程序的代码分布在几台不同的计算机上。  Web服务可以用Java或任何.NET语言编写。
+
+所有这些数据库应用程序都通过将SQL语句发送到DBMS来读写数据库数据。 这些应用程序可以创建表格和报告，也可以将结果发送到其他程序。 他们还可以实现超出简单形式和报告处理范围的应用程序逻辑。
+
+### 1.5.4. 企业级数据库系统中的DBMS
+
+> The DBMS in an enterprise-Class Database System
+>
+> The DBMS manages the database.
+>
+> It processes SQL statements and provides other features and functions for creating, processing, and administering the database.
+>
+> Figure 1-17 presents the five most prominent DBMS products. The products are shown in order of increasing power, features, and difficulty of use.
+
+DBMS管理数据库。
+
+它处理SQL语句，并提供用于创建，处理和管理数据库的其他功能。
+
+图1-17展示了五个最杰出的DBMS产品。 该图的产品按显示顺序，功能由弱至强，特性由少变多，使用难度从小到大。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets\image-20200702004303588.png" alt="image-20200702004303588" style="zoom:80%;" />
+
+## 1.6. 数据库设计简介
+
+>Definition: Database design (as a process) is the creation of the proper structure of database tables, the proper relationships between tables, appropriate data constraints, and other structural components of the database.
+>
+>*Correct database design is both important and difficult.*
+
+定义：数据库设计（作为一个过程）主要内容为：创建数据库表的适当结构，表之间的适当关系，适当的数据约束以及数据库的其他结构组件。
+
+>As shown in Figure 1-18, there are three types of database design:
+>
+>- Database design from existing data
+>- Database design for new systems development
+>- Database redesign of an existing database
+>
+><img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets\image-20200702004615084.png" alt="image-20200702004615084" style="zoom: 80%;" />
+
+
+ 如图1-18所示，数据库设计分为三种：
+
+- 现有数据的数据库设计
+- 新系统开发的数据库设计
+- 现有数据库的数据库重新设计
+
+### 1.6.1. 现有数据的数据库设计
+
+>a.  Database Design from existing Data
+>
+>The first type of database design involves databases that are constructed from existing data, as shown in Figure 1-19.
+
+第一种数据库设计涉及从现有数据构建的数据库，如图1-19所示。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets\image-20200702004951096.png" alt="image-20200702004951096" style="zoom:67%;" />
+
+> *In some cases*, a development team is given a set of spreadsheets or a set of text files with tables of data. The team is required to design a database and import the data from those spreadsheets and tables into a new database.
+>
+> *Alternatively*, databases can be created from extracts of other databases. This alternative is especially common in business intelligence (BI) systems, which include reporting and data mining applications.
+
+在某些情况下，开发团队会获得一组电子表格或一组带有数据表的文本文件。 该团队需要设计一个数据库，并将这些电子表格和表格中的数据导入到新数据库中。
+
+或者，可以从其他数据库的摘录中创建数据库。 这种替代方案在包括报告和数据挖掘应用程序的商业智能（BI）系统中尤其常见。
+
+> *When creating a database from existing data, database developers must determine the appropriate structure for the new database. A common issue is how the multiple files or tables in the new database should be related. However, even the import of a single table can pose design questions.*
+>
+> *Database professionals use a set of principles, collectively called normalization, or normal forms, to guide and assess database designs.*
+
+从现有数据创建数据库时，数据库开发人员必须为新数据库确定适当的结构。 一个常见的问题是新数据库中的多个文件或表应如何关联。 但是，即使导入单个表也可能引起设计问题。
+
+数据库专业人员使用一套原则（统称为规范化或范形）来指导和评估数据库设计。
+
+### 1.6.2. 新系统开发的数据库设计
+
+> b.  Database Design for New Systems Development
+>
+> A *second way* that databases are designed is for the development of new information systems. As shown in Figure 1-21, requirements for a new system, such as desired data entry forms and reports, user requirements statements, use cases, and other requirements, are analyzed to create the database design.
+
+设计数据库的*第二种方法*是开发新的信息系统。 如图1-21所示，将分析新系统的需求，例如所需的数据输入表单和报告，用户需求陈述，用例和其他需求，以创建数据库设计。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets\image-20200702005608009.png" alt="image-20200702005608009" style="zoom:80%;" />
+
+> *In all but the simplest system development projects, the step from user requirements to database design is too big.*  Accordingly, the development team proceeds in two steps. *First*, the team creates a *data model*  from the requirements statements and *then* transforms that data model into a *database design*. You can think of a data model as a *blueprint* that is used as a design aid on the way to a database design, which is the basis for constructing the actual database in a DBMS product.
+
+*在除最简单的系统开发项目之外的所有项目中，从用户需求到数据库设计的步骤跨度都太大了。* 因此，开发团队分两个步骤进行。
+
+ *首先*，团队根据需求声明创建数据模型，
+
+*然后*，将该数据模型转换为数据库设计。 
+
+您可以将数据模型视为一个*蓝图*，该蓝图可以用作数据库设计过程中的设计辅助，这是在DBMS产品中构建实际数据库的基础。
+
+### 1.6.3. 数据库重新设计
+
+> c.  Database Redesign
+>
+> Database redesign also requires that databases are designed. As shown in Figure 1-22, there are two common types of database redesign.
+
+该方式还需要设计数据库。 如图1-22所示，有两种常见的数据库重新设计类型。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets\image-20200702010149037.png" alt="image-20200702010149037" style="zoom:67%;" />
+
+> *In the first,* a database is adapted to new or changing requirements. This process sometimes is called database migration. In the migration process, tables may be created, modified, or removed; relationships may be altered; data constraints may be changed; and so forth.
+>
+> The second  type of database redesign involves the integration of two or more databases. This type of redesign is common when adapting or removing legacy systems. It is also common for enterprise application integration, when two or more previously separate information systems are adapted to work with each other.
+
+在第一种设计类型，数据库适应新的或不断变化的需求。 此过程有时称为数据库迁移。 在迁移过程中，可以创建，修改或删除表。 关系可能会改变，数据约束可能会改变等等。
+
+数据库重新设计的第二种类型涉及两个或多个数据库的集成。 适应或删除旧系统时，这种重新设计很常见。 当两个或多个以前分开的信息系统相互配合工作时，企业应用程序集成也很常见。
+
+## 1.7. 本课程要学习的内容
+
+略
+
+## 1.8. 数据库处理简史
+
+> Database processing emerged around 1970 and has been continuously evolving and changing since then. This continual change has made it a fascinating and thoroughly enjoyable field in which to work. Figure 1-25 summarizes the major eras of database processing.
+>
+
+数据库处理始于1970年左右，自那时以来一直在不断发展和变化。 这种持续的变化使它成为一个引人入胜且令人愉悦的工作领域。 图1-25总结了数据库处理的主要时代。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets\image-20200702011009548.png" alt="image-20200702011009548.png" style="zoom: 80%;" />
+
+### 1.8.1. 早期
+
+> a.  The Early Years
+>
+> The need for data integration drove the development of the first database technology.
+>
+> By 1973, several commercial DBMS products had emerged. These products were in use by the mid-1970s. The DBMS products: ADABAS, System2000, Total, IDMS, and IMS. Of those five, only ADABAS and IMS are still in use, and neither of them has substantial market share today.
+>
+> Those early DBMS products varied in the way that they structured data relationships.
+
+数据集成的需求推动了第一个数据库技术的发展。
+
+到1973年，出现了几种商业DBMS产品。 这些产品在1970年代中期开始使用。  DBMS产品：ADABAS，System2000，Total，IDMS和IMS。 在这五种产品中，只有ADABAS和IMS仍在使用中，它们在今天并没有占据可观的市场份额。
+
+那些早期的DBMS产品在结构化数据关系方面的方式各不相同。
+
+### 1.8.2. 关系模型的出现和主导
+
+
+
+> b.  The Emergence and Dominance of the Relational Model
+>
+> In 1970, a then–little-known IBM engineer named E. F. Codd published a paper in the Communications of the ACM3 in which he applied the concepts of a branch of mathematics called relational algebra to the problem of “shared data banks,” as databases were then known.
+>
+> *The results of this work are now the relational model for databases, and all relational database DBMS products are built on this model.*
+
+1970年，当时鲜为人知的IBM工程师E.F. Codd在ACM3通讯中发表了一篇论文，其中他将数学上一个称为关系代数的分支概念应用于“共享数据库”问题
+
+这项工作的结果现在是数据库的关系模型，并且所有关系数据库DBMS产品都建立在该模型上。
+
+>Over time, Codd convinced IBM management to develop relational-model DBMS products. The result was IBM’s DB2 and its variants, which are still very popular today.
+>
+>Meanwhile, other companies were considering the relational model as well, and by 1980, several more relational DBMS products had been released. The most prominent and important of those was Oracle Corporation’s Oracle Database . Oracle Database achieved success for many reasons, one of which was that it would run on just about any computer and just about any operating system.
+
+随着时间的流逝，科德说服IBM管理层开发关系模型DBMS产品。 结果就是IBM的DB2及其变体，今天仍然非常流行。
+
+同时，其他公司也在考虑关系模型，到1980年，又发布了更多关系DBMS产品。 其中最突出和最重要的是Oracle Corporation的Oracle Database。  Oracle数据库之所以获得成功，有很多原因，其中之一就是它可以在几乎任何计算机和任何操作系统上运行。
+
+### 1.8.3. 关系后发展
+
+> c.  Post-Relational Developments
+>
+> By 1990, some vendors had developed object-oriented DBMS (OODBMS or ODBMS) products. These products were designed to make it easy to store the data encapsulated in OOP objects.
+>
+> Several special-purpose OODBMS products were developed, and Oracle added OOP constructs to Oracle to enable the creation of a hybrid (混合) called an *object-relational DBMS.*
+
+到1990年，一些供应商已经开发了面向对象的DBMS（OODBMS或ODBMS）产品。 这些产品旨在简化存储在OOP对象中的数据的存储。
+
+也开发了几种专用的OODBMS产品，并且Oracle向Oracle添加了OOP构造，以支持创建对象关系DBMS。
+
+>OODBMS never caught on, and today that category(类别) of DBMS products is fading away.There were two reasons for their lack of acceptance.
+>
+>First, using an OODBMS required that the relational data be converted from relational format to object-oriented format. By the time OODBMS emerged, billions upon billions of bytes of data were stored in relational format in organizational databases. No company was willing to undergo the expensive travail of converting those databases to be able to use the new OODBMS.
+>
+>Second, object-oriented databases had no substantial advantage over relational databases for most commercial database processing. As you will see in the next chapter, SQL is not
+>object oriented. But it works, and thousands of developers have created programs that use it.
+>
+>Conclusion: Without a demonstrable advantage over relational databases, no organization was willing to take on the task of converting its data to OODBMS format.
+
+OODBMS从未流行开来，如今，DBMS产品的类别（类别）正在逐渐消失。它们缺乏接受的原因有两个。
+
+首先，使用OODBMS要求将关系数据从关系格式转换为面向对象的格式。 到OODBMS出现时，数十亿亿字节的数据以关系格式存储在组织数据库中。 没有一家公司愿意为将这些数据库转换为能够使用新的OODBMS而付出昂贵的代价。
+
+其次，对于大多数商业数据库处理而言，面向对象的数据库相比关系数据库并没有实质性的优势。 正如将在下一章中看到的那样，SQL不是面向对象的。 但是它有效，成千上万的开发人员创建了基于它的程序。
+
+结论：在关系数据库上没有明显优势的情况下，没有组织愿意承担将其数据转换为OODBMS格式所带来的代价。
+
+> Meanwhile, the Internet took off. By the mid-1990s, it was clear that the Internet was one of the most important phenomena in history. It changed, forever, the ways that customers and businesses relate to each other.
+>
+> Early Web sites were nothing more than online brochures(小册子), but within a few years, dynamic（动态） Web sites that involved querying and processing databases began to appear.
+>
+> However, one substantial problem existed. HTTP（Hypertext Transfer Protocol ） is a stateless protocol（无状态协议）; （进一步解释何谓无状态协议）a server receives a request from a user, processes the request, and then forgets about the user and the request. Many database interactions are multistage（多级）. A customer views products, adds one or more to a shopping cart, views more products, adds more to the shopping cart, and eventually checks
+>out. A stateless protocol cannot be used for such applications.
+
+同时，互联网开始腾飞。到1990年代中期，互联网已明显的成为历史上最重要的现象之一。 它永远改变了客户和企业之间相互联系的方式。
+
+早期的网站只不过是网上小册子，而是在短短几年内，出现了涉及查询和处理数据库的动态网站。
+
+但是，存在一个实质性的问题。  HTTP（超文本传输协议）是无状态协议； 服务器收到用户的请求，处理该请求，然后忘记用户和该请求。 然而许多数据库交互是多阶段的。 客户查看产品，将一个或多个添加到购物车，查看更多产品，将更多添加到购物车，最后结帐。 无状态协议不能用于此类应用程序。
+
+> Over time, capabilities emerged to overcome this problem. Web application developers learned to add SQL statements to their Web applications, and soon thousands of databases were being processed over the Web. An interesting phenomenon was the emergence of open source DBMS products. Open source products generally make the source code widely available so that a group of programmers not bound to a single company can contribute to the program. Further, some forms of these products are usually offered as free downloads, although other forms or product support must be purchased from the company that owns the product.
+
+随着时间的流逝，人们提出了克服此问题的解决方案。Web应用程序开发人员学会了向其Web应用程序中添加SQL语句，并且很快在Web上处理了成千上万个数据库。 一个有趣的现象是开源DBMS产品的出现。开源产品通常会使源代码广泛可用，以便不受单个公司约束的程序员们可以对该程序做出贡献。 此外，这些产品的某些形式通常以免费下载的形式提供，尽管必须从拥有产品的公司购买其他的形式或产品支持。
+
+>A good example of this is the MySQL DBMS.
+>
+>MySQL was originally released in 1995 by the Swedish company MySQL AB. In February 2008, Sun Microsystems bought MySQL AB, and in January 2010, Oracle Corporation completed its acquisition of Sun　Microsystems. This means that Oracle Corporation now owns two major DBMS products:　Oracle Database and Oracle MySQL. At present, MySQL continues to be available as an open source product, and the free MySQL Community Server edition can be downloaded from the　MySQL Web site. MySQL has proven to be especially popular with Web site developers who　need to run Web page queries against an SQL DBMS on a Web server running the Linux operating system.
+
+一个很好的例子是MySQL DBMS。
+   （MySQL的起源）MySQL最初是由瑞典公司MySQL AB于1995年发布的。 在2008年2月，Sun Microsystems收购了MySQL AB，在2010年1月，Oracle Corporation完成了对Sun Microsystems的收购。 这意味着Oracle Corporation现在拥有两个主要的DBMS产品：Oracle数据库和Oracle MySQL。 目前，MySQL仍然可以作为开放源代码产品使用，免费的MySQL Community Server版本可以从MySQL官方网站上下载。 事实证明，MySQL在那些需要在运行Linux操作系统的Web服务器的情况下，在用SQL DBMS运行网页查询的网站开发人员中特别受欢迎。
+
+>One interesting outcome of the emergence of open source DBMS products is that companies　that typically sell proprietary (closed source) DBMS products now offer free versions of their　products. Although neither of these products is as complete or as　powerful ( for example, in terms of maximum data storage allowed) as some other versions the
+>companies sell, they are useful for projects that require a small database. They are also ideal for　students learning to use databases and SQL.
+
+开源DBMS产品出现的一个有趣结果是，通常销售专有（闭源）DBMS产品的公司现在提供其产品的免费版本。 尽管这些产品都不像公司出售的其他版本那样完善或强大（例如，允许的最大数据存储量），但它们对于需要小型数据库的项目很有用。 它们也是学习使用数据库和SQL的学生的理想选择。
+
+> In the late 1990s, XML （Extensible Markup Language）was defined to overcome the problems that occur when HTML　is used to exchange business documents. The design of the XML family of standards not　only solved the problems of HTML, it also meant that XML documents were superior for　exchanging views of database data.
+
+在1990年代后期，定义了XML（可扩展标记语言）以克服使用HTML交换业务文档时出现的问题。  XML系列标准的设计不仅解决了HTML的问题，也意味着XML文档在交换数据库数据视图方面是先进的。
+
+> XML database processing was given a further boost with the definition of XML Web service standards such as SOAP (not an acronym), WSDL (Web Services Description Language),　UDDI (Universal Description, Discovery, and Integration), and others. Using Web services, it is possible to expose nuggets of database processing to other programs that use the Internet　infrastructure. This means, for example, that in a supply chain management application, a　vendor can expose portions of its inventory application to its suppliers. Further, it can do so in a standardized way.
+
+通过定义XML Web服务标准（例如SOAP（非首字母缩写），WSDL（Web服务描述语言），UDDI（通用描述，发现和集成）等），进一步促进了XML数据库处理。 使用Web服务，可以将数据库处理的核心开放给其他使用Internet基础结构的程序。 这意味着，例如，在供应链管理应用程序中，供应商可以将其库存应用程序的一部分向其供应商公开。 此外，它可以以标准化的方式运作。
+
+> The last row in Figure 1-25 brings up to the present. Following the development of XML, the　NoSQL (“Not only SQL”) movement and Big Data have emerged in recent years, particularly　following a 2009 conference organized around work on open source distributed databases. The NoSQL movement should really be called a NoRelational movement　because the work is really on databases that do not follow the relational model introduced in this chapter and discussed in Chapter 3. The Big Data movement is based on the need for information systems to handle increasingly large sets of data and, together with NoSQL (non-relational)　databases, is the basis for such applications as Facebook and Twitter.
+
+图1-25的最后一行显示，到现在随着XML的发展，近年来出现了NoSQL（“不仅SQL”）运动和大数据，特别是在2009年围绕开源分布式数据库工作组织的一次会议之后。  NoSQL运动实际上应称为NoRelational运动，因为该工作实际上是在“不遵循本章介绍和第3章讨论的、关系模型数据库”上进行的。大数据运动，是基于信息系统来处理越来越大数据集的需求，NoSQL（非关系）数据库，是诸如Facebook和Twitter之类的应用程序的基础。
+
+## 1.9. 本章小结
+
+略
+
+# 2. 第二章:SQL语言介绍
+
+## 2.1. 本章目标
+
+略
+
+## 2.2. 数据仓库介绍
+
+> Components of a Data Warehouse
+>
+> BI systems typically store their associated data in data warehouses, *which are database systems that have data, programs, and personnel that specialize in the preparation of data for BI processing*. They can be as simple as a sole employee processing a data extract on a part-time basis or as complex as a department with dozens of employees maintaining libraries of data and programs.
+
+BI系统通常将其关联的数据存储在数据仓库中，*这个数据仓库是具有专门为BI处理准备数据的数据，程序和人员的数据库系统。* 它们可以像仅由一名员工兼职处理数据提取那样简单，也可以像一个拥有数十名员工维护数据和程序库的部门一样复杂。
+
+>Figure 2-1 shows the components of a typical company-wide data warehouse.
+>
+>Data are read from operational databases (Explanation: the databases that store the company’s current day-to-day transaction data), from other internal data, or from external data source by the Extract, Transform, and Load (ETL) system. The ETL system then cleans and prepares the data for BI processing. This can be a complex process, but the data is then stored in the data warehouse DBMS for use by BI users who access the data by various BI tools. As described in Chapter 1, the DBMS used for the data warehouse stores both databases and the metadata for those databases.
+
+图2-1部分显示了一个典型的，公司范围的数据仓库。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets\image-20200702225406135.png" alt="image-20200702225406135" style="zoom:80%;" />
+
+数据是从运营数据库（存储公司当前日常交易数据的数据库），其他内部数据或提取，转换和加载（ETL）系统的外部数据源中读取的。 然后，ETL系统将清理并准备数据以进行BI处理。 这可能是一个复杂的过程，但随后将数据存储在数据仓库DBMS中，以供通过各种BI工具访问数据的BI用户使用。 如第1章所述，用于数据仓库的DBMS既存储数据库又存储这些数据库的元数据。
+
+> By the way : A small, specialized data warehouse is referred to as a data mart. Note that the DBMS used for the data warehouse *may or may not* be the same DBMS product used for the operational databases. For example, operational databases may be stored in an Oracle Database 11g Release 2 DBMS, while the data warehouse uses a Microsoft SQL Server 2012 DBMS.
+
+小型的专用数据仓库称为数据集市。 注意，用于数据仓库的DBMS，并不要求与用来操作数据库的DBMS保持一致。 例如，可将操作数据库存储在Oracle Database 11g第2版DBMS中，而数据仓库使用Microsoft SQL Server 2012 DBMS。
+
+## 2.3. Cape Codd Outdoor Sports数据集
+
+### 2.3.1. 简介
+
+> Cape Codd Outdoor Sports (although based on a real outdoor retail equipment vendor, Cape Codd Outdoor Sports is a fictitious company).
+>
+> All retail sales are recorded in a sales database managed by the Oracle Database 11g Release 2 DBMS, as shown in Figure 2-2.
+>
+
+Cape Codd Outdoor Sports（尽管基于一家真正的户外零售设备供应商，但在本书中仍是一家虚构的公司）。
+
+所有零售额都记录在由Oracle Database 11g第2版DBMS管理的销售数据库中，如图2-2所示。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets\image-20200702230202294.png" alt="image-20200702230202294.png" style="zoom: 50%;" />
+
+### 2.3.2. 提取零售数据
+
+> a.	The extracted Retail Sales Data
+>
+> Marketing analysts ask the IT departmentto extract retail sales data from the operational database. They want just the tables and columns shown in Figure 2-3.
+>
+> The data types for the columns in the tables is shown in Figure 2-4.
+>
+
+市场分析师要求IT部门从运营数据库中提取零售数据。 他们只需要图2-3中所示的表和列。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets\image-20200702235318761.png" alt="image-20200702235318761" style="zoom: 50%;" />
+
+表中各列的数据类型如图2-4所示。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets\image-20200702235555422.png" alt="image-20200702235555422" style="zoom:67%;" />
+
+> RETAIL\_ORDER, ORDER\_ITEM, and SKU\_DATA.
+>
+> The RETAIL\_ORDER table has data about each retail sales order, the ORDER\_ITEM table has data about each item in an order, and the SKU\_DATA table has data about each stock-keeping unit (SKU). SKU is a unique identifier for each particular item that Cape Codd sells. The data stored in the tables is shown in Figure 2-5.
+>
+
+#### 2.3.2.1. RETAIL\_ORDER，ORDER\_ITEM和SKU\_DATA：
+
+RETAIL\_ORDER表包含有关每个零售订单的数据，ORDER\_ITEM表包含有关订单中每个项目的数据，而SKU\_DATA表具有有关每个最小库存单位（SKU）的数据。  SKU是Cape Codd出售的每个特定商品的唯一标识符。 表中存储的数据如图2-5所示。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets\image-20200702235814816.png" alt="image-20200702235814816" style="zoom:67%;" />
+
+##### 2.3.2.1.1. 零售订货表
+
+>  a. RETAIL\_ORDER TABLE
+>
+> As shown in Figures 2-3, 2-4, and 2-5, the RETAIL\_ORDER table has columns for OrderNumber, StoreNumber, StoreZIP (the ZIP code of the store selling the order), OrderMonth, OrderYear, and OrderTotal. We can write this information in the following format, with OrderNumber underlined to show that it is the primary keyof the RETAIL\_ORDER table:
+>
+> RETAIL\_ORDER (\underline{OrderNumber}, StoreNumber, StoreZIP, OrderMonth, OrderYear, OrderTotal)
+
+如图2-3、2-4和2-5所示，RETAIL\_ORDER表具有OrderNumber，StoreNumber，StoreZIP（出售订单的商店的邮政编码），OrderMonth，OrderYear和OrderTotal的列。 我们可以按照以下格式编写此信息，并在下划线的OrderNumber上注明该信息是RETAIL\_ORDER表的主键：
+
+$$RETAIL\_ORDER (\underline{OrderNumber}, StoreNumber, StoreZIP, OrderMonth, OrderYear, \textit{OrderTotal})$$
+
+>Sample data for RETAIL\_ORDER are shown in Figure 2-5. This extract only includes data for retail store sales, and operational data for other types of sales (and returns and other sales-related transactions) are not copied during the extraction process.
+>
+>Further, the data extraction process selects only a few columns of the operational data—the Point of Sale (POS) and other sales applications process far more data than that shown here.
+>
+>The operational database also stores the data in a different format.
+>
+>For example, the order data in the Oracle Database 11g Release 2 operational database contain a column named OrderDate that stores the data in the date format MM/DD/YYYY (e.g.,  10/22/2010 for October 22, 2010). The extraction program used to populate the retail sales extracted data database converts OrderDate into two separate values of OrderMonth and OrderYear. This is done because this is the data format that marketing wants.
+>
+>Such filtering and data transformation are typical of a data extraction process.
+
+RETAIL\_ORDER的样本数据如图2-5所示。 此摘录仅包含零售商店销售的数据，而在提取过程中不会复制其他类型的销售（以及退货和其他与销售有关的交易）的运营数据。
+
+ 此外，数据提取过程仅选择几列运营数据-销售点（POS）和其他销售应用程序处理的数据远远超过此处显示的数据。
+
+ 运营数据库还以其他格式存储数据。
+
+ 例如，Oracle数据库11g第2版操作数据库中的订单数据包含名为OrderDate的列，该列以日期格式MM / DD / YYYY（例如，2010年10月22日为10/22/2010）存储数据。 用于填充零售提取数据数据库的提取程序将OrderDate转换为OrderMonth和OrderYear的两个单独的值。 这样做是因为这是市场营销需要的数据格式。
+
+ 这种过滤和数据转换是数据提取过程的典型特征。
+
+##### 2.3.2.1.2. 订购货品表
+
+> b. Order Item TABLE
+>
+> As shown in Figures 2-3, 2-4, and 2-5, the ORDER\_ITEM table has columns for OrderNumber, SKU, Quantity, Price, and ExtendedPrice (which equals Quantity × Price).
+>
+> We can write this information in the following format, with both OrderNumber and SKU underlined to show that together they are the composite primary key of the ORDER\_ITEM table, and with them also italicized to show that they are also foreign keys:
+>
+> $$ORDER\_ITEM (\underline{\textbf{OrderNumber, SKU}}, Quantity, Price, ExtendedPrice)$$
+>
+> Thus, the ORDER\_ITEM table stores an extract of the items purchased in each order. There is one row in the table for each item in an order, and this item is identified by its SKU.
+
+如图2-3、2-4和2-5所示，ORDER\_ITEM 表具有 OrderNumber, SKU, Quantity, Price, and ExtendedPrice（等于数量×价格）的列。
+
+我们可以用以下格式写此信息，在OrderNumber  和 SKU 上加下划线，以表明它们一起是ORDER\_ITEM表的复合主键，并且也以加粗正体显示。 它们也是外键：
+
+$$ORDER\_ITEM (\underline{\textbf{OrderNumber, SKU}}, Quantity, Price, ExtendedPrice)$$
+
+因此，ORDER\_ITEM 表存储了每个订单中购买商品的摘要。 表格中订单中的每个项目都有一行，该项目由其SKU 标识。
+
+>       The OrderNumber Column in ORDER\_ITEM relates each row in ORDER\_ITEM to the corresponding OrderNumber in the RETAIL\_ORDER table. SKU identifies the actual item purchased by its stock-keeping unit number.
+>
+>        Further, the SKU column in ORDER\_ITEM relates each row in ORDER\_ITEM to its corresponding SKU in the SKU\_DATA table (discussed in the next section). Quantity is the number of items of that SKU purchased in that order. Price is the price of each item, and ExtendedPrice is equal to Quantity × Price.
+
+ORDER\_ITEM中的OrderNumber列将ORDER\_ITEM中的每一行与RETAIL\_ORDER表中的相应OrderNumber相关。  SKU通过其库存单位编号标识实际购买的物品。
+
+此外，ORDER\_ITEM中的SKU列将ORDER\_ITEM中的每一行与SKU\_DATA表中相应的SKU相关联（在下一节中讨论）。 数量是该SKU在该订单中购买的商品数量。 价格是每个项目的价格，扩展价格等于数量×价格。
+
+##### 2.3.2.1.3. SKU 数据表
+
+>  c.	SKU\_DATA Table
+>
+> As shown in Figures 2-3, 2-4, and 2-5, the SKU\_DATA table has columns SKU, SKU\_Description, Department, and Buyer. We can write this information in the following format, with SKU underlined to show that it is the primary key of the SKU\_DATA table:
+>
+> $$SKU\_DATA (\underline{SKU}, SKU\_Description, Department, Buyer)$$
+>
+> *SKU is an integer value that identifies a particular product sold by Cape Codd.
+
+如图2-3、2-4和2-5所示，SKU\_DATA表具有 SKU, SKU\_Description, Department列。 我们可以使用以下格式编写此信息，并在下划线处加下划线，以表明它是SKU\_DATA表的主键：
+
+$$SKU\_DATA(\underline{SKU}, SKU\_Description, Department)$$
+
+SKU是整数值，用于标识Cape Codd销售的特定产品 。
+
+### 2.3.3. 完整的Cape Codd Data提取模式
+
+>The Complete Cape Codd Data extract Schema
+>
+>The schema for the Cape Codd sales data extract therefore is:
+>
+>$$RETAIL\_ORDER (\underline{OrderNumber}, StoreNumber, StoreZIP, OrderMonth, OrderYear, OrderTotal)$$
+>
+>$$ORDER\_ITEM (\underline{\textbf{OrderNumber, SKU}}, Quantity, Price, ExtendedPrice)$$
+>
+>$$SKU\_DATA (\underline{SKU}, SKU\_Description, Department, Buyer)$$
+
+完整的Cape Codd Data提取模式如下（下划线表示主键，加粗正体表示外键）：
+
+- $$RETAIL\_ORDER (\underline{OrderNumber}, StoreNumber, StoreZIP, OrderMonth, OrderYear, OrderTotal)$$
+- $$ORDER\_ITEM (\underline{\textbf{OrderNumber, SKU}}, Quantity, Price, ExtendedPrice)$$
+- $$SKU\_DATA (\underline{SKU}, SKU\_Description, Department, Buyer)$$
+
+## 2.4. SQL背景
+
+### 2.4.1. SQL相关背景
+
+> SQL was developed by the IBM Corporation in the late 1970s. It was endorsed as a national standard by the American National Standards Institute (ANSI) in 1986 and by the International Organization for Standardization (ISO) in 1987.
+>
+> Although there is an SQL standard, that does not mean the that SQL is standardized across DBMS products! Indeed, each DBMS implements SQL in its own peculiar  way, and you will have to learn the idiosyncrasies  of the SQL dialect  your DBMS uses.
+>
+> Note: SQL is not a complete programming language, like Java or C#. Instead, it is called a data sublanguage because it has only those statements needed for creating and processing database data and metadata.
+
+SQL是由IBM Corporation在1970年代后期开发的。1986年，美国国家标准协会（ANSI）和1987年国际标准化组织（ISO）将其认可为国家标准。
+
+尽管有SQL标准，但这并不意味着SQL已跨DBMS产品标准化。实际上，每个DBMS都以自己独特的方式实现SQL，并且您将必须学习各自DBMS使用的SQL的特性。
+
+注：SQL不是像Java或C＃这样的完整编程语言。 相反，它称为数据子语言，因为它仅具有创建和处理数据库数据和元数据所需的那些语句。
+
+>You can use SQL statements in many different ways.
+>
+>ⅰ)You can submit them directly to the DBMS for processing.
+>
+>ⅱ) You can embed SQL statements into client/server application programs.
+>
+>ⅲ) You can embed them into Web pages.
+>
+>ⅳ)You can use them in reporting and data extraction programs.
+>
+>ⅴ)You also can execute SQL statements directly from Visual Studio.NET and other development tools.
+
+您可以通过多种不同方式使用SQL语句。
+
+   ⅰ）您可以将它们直接提交给DBMS进行处理。
+
+   ⅱ）您可以将SQL语句嵌入到客户端/服务器应用程序中。
+
+   ⅲ）您可以将它们嵌入网页。
+
+   ⅳ）您可以在报告和数据提取程序中使用它们。
+
+   ⅴ）您还可以直接从Visual Studio.NET和其他开发工具执行SQL语句。
+
+### 2.4.2. SQL语句分类
+
+>SQL statements are commonly divided into categories, five of which are of interest to us here:
+>
+>- Data definition language (DDL) statements, which are used for creating tables, relationships, and other structures
+>- Data manipulation language (DML) statements, which are used for querying, inserting, modifying, and deleting data
+>- SQL/Persistent stored modules (SQL/PSM) statements, which extend SQL by adding procedural programming capabilities, such as variables and flow-of-control statements, that provide some programmability within the SQL framework.
+>- Transaction control language (TCL) statements, which are used to mark transaction  boundaries and control transaction behavior.
+>- Data control language (DCL) statements, which are used to grant database permissions (or to revoke those permissions) to users and groups, so that the users or groups can perform various operations on the data in the database
+
+SQL语句通常分为几类，这里我们感兴趣的是五类：
+
+- 数据定义语言（DDL）语句，用于创建表，关系和其他结构
+- 数据操作语言（DML）语句，它们是用于查询，插入，修改和删除数据
+- SQL /永久存储模块（SQL / PSM）语句，通过添加过程编程功能（例如变量和控制流语句）扩展SQL，从而在SQL框架内部提供一些可编程性。  
+- 事务控制语言（TCL）语句，用于标记事务边界和控制事务行为。
+- 数据控制语言（DCL）语句，用于向用户和组授予数据库权限（或撤消那些权限），以便用户或组可以对数据库中的数据执行各种操作
+
+> Today, nearly all DBMS products process SQL, with the only exceptions being some of the emerging NoSQL and Big Data movement products. Enterprise-class DBMSs such as Microsoft SQL Server 2012, Oracle Database 11gRelease 2, Oracle MySQL 5.6, and IBM DB2 require that you know SQL. With these products, all data manipulation is expressed using SQL. Further, once you know SQL, you will find it easier to write a query statement in SQL rather than fight with the graphical forms, buttons, and other paraphernalia that you must use to create queries with the query-by-example style GUI.
+
+### 2.4.3. 其他
+
+如今，几乎所有的DBMS产品都处理SQL，唯一的例外是一些新兴的NoSQL和大数据移动产品。 企业级DBMS（例如Microsoft SQL Server 2012，Oracle Database 11g发行版2，Oracle MySQL 5.6和IBM DB2）需要用户了解SQL。 使用这些产品，所有数据操作都使用SQL表示。 此外，一旦您了解SQL，就会发现用SQL编写查询语句要容易得多，而不是要使用按示例查询样式的GUI创建查询所必须使用的图形形式，按钮和其他工具。
+
+## 2.5. 本章小结
+
+略
+
+# 3. 第三章：SQL的技巧
+
+> This section introduces the fundamental statement framework for SQL query statements. After we discuss this basic structure, you will learn how to submit SQL statements to MySQL.
+
+本节介绍 SQL 查询语句的基本语句框架。 在我们讨论了这个基本结构之后，你将了解如何向 MySQL 提交 SQL 语句。
+
+## 3.1. SELECT-FROM-WHERE基本框架的用法
+
+> The SQL SELECT/FROM/WHERE Framework
+>The basic form of SQL queries uses the SQL SELECT/FROM/WHERE framework.
+> In this framework:
+>
+> - The SQL SELECT clause specifies which columns are to be listed in the query results.
+>- The SQL FROM clause specifies which tables are to be used in the query.
+> - The SQL WHERE clause specifies which rows are to be listed in the query results.
+>
+> Let’s work through some examples so that this framework makes sense to you. Reading Specified Columns from a Single Table We begin very simply. Suppose we want to obtain just the values of the Department and Buyer columns of the SKU\_DATA table. An SQL statement to read that data is the following:
+>
+> SELECT Department, Buyer
+>
+> FROM SKU\_DATA;
+>
+> Using the data in Figure 2-5, when the DBMS processes this statement the result will be:
+
+SQL 查询的基本形式是使用 SQL select / from / where 框架。
+在这个框架中:
+
+- SQL SELECT 子句指定查询结果中列出哪些列。
+- SQL FROM 子句指定将在查询中使用哪些表。
+- SQL WHERE 子句指定在查询结果中列出哪些行。
+
+让我们通过一些例子来说明这个框架的意义。 我们从简单的例子开始读取单个表中读取指定列。 假设我们只想获得 SKU\_data 表的 Department 和 Buyer 列的值。 读取该数据的 SQL 语句如下:
+
+```sql
+SELECT Department, Buyer  
+FROM SKU_DATA;
+```
+
+使用图2-5中的数据，当 DBMS 处理这个语句时，结果将是:
+
+![image-20200703003239210](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703003239210.png)
+
+> When SQL statements are executed, the statements transform tables. SQL statements start with a table, process that table in some way, and then place the results in another table structure. Even if the result of the processing is just a single number, that number is considered to be a table with one row and one column.
+>
+> As you will learn at the end of this chapter, some SQL statements process multiple tables. Regardless of the number of input tables, though, the result of every SQL statement is a single table.
+>
+> Notice that SQL statements terminate with a semicolon (;) character. The semicolon is required by the SQL standard. Although some DBMS products will allow you to omit the semicolon, some will not, so develop the habit of terminating SQL statements with a semicolon.
+>
+> SQL statements can also include an SQL comment, which is a block of text that is used to document the SQL statement while not executed as part of the SQL statement. SQL comments are enclosed in the symbols /* and */, and any text between these symbols is ignored when the SQL statement is executed.
+>
+> For example, here is the previous SQL query with an SQL comment added to document the query by including a query name:
+>
+> */* \*\*\* SQL-Query-CH02-01 \*\*\* */
+>
+> SELECT Department, Buyer
+>
+> FROM SKU\_DATA;
+>
+> Because the SQL comment is ignored when the SQL statement is executed, the output from this query is identical 1to the query output shown above.
+
+执行 SQL 语句时，语句将对整个数据表进行处理。 SQL 语句以某种方式处理该表，然后将得到的结果放在另一个表结构中。 即使处理的结果只是一个数字，该数字也将被表示为一行一列的表。
+
+正如您将在本章末了解到的，一些 SQL 语句可以处理多个表。 但是不管输入表的数量如何，每个 SQL 语句的输出结果都只有一个表。
+
+请注意，SQL 语句以分号 (;) 结束。 SQL 标准要求使用分号终止语句。 虽然有些 DBMS 产品允许您省略分号，但有些不允许，因此最好养成了用分号终止 SQL 语句的习惯。
+
+SQL 语句还可以包括一个 SQL 注释，这是一个用于记录 SQL 语句的文本块，而不是作为 SQL 语句的一部分执行。 SQL 注释包含在符号 / * 和 * / 中，并且在执行 SQL 语句时，忽略这些符号之间的任何文本。
+
+例如，以下是前面的 SQL 查询，其中添加了一条 SQL 注释语句，通过包含一个查询名称来记录本次查询:
+
+```sql
+/* *** SQL-Query-CH02-01 *** */
+
+SELECT Department, Buyer
+FROM SKU_DATA;
+```
+
+因为 SQL 注释在执行 SQL 语句时被忽略，所以该查询的输出与上面显示的查询输出相同。
+
+### 3.1.1. 从单个表中指定 SQL 查询中的列顺序
+
+> Specifying Column Order in SQL Queries from a Single Table
+>
+> The order of the column names in the SELECT phrase determines the order of the columns in the results table. Thus, if we switch Buyer and Department in the SELECT phrase, they will be switched in the output table as well. Hence, the SQL statement:
+>
+> /* \*\*\* SQL-Query-CH02-02 \*\*\* */
+>
+> SELECT Buyer, Department
+>
+> FROM SKU\_DATA;
+>
+> produces the following result table:
+
+Select 短语中列名的顺序决定了结果表中列的顺序。 因此，如果我们在 SELECT 短语中切换 Buyer 和 Department，它们也将在输出表中切换。 因此，SQL 语句:
+
+```sql
+/* *** SQL-Query-CH02-02 *** */
+
+SELECT Buyer, Department
+FROM SKU_DATA;
+```
+
+产生以下结果表:
+
+![image-20200703003738891](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703003738891.png)
+
+> Notice that some rows are duplicated in these results. The data in the first and second row, for example, are identical. We can eliminate duplicates by using the SQL DISTINCT keyword, as follows:
+>
+> /* \*\*\* SQL-Query-CH02-03 \*\*\* */
+>
+> SELECT DISTINCT Buyer, Department
+>
+> FROM SKU\_DATA;
+>
+> The result of this statement, where all of the duplicate rows have been removed, is:
+
+请注意，这些结果中的一些行是重复的。 例如，第一行和第二行中的数据是相同的。 我们可以通过使用 SQL DISTINCT 关键字来消除重复，如下所示:
+
+```sql
+/* *** SQL-Query-CH02-03 *** */
+
+SELECT DISTINCT Buyer, Department
+FROM SKU_DATA;
+```
+
+这条语句的结果是，所有重复的行都被删除了，如下:
+
+![image-20200703003859557](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703003859557.png)
+
+> By The Way The reason that SQL does not automatically eliminate duplicate rows is that it can be very time consuming to do so. To determine if any rows are duplicates, every row must be compared with every other row. If there are 100,000 rows in a table, that checking will take a long time. Hence, by default duplicates are not removed. However, it is always possible to force their removal using the DISTINCT keyword.
+>
+> Suppose that we want to view all of the columns of the SKU\_DATA table. To do so, we can name each column in the SELECT statement as follows:
+>
+> /* \*\*\* SQL-Query-CH02-04 \*\*\* */
+>
+> SELECT SKU, SKU\_Description, Department, Buyer
+>
+> FROM SKU\_DATA;
+>
+> The result will be a table with all of the rows and all four of the columns in SKU\_DATA:
+
+顺便说一句 SQL 不能自动消除重复行，原因是这样做会非常耗时。 若要确定某行是否有重复现象，必须将每一行与其他行进行比较。 如果一个表中有100,000行，那么检查将花费很长时间。 因此，默认情况下重复项不会被删除。 但是，总是可以使用 DISTINCT 关键字强制删除它们。
+
+假设我们想要查看 SKU\_data 表的所有列。 为此，我们可以将 SELECT 语句中指名所有列:
+
+```sql
+/* *** SQL-Query-CH02-04 *** */
+
+SELECT SKU, SKU_Description, Department, Buyer
+FROM SKU_DATA;
+```
+
+结果将是一个包含 SKU\_data 中所有行和所有列的表:
+
+![image-20200703004059440](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703004059440.png)
+
+> However, SQL provides a shorthand notation for querying all of the columns of a table. The shorthand is to the SQL asterisk (*) wildcard character to indicate that we want all the columns to be displayed:
+>
+> */* \*\*\* SQL-Query-CH02-05 \*\*\* */
+>
+> SELECT * FROM SKU\_DATA;
+>
+> The result will again be a table with all rows and all four of the columns in SKU\_DATA.
+
+但是，SQL 为查询表的所有列提供了一种简化符号。 简写为 SQL 星号(*)通配符，用来表示我们希望显示所有列:
+
+```sql
+/* *** SQL-Query-CH02-05 *** */
+
+SELECT * FROM SKU_DATA;
+```
+
+结果将生成一个包含 SKU\_data 中所有行和所有列的表。
+
+### 3.1.2. 从单个表中读取指定的行
+
+> Reading Specified Rows from a Single Table
+>
+> Suppose we want all of the columns of the SKU\_DATA table, but we want only the rows for the Water Sports department. We can obtain that result by using the SQL WHERE clause as follows:
+>
+> /* \*\*\* SQL-Query-CH02-06 \*\*\* */
+>
+> SELECT * FROM SKU\_DATA
+>
+> WHERE Department='Water Sports';
+>
+> The result of this statement will be:
+
+假设我们想要 SKU\_data 表的所有列，但是我们只想要部门为 Water Sports 的行。 我们可以通过使用 SQL WHERE 子句获得如下结果:
+
+```sql
+/* *** SQL-Query-CH02-06 *** */
+
+SELECT * FROM SKU_DATA
+WHERE Department='Water Sports';
+```
+
+这项语句的结果将是:
+
+![image-20200703004510006](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703004510006.png)
+
+> In an SQL WHERE clause, if the column contains text or date data, the comparison values must be enclosed in single quotation marks ( '{text or date data}' ). If the column contains numeric data, however, the comparison values need not be in quotes. Thus, to find all of the SKU rows with a value greater than 200,000, we would use the SQL statement (note that no comma is included in the numeric value code):
+>
+> /* \*\*\* SQL-Query-CH02-07 \*\*\* */
+>
+> SELECT * FROM SKU\_DATA
+>
+> WHERE SKU > 200000;
+>
+> The result is:
+
+在 SQL WHERE 子句中，如果列包含文本或日期数据，则用来比较的值必须用单引号括起来(‘{ text 或 date data }’)。 但是，如果列包含数值数据，则比较值不需要用引号包裹。 因此，如果要查找所有值大于200,000的所有 SKU 行，我们将使用如下的 SQL 语句(注意数值型没有用符号包裹) :
+
+```sql
+/* *** SQL-Query-CH02-07 *** */
+
+SELECT * FROM SKU_DATA
+WHERE SKU > 200000;
+```
+
+结果如下：
+
+![image-20200703142026657](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703142026657.png)
+
+> By The Way SQL is very fussy about single quotes. It wants the plain, non-directional quotes found in basic text editors. The fancy directional quotes produced by many word processors will produce errors. For example, the data value 'Water Sports' is correctly stated, but \`Water Sports\` is not. Do you see the difference?
+
+顺便说一句，SQL 对单引号非常挑剔。要注意他要求扁平的、不带任何方向的引号。许多文字处理程序产生花哨的引号会产生错误。例如，数据值 ‘Water Sports‘ 是正确的，但 \`Water Sports\` 是不正确的。你看出区别了吗？
+
+### 3.1.3. 从单个表中读取指定的列和行
+
+> Reading Specified Columns and Rows from a Single Table
+>
+> So far, we have selected certain columns and all rows and we have selected all columns and certain rows. We can combine these operations to select certain columns and certain rows by naming the columns we want and then using the SQL WHERE clause. For example, to obtain the SKU\_Description and Department of all products in the Climbing department, we use the SQL query:
+>
+> /* \*\*\* SQL-Query-CH02-08 \*\*\* */
+>
+> SELECT SKU\_Description, Department
+>
+> FROM SKU\_DATA
+>
+> WHERE Department='Climbing';
+>
+> The result is:
+
+到目前为止，我们已经选择了某些列和所有行、所有列和某些行。我们可以通过指名所需的列，然后使用 SQL WHERE 子句，组合这些操作来选择特定的列和特定的行。例如，为了获取 Climbing 部门所有 SKU\_description 和 Department，我们使用 SQL 查询:
+
+```sql
+/* *** SQL-Query-CH02-08 *** */
+
+SELECT SKU_Description, Department
+FROM SKU_DATA
+WHERE Department='Climbing';
+```
+
+结果是：
+
+![image-20200703142804142](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703142804142.png)
+
+> SQL does not require that the column used in the WHERE clause also appear in the SELECT clause column list. Thus, we can specify:
+>
+> /* \*\*\* SQL-Query-CH02-09 \*\*\* */
+>
+> SELECT SKU\_Description, Buyer
+>
+> FROM SKU\_DATA
+>
+> WHERE Department='Climbing';
+>
+> where the qualifying column, Department, does not appear in the SELECT clause column list.
+>
+> The result is:
+
+SQL 并不要求 WHERE 子句中使用的列一定出现在 SELECT 子句列表中。因此，我们可以指定:
+
+```sql
+/* *** SQL-Query-CH02-09 *** */
+
+SELECT SKU\_Description, Buyer
+FROM SKU\_DATA
+WHERE Department='Climbing';
+```
+
+其中，限定列 Department 未出现在 SELECT 子句列列表中。结果是:
+
+![image-20200703143100679](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703143100679.png)
+
+> By The Way Standard practice is to write SQL statements with the SELECT, FROM, and WHERE clauses on separate lines. This practice is just a coding convention, however, and SQL parsers do not require it. You could code SQL-Query-CH02-09 all on one line as: SELECT SKU\_Description, Buyer FROM SKU\_DATA WHERE Department= 'Climbing'; All DBMS products would process the statement written in this fashion. However, the standard multiline coding convention makes SQL easier to read, and we encourage you to write your SQL according to it.
+
+标准情况下是用 SELECT、 FROM 和 WHERE 子句分行编写 SQL 语句。但是，这种实践只是一种编码约定，SQL 解析器并不需要分行。您可以将 SQL-Query-CH02-09全部编码为:
+
+```sql
+/* *** SQL-Query-CH02-09 plus *** */
+
+SELECT SKU_description，Buyer FROM SKU\_data  WHERE Department = ‘ Climbing’ ;
+```
+
+所有 DBMS 产品都将处理以这种方式编写的语句。但是，标准的多行编码约定使 SQL 更易于阅读，我们鼓励根据它编写 SQL。
+
+## 3.2. 向MYSQL提交SQL语句 
+
+> Submitting SQL Statements to MySQL
+>
+> Before continuing the explanation of SQL, it will be useful for you to learn how to submit SQL statements to specific DBMS products. That way, you can work along with the text by keying and running SQL statements as you read the discussion. The particular means by which you submit SQL statements depends on the DBMS. Here we will describe the process for MySQL 5.6.
+>
+> Before you can use SQL statements with Oracle MySQL 5.6, you need access to a computer that has MySQL 5.6 installed and that has a database with the tables and data shown in Figure 2-4, 2-5, and 2-6.
+>
+> Your instructor may have installed MySQL 5.6 in your computer lab and entered the data for you. If so, follow his or her instructions for accessing that database. Otherwise, you will need to obtain a copy of MySQL Community Server 5.6 and install it on your computer.
+>
+> After you have MySQL 5.6 installed, you will need to read the introductory discussion for MySQL 5.6 and create the Cape Codd database. ( MySQL scripts for creating and populating the Cape Codd database tables are available on our Web site at www.pearsonhighered.com/kroenke.) MySQL 5.6 uses the MySQL Workbench as the GUI tool for managing the MySQL 5.6 DBMS and the databases controlled by the DBMS. This tool must be installed separately from the MySQL 5.6 DBMS.
+>
+> SQL statements are created and run in the MySQL Workbench, and Figure 2-20 shows the execution of SQL-Query-CH02-01
+>
+> (note that the SQL comment is not included in the SQL statement as run—also note that the SQL comment could have been included in the SQL code if we had chosen to include it):
+>
+> /* \*\*\* SQL-Query-CH02-01 \*\*\* */
+>
+> SELECT Department, Buyer
+>
+> FROM SKU\_DATA;
+
+在继续解释 SQL 之前，了解如何向特定 DBMS 产品提交 SQL 语句将非常有用。通过这种方式，您可以在阅读讨论时键入并运行 SQL 语句来处理文本。提交 SQL 语句的具体方式取决于 DBMS。在这里我们将描述 MySQL 5.6的过程。
+在将 SQL 语句与 Oracle MySQL 5.6一起使用之前，您需要访问一台安装了 MySQL 5.6的计算机，该计算机的数据库包含图2-4、2-5和2-6所示的表和数据。
+
+您的指导老师可能已经在您的计算机实验室安装了 MySQL 5.6，并输入了数据。如果是这样，请按照他或她的指示访问该数据库。否则，您将需要获得一个 MySQL 社区服务器5.6的副本并将其安装到您的计算机上。
+
+安装了 MySQL 5.6之后，您需要阅读 MySQL 5.6的介绍性讨论并创建 Cape Codd 数据库。(用于创建和填充 Cape Codd 数据库表的 MySQL 脚本可以在我们的网站上找到，www.pearsonhighered.com/kroenke。) MySQL 5.6使用 MySQL Workbench 作为管理 MySQL 5.6 DBMS 和 DBMS 控制的数据库的 GUI 工具。此工具必须与 MySQL 5.6 DBMS 分开安装。
+
+SQL 语句是在 MySQL Workbench 中创建和运行的，图2-20显示了 SQL query-ch02-01的执行情况
+
+(请注意，SQL 注释在运行时不包含在 SQL 语句中 ー还注意 SQL 注释可以包含在 SQL 代码中，如果我们选择包含它的话) :
+
+```sql
+/* *** SQL-Query-CH02-01 *** */
+
+SELECT Department, Buyer
+FROM SKU_DATA;
+```
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703150030867.png" alt="image-20200703150030867" style="zoom:67%;" />
+
+### 3.2.1. 在 MySQL Workbench 中运行 SQL 查询
+
+>  Running an SQL Query in the MySQL Workbench
+>
+> 1. To make the Cape Codd database the default schema (active database), right-click the cape\_codd schema (database) object to display the shortcut menu and then click the Set as Default Schema command.
+>
+> 2. In the Query 1 tabbed window in the SQL Editor tabbed window, type the SQL SELECT command (without the SQL comment line shown above): SELECT Department, Buyer FROM SKU\_DATA; as shown in Figure 2-20.
+>
+> 3. Click the Execute Current SQL Statement in Connected Server button to run the query. The results are displayed in a tabbed Query Result window, shown as the Query 1 Result window in Figure 2-20 (you can have more than one Query Result window open, and thus they need to be numbered).
+>
+>  Note that in Figure 2-20 the Cape Codd database object in the Object Browser in the left-side window of the MySQL Workbench has been expanded to show the tables in the Cape Codd database. Many of the functions of the MySQL Workbench are associated with the objects in the Object Browser and are often accessed by right-clicking the object to display a shortcut menu.
+>
+> By The Way,We are using MySQL Community Server 5.6 running in Microsoft Server 2012. When we give specific sequences of steps to follow in the text or figures in this book, we use the command terminology used for MySQL 5.6 and associated utility programs in Microsoft Server 2012. If you are running a workstation operating system such as Microsoft XP, Microsoft Vista, or Linux, the terminology may vary somewhat.
+>
+> MySQL 5.6 is an enterprise-class DBMS product and, as is typical of such products, does not store queries within the DBMS (it does store SQL Views, which can be considered a type of query, and we will discuss SQL Views later in this chapter). However, you can save MySQL queries as SQL script files. An SQL script file is a separately stored plain text file, and it usually uses a file name extension of \*.sql. An SQL script file can be opened and run as an SQL command. Figure 2-21 shows the SQL query being saved as an SQL script file.
+>
+> Note that in Figure 2-21 the query will be saved in a folder named My Documents\MySQL Workbench\Schemas\DBP-e13-Cape-Codd-Database. By default, MySQL Workbench stores files in the user’s My Documents folder. We recommend that you create a subfolder in your My Documents folder named MySQL Workbench and then create subfolders labeled EER Models and Schemas. Within each of these subfolders, create a sub-subfolder for each MySQL 5.6 database. We have created a folder named DBP-e13-Cape-Codd-Database to store the script files associated with the Cape Codd database.
+
+1. 要使 Cape Codd 数据库成为默认模式(活动数据库) ，右键单击 Cape\_Codd Schema (database)对象以显示快捷菜单，然后单击 Set as Default Schema 命令。
+2. 在 SQL Editor 选项卡窗口的 Query 1选项卡窗口中，键入 SQL SELECT 命令(没有上面显示的 SQL 注释行) : SELECT Department，Buyer FROM SKU\_data; 如图2-20所示。
+3. 单击“在连接服务器中执行当前 SQL 语句”按钮以运行查询。结果显示在选项卡式 Query Result 窗口中，如图2-20中的 Query 1 Result 窗口所示(您可以打开多个 Query Result 窗口，因此需要对它们进行编号)。
+   注意，在图2-20中，MySQL Workbench 左侧窗口的 Object Browser 中的 Cape Codd 数据库对象已经扩展，以显示 Cape Codd 数据库中的表。MySQL 工作台的许多功能与对象浏览器中的对象相关联，通常通过右键单击对象来显示快捷菜单来访问。
+
+顺便说一下，我们正在使用运行在微软服务器2012上的 MySQL 社区服务器5.6。当我们在本书的文本或图表中给出具体的步骤顺序时，我们使用了在微软服务器2012中 MySQL 5.6和相关实用程序中使用的命令术语。如果您运行的是工作站操作系统，如 microsoftxp、 microsoftvista 或 Linux，具体术语可能会有所不同。
+
+MySQL 5.6是一个企业级 DBMS 产品，并且和这类产品的典型特点一样，它不在 DBMS 中存储查询(它存储 SQL Views，它可以被认为是一种查询类型，我们将在本章后面讨论 SQL Views)。但是，可以将 MySQL 查询保存为 SQL 脚本文件。SQL 脚本文件是一个单独存储的纯文本文件，它通常使用文件扩展名 *.Sql。SQL 脚本文件可以作为 SQL 命令打开和运行。图2-21显示了 SQL 查询被保存为一个 SQL 脚本文件。
+
+注意，在图2-21中，查询将保存在名为 My Documents MySQL Workbench Schemas DBP-e13-Cape-Codd-Database 的文件夹中。默认情况下，MySQL Workbench 将文件存储在用户的“我的文档”文件夹中。我们建议您在 My Documents 文件夹中创建一个名为 MySQL Workbench 的子文件夹，然后创建标记为 EER Models 和 Schemas 的子文件夹。在每个子文件夹中，为每个 MySQL 5.6数据库创建一个子文件夹。我们创建了一个名为 DBP-e13-Cape-Codd-Database 的文件夹，用于存储与 Cape Codd 数据库关联的脚本文件。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703151943462.png" alt="image-20200703151943462" style="zoom: 80%;" />
+
+### 3.2.2. 保存 MySQL 5.6查询
+
+> Saving a MySQL 5.6 Query
+>
+> 1. Click the Save SQL Script to File button, as shown in Figure 2-21. The Save Query to File dialog appears, as shown in Figure 2-21.
+> 2. Browse to the My Documents\MySQL Workbench\Schemas\DBP-e13-Cape-CoddDatabase folder.
+> 3. In the File name text box, type the SQL query file name SQL-Query-CH02-01. 4.
+> 4. Click the Save button.
+>
+> How to rerun the saved query? To rerun the saved query, you would click the File | Open SQL Script
+> menu command to open the Open SQL Script dialog box, then select and open the SQL query \*.sql files, and, finally, click the Execute Current SQL Statement in Connected Server button.
+>
+> (At this point, you should work through each of the other nine queries in the preceding discussion of the SQL SELECT/FROM/WHERE framework. Save each query as SQLQuery-CH02-##, where ## is a sequential number from 02 to 09 that corresponds to the SQL query label shown in the SQL comment line of each query.)
+
+1. 单击 Save SQL Script to File 按钮，如图2-21所示。将查询保存到文件对话框出现，如图2-21所示。
+2. 浏览 My Documents\MySQL Workbench\Schemas\DBP-e13-Cape-CoddDatabase  文件夹。
+3. 在“文件名”文本框中，键入 SQL 查询文件名 SQL-query-ch02-01.4。
+4. 点击保存按钮。
+
+如何重新运行保存的查询？要重新运行保存的查询，可以单击 File | Open SQL Script 菜单命令打开 Open SQL Script 对话框，然后选择并打开 SQL 查询。最后，单击“在连接服务器中执行当前 SQL 语句”按钮。
+
+(此时，您应该处理前面关于 SQL SELECT/FROM/WHERE 框架的讨论中的其他九个查询中的每一个。将每个查询保存为 SQLQuery-CH02-## ，其中 ## 是从02到09的序列号，对应于每个查询的 SQL 注释行中显示的 SQL 查询标签。)
+
+## 3.3. 对单表的复杂查询 
+
+> We started our discussion of SQL queries with SQL statements for processing a single table, and now we will add an additional SQL feature to those queries. As we proceed, you will begin to see how powerful SQL can be for querying databases and for creating information from existing data.
+
+我们开始讨论使用 SQL 语句处理单个表的 SQL 查询，现在我们将为这些查询添加额外的 SQL 特性。随着我们的继续，您将开始看到 SQL 在查询数据库和从现有数据创建信息方面有多么强大。
+
+### 3.3.1. 对 SQL 查询结果进行排序
+
+#### 3.3.1.1. 正序
+
+> Sorting the SQL Query Results
+>
+> The order of the rows produced by an SQL statement is arbitrary and determined by programs in the bowels of each DBMS. If you want the DBMS to display the rows in a particular order, you can use the SQL ORDER BY clause.For example, the SQL statement:
+>
+> /* \*\*\* SQL-Query-CH02-10 \*\*\* */
+>
+> SELECT * FROM ORDER\_ITEM
+>
+> ORDER BY OrderNumber;
+>
+> will generate the following results:
+
+SQL 查询结果排序 SQL 语句生成的行的顺序是任意的，由每个 DBMS 内部的程序决定。如果希望 DBMS 以特定顺序显示行，可以使用 SQL ORDER BY 子句。例如，SQL 语句:
+
+```sql
+/* *** SQL-Query-CH02-10 *** */
+
+SELECT * FROM ORDER_ITEM
+ORDER BY OrderNumber;
+```
+
+会产生以下结果:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703153226625.png" alt="image-20200703153226625" style="zoom: 80%;" />
+
+> We can sort by two columns by adding a second column name. For example, to sort first by OrderNumber and then by Price within OrderNumber, we use the following SQL query:
+>
+> /* \*\*\* SQL-Query-CH02-11 \*\*\* */
+>
+> SELECT * FROM ORDER\_ITEM
+>
+> ORDER BY OrderNumber, Price;
+>
+> The result for this query is:
+
+我们可以通过添加第二个列名来排序这两列。例如，为了优先按 OrderNumber 顺序，然后 OrderNumber 中的 Price 顺序来排序，我们使用以下 SQL 查询:
+
+```sql
+/* *** SQL-Query-CH02-11 *** */
+
+SELECT * FROM ORDER_ITEM
+ORDER BY OrderNumber, Price;
+```
+
+这个查询的结果是:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703153353040.png" alt="image-20200703153353040" style="zoom: 80%;" />
+
+#### 3.3.1.2. 逆序
+
+> If we want to sort the data by Price and then by OrderNumber, we would simply reverse the order of those columns in the ORDER BY clause as follows:
+>
+> /* \*\*\* SQL-Query-CH02-12 \*\*\* */
+>
+> SELECT * FROM ORDER\_ITEM
+>
+> ORDER BY Price, OrderNumber;
+>
+> with the results:
+
+如果我们希望先按价格后按订单编号对数据进行排序，我们只需将 ORDER BY 子句中这些列的顺序颠倒如下:
+
+```sql
+/* *** SQL-Query-CH02-13 *** */
+
+SELECT * FROM ORDER_ITEM
+ORDER BY Price DESC, OrderNumber ASC;
+```
+
+结果如下:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703153516959.png" alt="image-20200703153516959" style="zoom:80%;" />
+
+> By default, rows are sorted in ascending order. To sort in descending order, add the SQL DESC keyword after the column name. Thus, to sort first by Price in descending order and then by OrderNumber in ascending order, we use the SQL query:
+>
+> /* \*\*\* SQL-Query-CH02-13 \*\*\* */
+>
+> SELECT * FROM ORDER\_ITEM
+>
+> ORDER BY Price DESC, OrderNumber ASC;
+>
+> The result is:
+
+默认情况下，行按升序排序。若要按降序排序，请在列名之后添加 SQL DESC 关键字。因此，为了先按价格降序排序，然后按顺序升序排序，我们使用 SQL 查询:
+
+```sql
+/* *** SQL-Query-CH02-13 *** */
+
+SELECT * FROM ORDER_item
+ORDER BY Price DESC,OrderNumber ASC;
+```
+
+结果是:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703153648750.png" alt="image-20200703153648750" style="zoom:80%;" />
+
+> Because the default order is ascending, it is not necessary to specify ASC in the last SQL statement. Thus, the following SQL statement is equivalent to the previous SQL query:
+>
+> /* \*\*\* SQL-Query-CH02-14 \*\*\* */
+>
+> SELECT * FROM ORDER\_ITEM
+>
+> ORDER BY Price DESC, OrderNumber;
+>
+> and produces the same results.
+
+因为默认顺序是升序的，所以不必在最后一条 SQL 语句中指定 ASC。因此，下面的 SQL 语句等效于前面的 SQL 查询:
+
+```sql
+/* *** SQL-Query-CH02-14 *** */
+
+SELECT * FROM ORDER_ITEM
+ORDER BY Price DESC, OrderNumber;
+```
+
+并产生相同的结果。
+
+### 3.3.2. SQL WHERE 子句选项
+
+> SQL Where Clause Options
+>
+> SQL includes a number of SQL WHERE clause options that greatly expand SQL’s power and utility. In this section, we consider three options: compound clauses, ranges, and wildcards.
+
+SQL包括许多SQL WHERE子句选项，这些选项极大地扩展了SQL的功能和实用程序。 在本节中，我们考虑三个选项：复合子句、范围和通配符。
+
+#### 3.3.2.1. 复合 WHERE 子句
+
+> Compound WHERE Clauses  
+>
+> SQL WHERE clauses can include multiple conditions by using the SQL AND, OR, IN, and NOT IN operators.
+>
+> For example, to find all of the rows in SKU\_DATA that have a Department named Water Sports and a Buyer named Nancy Meyers, we can use the SQL AND operator in our query code:  
+>
+> /* \*\*\* SQL-Query-CH02-15 \*\*\* */  
+>
+> SELECT * FROM SKU\_DATA  
+>
+> WHERE Department='Water Sports'  
+>
+> AND Buyer='Nancy Meyers';
+>
+> The results of this query are:
+
+SQL WHERE子句可以使用SQL AND、OR、IN和NOT IN运算符包括多个条件。
+
+例如，要查找SKU\_DATA中具有名为Water Sports的Department和名为Nancy Meyers的买家的所有行，我们可以在查询代码中使用SQL AND运算符：
+
+此查询的结果为：
+
+```sql
+/* *** SQL-Query-CH02-15 *** */
+
+SELECT * FROM SKU_DATA
+WHERE Department='Water Sports'
+AND Buyer='Nancy Meyers';
+```
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703154504969.png" alt="image-20200703154504969" style="zoom:80%;" />
+
+> Similarly, to find all of the rows of SKU\_DATA for either the Camping or Climbing departments, we can use the SQL OR operator in the SQL query:
+>
+> /* \*\*\* SQL-Query-CH02-16 \*\*\* */
+>
+> SELECT * FROM SKU\_DATA
+>
+> WHERE Department='Camping'
+>
+> OR Department='Climbing';
+>
+> which gives us the following results:
+
+同样，要查找 Camping 或 Climbing 部门的SKU\_DATA的所有行，我们可以在SQL查询中使用 SQL OR 运算符：
+
+```sql
+/* *** SQL-Query-CH02-16 *** */
+
+SELECT * FROM SKU_DATA
+WHERE Department='Camping'
+OR Department='Climbing';
+```
+
+这给了我们以下结果：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703154628423.png" alt="image-20200703154628423" style="zoom:67%;" />
+
+> Three or more AND and OR conditions can be combined, but in such cases the SQL IN operator and the SQL NOT IN operator are easier to use.
+>
+> For example, suppose we want to obtain all of the rows in SKU\_DATA for buyers Nancy Meyers, Cindy Lo, and Jerry Martin. We could construct a WHERE clause with two ORs, but an easier way to do this is to use the IN operator, as illustrated in the SQL query:
+>
+> /* *** SQL-Query-CH02-17 \*\*\* */
+>
+> SELECT *
+>
+> FROM SKU\_DATA
+>
+> WHERE Buyer IN ('Nancy Meyers', 'Cindy Lo', 'Jerry Martin');
+>
+> In this format, a set of values is enclosed in parentheses. A row is selected if Buyer is equal to any one of the values provided. The result is:
+
+可以组合三个或更多AND和OR条件，但在这种情况下，SQL IN 运算符和 SQL NOT IN 运算符更易于使用。
+ 例如，假设我们想要获取买家 Nancy Meyers、Cindy Lo和Jerry Martin 的 SKU\_DATA 中的所有行。 我们可以使用两个 OR 构造 WHERE 子句，但更简单的方法是使用 IN 操作符，如 SQL 查询所示：
+
+```sql
+/* *** SQL-Query-CH02-17 *** */
+
+SELECT * FROM SKU_DATA
+WHERE Buyer IN ('Nancy Meyers', 'Cindy Lo', 'Jerry Martin');
+```
+
+在此格式中，一组值括在括号中。 如果 Buyer 等于所提供的任何一个值，则选择这行加进输出表。 结果是：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703154829380.png" alt="image-20200703154829380" style="zoom:80%;" />
+
+> Similarly, if we want to find rows of SKU\_DATA for which the buyer is someone other than Nancy Meyers, Cindy Lo, or Jerry Martin, we would use the SQL query:
+>
+> /* \*\*\* SQL-Query-CH02-18 \*\*\* */
+>
+> SELECT * FROM SKU\_DATA
+>
+> WHERE Buyer NOT IN ('Nancy Meyers', 'Cindy Lo', 'Jerry Martin');
+>
+> The result is:
+
+同样，如果我们要查找买方不是 Nancy Meyers、Cindy Lo或Jerry Martin 的 SKU\_DATA 行，我们将使用 SQL 查询：
+
+```sql
+/* *** SQL-Query-CH02-18 *** */
+
+SELECT * FROM SKU_DATA
+WHERE Buyer NOT IN ('Nancy Meyers', 'Cindy Lo', 'Jerry Martin');
+```
+
+结果是：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703154956614.png" alt="image-20200703154956614" style="zoom:80%;" />
+
+> Observe an important difference between IN and NOT IN. A row qualifies for an IN condition if the column is equal to any of the values in the parentheses. However, a row qualifies for a NOT IN condition if it is not equal to all of the items in the parentheses.
+
+注意 IN 和NOT IN之间的一个重要区别。 如果某列等于括号中的任意值，则该行符合 IN 条件。 但是，如果行不等于括号中的任意项，则该行符合 NOT IN 条件。
+
+#### 3.3.2.2. SQL WHERE子句中的范围
+
+> Ranges in SQL WHERE Clauses
+>
+> SQL WHERE clauses can specify ranges of data values by using the SQL BETWEEN keyword. For example, the following SQL statement:
+>
+> /* *** SQL-Query-CH02-19 \*\*\* */
+>
+> SELECT * FROM ORDER\_ITEM
+>
+> WHERE ExtendedPrice BETWEEN 100 AND 200;
+>
+> will produce the following results:
+
+SQL WHERE子句可以使用SQL BETWEEN关键字指定数据值的范围。 例如，以下SQL语句：
+
+```sql
+/* *** SQL-Query-CH02-19 *** */
+
+SELECT * FROM ORDER_ITEM
+WHERE ExtendedPrice BETWEEN 100 AND 200;
+```
+
+将产生以下结果：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703155158542.png" alt="image-20200703155158542" style="zoom:80%;" />
+
+> Notice that both the ends of the range, 100 and 200, are included in the resulting table. The preceding SQL statement is equivalent to the SQL query:
+>
+> /* \*\*\* SQL-Query-CH02-20 \*\*\* */
+>
+> SELECT * FROM ORDER\_ITEM
+>
+> WHERE ExtendedPrice >= 100 AND ExtendedPrice <= 200;
+>
+> And which, of course, produces identical results.
+
+请注意，范围的两个端点：100和200都包含在结果表中。 因此前面的SQL语句等同于SQL查询：
+
+```sql
+/* *** SQL-Query-CH02-20 *** */
+
+SELECT * FROM ORDER_ITEM
+WHERE ExtendedPrice >= 100 AND ExtendedPrice <= 200;
+```
+
+当然，这会产生相同的结果。
+
+#### 3.3.2.3. SQL WHERE 子句中的通配符
+
+> Wildcards in SQL WHERE Clauses
+>
+> The SQL LIKE keyword can be used in SQL WHERE clauses to specify matches on portions of column values. For example, suppose we want to find the rows in the SKU\_DATA table for all buyers whose first name is Pete. To find such rows, we use the SQL keyword LIKE with the SQL percent sign (%) wildcard character, as shown in the SQL query:
+>
+> /* \*\*\* SQL-Query-CH02-21 \*\*\* */
+>
+> SELECT * FROM SKU\_DATA
+>
+> WHERE Buyer LIKE 'Pete%';
+>
+> When used as an SQL wildcard character, the percent symbol (%) stands for any sequence of characters. When used with the SQL LIKE keyword, the character string 'Pete%' means any sequence of characters that starts with the letters Pete. The result of this query is:
+
+SQL LIKE关键字可以在SQL WHERE子句中使用，以指定对部分列值的匹配。 例如，假设我们要在SKU\_DATA表中查找名为Pete的所有买家的行。 要查找这样的行，我们将SQL关键字LIKE与SQL百分号(%)通配符一起使用，如SQL查询所示：
+
+```sql
+/* *** SQL-Query-CH02-21 *** */
+
+SELECT * FROM SKU_DATA
+WHERE Buyer LIKE 'Pete%';
+```
+
+用作SQL通配符时，百分号(%)表示任意字符序列。 与SQL LIKE关键字一起使用时，字符串‘Pete%’表示以字母Pete开头的任何字符序列。 此查询的结果为：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703155628188.png" alt="image-20200703155628188" style="zoom:80%;" />
+
+> Suppose we want to find the rows in SKU\_DATA for which the SKU\_Description includes the word Tent somewhere in the description. Because the word Tent could be at the front, at the end, or in the middle, we need to place a wildcard on both ends of the LIKE phrase, as follows:
+>
+> /* \*\*\* SQL-Query-CH02-22 \*\*\* */
+>
+> SELECT * FROM SKU\_DATA
+>
+> WHERE SKU\_Description LIKE '%Tent%';
+>
+> This query will find rows in which the word Tent occurs in any place in the SKU\_Description.The result is:
+
+假设我们要在SKU\_DATA中查找SKU\_DESCRIPTION在描述中的某个位置包含单词Tent的行。 因为单词 Tent 可以在前面、结尾或中间，所以我们需要在查找短语的两端放置通配符，如下所示：
+
+```sql
+/* *** SQL-Query-CH02-22 *** */
+
+SELECT * FROM SKU_DATA
+WHERE SKU_Description LIKE '%Tent%';
+```
+
+此查询将查找 SKU\_Description 中任意位置出现单词 Tent 的行。结果为：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703155815024.png" alt="image-20200703155815024" style="zoom:80%;" />
+
+> Sometimes we need to search for a particular value in a particular location in the column.
+> For example, assume SKU values are coded such that a 2 in the third position from the right has some particular significance; maybe it means that the product is a variation of another product. For whatever reason, assume that we need to find all SKUs that have a 2 in the third column from the right. Suppose we try the SQL query:
+>
+> /* \*\*\* SQL-Query-CH02-23 \*\*\* */
+>
+> SELECT * FROM SKU\_DATA
+>
+> WHERE SKU LIKE '%2%';
+>
+> The result is:
+
+有时，我们需要在列中的特定位置搜索特定值。
+
+例如，假设按照SKU的编码方式，右数第三个位置的2具有某种特殊意义；可能这意味着该产品是另一个产品的变体。 无论出于何种原因，假设我们需要查找右侧第三列中具有2的所有SKU。 假设我们尝试SQL查询：
+
+```sql
+/* *** SQL-Query-CH02-23 *** */
+
+SELECT * FROM SKU_DATA
+WHERE SKU LIKE '%2%';
+```
+
+结果为：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703155956135.png" alt="image-20200703155956135" style="zoom:80%;" />
+
+> This is not what we wanted. We mistakenly retrieved all rows that had a 2 in any position in the value of SKU. To find the products we want, we cannot use the SQL wildcard character %. Instead, we must use the SQL underscore (\_) wildcard character, which represents a single, unspecified character in a specific position. The following SQL statement will find all SKU\_DATA rows with a value of 2 in the third position from the right:
+>
+> /* *** SQL-Query-CH02-24 \*\*\* */
+>
+> SELECT * FROM SKU\_DATA
+>
+> WHERE SKU LIKE '%2\_\_';
+>
+> Observe that there are two underscores in this SQL query—one for the first position on the right and another for the second position on the right. This query gives us the result that we want:
+
+这不是我们想要的。 我们错误地检索了SKU值中任何位置都有2的所有行。 要查找我们需要的产品，不能使用SQL通配符%。 相反，我们必须使用SQL下划线(\_)通配符，它表示特定位置上的单个任意字符。 以下SQL语句将查找右数第三个位置中值为2的所有SKU\_DATA行：
+
+```sql
+/* *** SQL-Query-CH02-24 *** */
+
+SELECT * FROM SKU_DATA
+WHERE SKU LIKE '%2__';
+```
+
+注意到此SQL查询中有两个下划线-一个用于右侧的第一个位置，另一个用于右侧的第二个位置。 此查询给出了我们想要的结果：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703160137033.png" alt="image-20200703160137033" style="zoom:80%;" />
+
+#### 3.3.2.4. 组合 SQL WHERE 子句和 SQL ORDER BY 子句
+
+> Combing the SQL Where Clause and the SQL Order By Clause
+>
+> If we want to sort the results generated by these enhanced SQL WHERE clauses, we simply combine the SQL ORDER BY clause with the WHERE clause. This is illustrated by the following SQL query:
+>
+> /* *** SQL-Query-CH02-25 \*\*\* */
+>
+> SELECT * FROM ORDER\_ITEM
+>
+> WHERE ExtendedPrice BETWEEN 100 AND 200
+>
+> ORDER BY OrderNumber DESC;
+>
+> which will produce the following result:
+
+如果我们想对这些增强的SQL WHERE子句生成的结果进行排序，只需将SQL order by子句与WHERE子句结合使用即可。 下面的SQL查询说明了这一点：
+
+```sql
+/* *** SQL-Query-CH02-25 *** */
+
+SELECT * FROM ORDER_ITEM
+WHERE ExtendedPrice BETWEEN 100 AND 200
+ORDER BY OrderNumber DESC;
+```
+
+这将产生以下结果：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703160323859.png" alt="image-20200703160323859" style="zoom:80%;" />
+
+## 3.4. SQL查询中的计算
+
+> Performing Calculations in SQL Queries
+>
+> It is possible to perform certain types of calculations in SQL query statements. One group of calculations involves the use of SQL built-in functions. Another group involves simple arithmetic operations on the columns in the SELECT statement.We will consider each, in turn.
+
+可以在SQL查询语句中执行某些类型的计算。 一组计算涉及使用SQL内置函数。 另一组涉及SELECT语句中列的简单算术操作。我们依次考虑每一项。
+
+### 3.4.1. 使用 SQL 内置函数
+
+> Using SQL Built-in Functions
+>
+> There are five SQL built-in functions for performing arithmetic on table columns: SUM, AVG, MIN, MAX, and COUNT. Some DBMS products extend these standard built-in functions by providing additional functions. Here we will focus only on the five standard SQL built-in functions.
+>
+> Suppose we want to know the sum of OrderTotal for all of the orders in RETAIL\_ORDER. We can obtain that sum by using the SQL built-in SUM function:
+>
+> /* *** SQL-Query-CH02-26 \*\*\* */
+>
+> SELECT SUM(OrderTotal)
+>
+> FROM RETAIL\_ORDER;
+>
+> The result will be:
+
+有五个SQL内置函数用于对表列执行计算：SUM、AVG、MIN、MAX和COUNT。 一些DBMS产品通过提供附加功能来扩展这些标准内置功能。 在这里，我们将只关注五个标准的SQL内置函数。
+
+假设我们想知道RETACTORDER中所有订单的OrderTotal总和。 我们可以使用SQL内置的SUM函数来获得该总和：
+
+```sql
+/* *** SQL-Query-CH02-26 *** */
+
+SELECT SUM(OrderTotal)
+FROM RETAIL_ORDER;
+```
+
+这将产生以下结果：
+
+![image-20200703162259562](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703162259562.png)
+
+> Recall that the result of an SQL statement is always a table. In this case, the table has one cell (the intersection of one row and one column that contains the sum of OrderTotal). But because the OrderTotal sum is not a column in a table, the DBMS has no column name to provide. The preceding result was produced by Microsoft SQL Server 2012, and it names the column '(No column name)'. Other DBMS products take other, equivalent actions.This result is ugly.
+
+回想一下，SQL语句的结果始终是一个表。 在本例中，该表有一个单元格(一行和一列的交叉点，包含OrderTotal的总和)。 但是，因为OrderTotal SUM不是表中的列，所以DBMS没有要提供的列名。 前面的结果是由Microsoft SQL Server 2012生成的，它将该列命名为“(No Column Name)”。 其他DBMS产品执行其他等效操作。这个结果很难看。
+
+> We would prefer to have a meaningful column name, and SQL allows us to assign one using the SQL AS keyword. If we use the AS keyword in the query as follow:
+>
+> /* *** SQL-Query-CH02-27 \*\*\* */
+>
+> SELECT SUM(OrderTotal)
+>
+> AS OrderSum FROM RETAIL\_ORDER;
+>
+> The result of this modified query will be:
+
+我们希望有一个有意义的列名，SQL允许我们使用SQL作为关键字指定一个列名。 如果我们在查询中使用AS关键字，如下所示：
+
+```sql
+/* *** SQL-Query-CH02-27 *** */
+
+SELECT SUM(OrderTotal) AS OrderSum
+FROM RETAIL_ORDER;
+```
+
+这将产生以下结果：
+
+![image-20200703162456598](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703162456598.png)
+
+> This result has a much more meaningful column label. The name OrderSum is arbitrary— we are free to pick any name that we think would be meaningful to the user of the result. We could pick OrderTotal\_Total, OrderTotalSum, or any other label that we think would be useful.
+>
+> The utility of the built-in functions increases when you use them with an
+> SQL WHERE clause. For example, we can write the SQL query:
+>
+> /* *** SQL-Query-CH02-28 \*\*\* */
+>
+> SELECT SUM(ExtendedPrice) AS Order3000Sum
+>
+> FROM ORDER\_ITEM
+>
+> WHERE OrderNumber=3000;
+>
+> The result of this query is:
+
+此结果具有更有意义的列标签。 名称OrderSum是任意的，我们可以自由选择任何我们认为对结果的用户有意义的名称。 我们可以选择OrderTotal\_Total、OrderTotalSum或我们认为有用的任何其他标签。
+将内置函数与SQL WHERE子句一起使用时，内置函数的实用性会增加。 例如，我们可以编写SQL查询语句如下：
+
+```sql
+/* *** SQL-Query-CH02-28 *** */
+
+SELECT SUM(ExtendedPrice) AS Order3000Sum
+FROM ORDER_ITEM
+WHERE OrderNumber=3000;
+```
+
+这将产生以下结果：
+
+![image-20200703162705856](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703162705856.png)
+
+> The SQL built-in functions can be mixed and matched in a single statement. For example, we can create the following SQL statement:
+>
+> /* *** SQL-Query-CH02-29 \*\*\* */
+>
+> SELECT
+>
+> ​	SUM(ExtendedPrice) AS OrderItemSum,
+>
+> ​	AVG(ExtendedPrice) AS OrderItemAvg,
+>
+> ​	MIN(ExtendedPrice) AS OrderItemMin,
+>
+> ​	MAX(ExtendedPrice) AS OrderItemMax
+>
+> FROM ORDER\_ITEM;
+>
+> The result of this query is:
+
+SQL内置函数可以在单个语句中混合和匹配。 例如，我们可以创建以下SQL语句：
+
+```sql
+/* *** SQL-Query-CH02-29 *** */
+
+SELECT
+	SUM(ExtendedPrice) AS OrderItemSum,
+	AVG(ExtendedPrice) AS OrderItemAvg,
+	MIN(ExtendedPrice) AS OrderItemMin,
+	MAX(ExtendedPrice) AS OrderItemMax  
+FROM ORDER_ITEM;
+```
+
+这将产生以下结果：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703162935332.png" alt="image-20200703162935332" style="zoom:80%;" />
+
+> Notice: The SQL built-in COUNT function sounds similar to the SUM function, but it produces very different results. The COUNT function counts the number of rows, whereas the SUM function adds the values in a column.
+>
+> For example We can use the SQL built-in COUNT function to determine how many rows are in the ORDER\_ITEM table:
+>
+> /* *** SQL-Query-CH02-30 \*\*\* */
+>
+> SELECT COUNT(*) AS NumberOfRows
+>
+> FROM ORDER\_ITEM;
+>
+> The result of this query is:
+
+注意：SQL内置的COUNT函数听起来类似于SUM函数，但它产生的结果非常不同。 COUNT函数计算行数，而SUM函数将列中的值相加。
+
+例如，我们可以使用SQL内置的COUNT函数来确定ORDER\_ITEM表中有多少行：
+
+```sql
+/* *** SQL-Query-CH02-30 *** */ 
+
+SELECT COUNT(*) AS NumberOfRows  
+FROM ORDER_ITEM;
+```
+
+这将产生以下结果：
+
+![image-20200703163201819](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703163201819.png)
+
+> This result indicates that there are seven rows in the ORDER\_ITEM table.
+>
+> Notice that we need to provide an asterisk (*) after the COUNT function when we want to count rows. COUNT is the only built-in function
+>
+> For example What happens if we run the following SQL query?
+>
+> /* *** SQL-Query-CH02-33 \*\*\* */
+>
+> SELECT Department, COUNT(*)
+>
+> FROM SKU\_DATA
+>
+> The result in Microsoft SQL Server 2012 is:
+
+该结果表明ORDER\_ITEM表中有7行。
+
+请注意，当我们想要计算行数时，需要在COUNT函数后面提供一个星号(*)。 Count是唯一的内置函数。
+
+例如，如果我们运行下面的SQL查询会发生什么？
+
+```sql
+/* *** SQL-Query-CH02-33 *** */
+
+SELECT Department, COUNT(*)  
+FROM SKU_DATA
+```
+
+Microsoft SQL Server 2012中的结果是：
+
+![image-20200703163413271](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703163413271.png)
+
+> The second problem with the SQL built-in functions that you should understand is that you cannot use them in an SQL WHERE clause. Thus, you cannot use the following SQL statement:
+>
+> /* *** SQL-Query-CH02-34 \*\*\* */
+>
+> SELECT * FROM RETAIL\_ORDER
+>
+> WHERE OrderTotal > AVG(OrderTotal);
+>
+> An attempt to use such a statement will also result in an error statement from the DBMS:
+
+关于SQL内置函数的第二个问题，你应该了解：不能在SQL WHERE子句中使用它们。 因此不能使用以下SQL语句：
+
+```sql
+/* *** SQL-Query-CH02-34 *** */  
+
+SELECT * FROM RETAIL_ORDER  
+WHERE OrderTotal > AVG(OrderTotal);
+```
+
+尝试使用这样的语句也会导致 DBMS 出现错误:
+
+![image-20200703163633253](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703163633253.png)
+
+> What do this mean? Why we cannot do this? In fact, we should know the act order about WHERE clause and Built-in functions
+
+这是什么意思？ 为什么我们不能这样做呢？ 实际上，我们需要了解WHERE子句和内置函数的执行顺序。
+
+### 3.4.2. SQL Select 语句中的 SQL 表达式
+
+> SQL expressions in SQL Select Statements
+>
+> It is possible to do basic arithmetic in SQL statements. For example, suppose we want to compute the values of extended price, perhaps because we want to verify the accuracy of the data in the ORDER\_ITEM table. To compute the extended price, we can use the SQL expression Quantity * Price in the SQL query:
+>
+> /* *** SQL-Query-CH02-35 \*\*\* */
+>
+> SELECT Quantity * Price AS EP
+>
+> FROM ORDER\_ITEM;
+>
+> The result is:
+
+SQL Select语句中的SQL表达式可以在SQL语句中进行基本算术运算。 例如，假设我们想要计算扩展价格的值，可能是因为我们想验证ORDER\_ITEM表中数据的准确性。 要计算扩展价格，可以在SQL查询中使用SQL表达式QUANTY*PRICE：
+
+```sql
+/* *** SQL-Query-CH02-35 *** */  
+
+SELECT Quantity * Price AS EP  
+FROM ORDER_ITEM;
+```
+
+这将产生以下结果：
+
+![image-20200703182802082](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703182802082.png)
+
+> An SQL expression is basically a formula or set of values that determines the exact result of an SQL query. We can think of an SQL expression as anything that follows an actual or implied equal to (=) character (or any other relational operator, such as greater than [>], less than [<], and so on) or that follows certain SQL keywords, such as LIKE and BETWEEN.
+>
+> Thus, the SELECT clause in the preceding query includes the implied equal to (=) sign as EP = Quantity * Price.
+>
+> For another example, in the WHERE clause:
+>
+> WHERE Buyer IN ('Nancy Meyers', 'Cindy Lo', 'Jerry Martin');
+>
+> the SQL expression consists of the enclosed set of three text values following the IN keyword.
+>
+> Now that we know how to calculate the value of extended price, we can compare this computed value to the stored value of ExtendedPrice by using the SQL query:
+>
+> /* *** SQL-Query-CH02-36 \*\*\* */
+>
+> SELECT Quantity * Price AS EP, ExtendedPrice
+>
+> FROM ORDER\_ITEM;
+>
+> The result of this statement now allows us to visually compare the two values to ensure that the stored data are correct:
+
+SQL表达式基本上是一个公式或一组值，用于确定SQL查询的确切结果。 我们可以将SQL表达式视为实际的或隐含的等于(=)字符(或任何其他关系运算符，如大于[>]、小于[<]等)之后的任何内容，或某些SQL关键字(如LIKE和BETWEEN)之后的任何内容。
+ 因此，前面查询中的SELECT子句包括隐含的等于(=)符号，如EP=QUANTITY*PRICE。
+ 再举一个例子，在WHERE子句中：
+
+```sql
+WHERE Buyer IN ('Nancy Meyers', 'Cindy Lo', 'Jerry Martin');
+```
+
+SQL 表达式由 IN 关键字后面的三个文本值组成。
+现在我们知道了如何计算扩展价格的值，我们可以使用 SQL 查询将这个计算值与 ExtendedPrice 的存储值进行比较:
+
+```sql
+/* *** SQL-Query-CH02-36 *** */  
+
+SELECT Quantity * Price AS EP, ExtendedPrice  
+FROM ORDER_ITEM;
+```
+
+这个语句的结果现在允许我们直观地比较两个值，以确保存储的数据是正确的:
+
+![image-20200703183443257](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703183443257.png)
+
+> Another use for SQL expressions in SQL statements is to perform string manipulation. Suppose we want to combine (using the concatenation operator, which is the plus sign [+] in Microsoft SQL Server 2012) the Buyer and Department columns into a single column named Sponsor. To do this, we can use the SQL statement:
+>
+> /* *** SQL-Query-CH02-37 \*\*\* */
+>
+> SELECT Buyer+' in '+Department AS Sponsor
+>
+> FROM SKU\_DATA;
+>
+> The result will include a column named Sponsor that contains the combined text values:
+
+SQL 语句中 SQL 表达式的另一个用途是执行字符串操作。假设我们想要将 Buyer 和 Department 列(使用 concatenation 操作符，即2012年 Microsoft SQL Server 中的加号[ + ])合并到一个名为 Sponsor 的列中。要做到这一点，我们可以使用 SQL 语句:
+
+```sql
+/* *** SQL-Query-CH02-37 *** */  
+
+SELECT Buyer+ 'in' +Department AS Sponsor  
+FROM SKU_DATA;
+```
+
+结果将包括一个名为“赞助商”的列，其中包含组合文本值:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703183645183.png" alt="image-20200703183645183" style="zoom:80%;" />
+
+> By The Way The concatenation operator, like many SQL syntax elements, varies from one DBMS product to another. Oracle Database uses a double vertical bar [ || ] as the concatenation operator, and SQL –QUERY-CH02-37 is written for Oracle Database as:
+>
+> /* *** SQL-Query-CH02-37-Oracle-Database \*\*\* */
+>
+> SELECT Buyer||' in '||Department AS Sponsor
+>
+> FROM SKU\_DATA;
+>
+> MySQL uses the concatenation string function CONCAT() as the concatenation operator with the elements to be concatenated separated by commas with the parentheses, and SQL-QUERY-CH02-37 is written for MySQL as:
+>
+> /* *** SQL-Query-CH02-37-MySQL \*\*\* */
+>
+> SELECT CONCAT(Buyer,' in ',Department) AS Sponsor
+>
+> FROM SKU\_DATA;
+>
+> The result of SQL-Query-CH02-37 is ugly because of the extra spaces in each row.
+>
+> We can eliminate these extra spaces by using more advanced functions. The syntax and use of such functions vary from one DBMS to another, however, and a discussion of the features of each product will take us away from the point of this discussion. To learn more, search on string functions in the documentation for your specific DBMS product. Just to illustrate the possibilities, however, here is a Microsoft SQL Server 2012 statement using the RTRIM function that strips the tailing blanks off the right-hand side of Buyer and Department:
+>
+> /* *** SQL-Query-CH02-38 \*\*\* */
+>
+> SELECT DISTINCT RTRIM(Buyer)+' in '+RTRIM(Department) AS Sponsor
+>
+> FROM SKU\_DATA;
+>
+> The result of this query is much more visually pleasing:
+
+连接操作符，像许多 SQL 语法元素一样，在不同的 DBMS 产品之间有所不同。Oracle 数据库使用双竖线[ | | ]作为串联操作符，为 Oracle 数据库编写的 SQL-QUERY-CH02-37如下:
+
+```sql
+/* *** SQL-Query-CH02-37-Oracle-Database *** */  
+
+SELECT Buyer|| 'in' ||Department AS Sponsor  
+FROM SKU_DATA;
+```
+
+MySQL 使用串联字符串函数 CONCAT ()作为串联运算符，将元素用逗号和括号分开，MySQL 的 SQL-QUERY-CH02-37编写如下:
+
+```sql
+/* *** SQL-Query-CH02-37-MySQL *** */  
+
+SELECT CONCAT(Buyer, 'in' ,Department) AS Sponsor  
+FROM SKU_DATA;
+```
+
+SQL-Query-CH02-37的结果很糟糕，因为每行中都有额外的空格。
+
+我们可以使用更高级的函数来消除这些额外的空间。然而，这些函数的语法和用法在不同的 DBMS 之间有所不同，对每个产品特性的讨论将使我们偏离本文的主题。要了解更多信息，请在文档中搜索特定 DBMS 产品的字符串函数。然而，为了说明这些可能性，这里有一个 Microsoft SQL Server 2012年的声明，使用了 RTRIM 函数，去掉了买方和部门右边的空白:
+
+```sql
+/* *** SQL-Query-CH02-38 *** */  
+
+SELECT DISTINCT RTRIM(Buyer)+ 'in' +RTRIM(Department)   AS Sponsor
+FROM SKU_DATA;
+```
+
+这个查询的结果在视觉上更加令人满意:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703184028112.png" alt="image-20200703184028112" style="zoom:80%;" />
+
+## 3.5. 分组统计 
+
+> Grouping in SQL Select Statements
+>
+> In SQL queries, rows can be grouped according to common values using the SQL GROUP BY clause. For example, if you specify GROUP BY Department in a SELECT statement on the SKU\_DATA table, the DBMS will first sort all rows by Department and then combine all of the rows having the same value into a group for that department. A grouping will be formed for each unique value of Department.
+>
+> For example, we can use the GROUP BY clause in the SQL query:
+>
+> /* *** SQL-Query-CH02-39 \*\*\* */
+>
+> SELECT Department, COUNT(*) AS Dept\_SKU\_Count
+>
+> FROM SKU\_DATA
+>
+> GROUP BY Department;
+>
+> We get the result:
+
+SQL Select 语句中的分组在 SQL 查询中，可以使用 SQL GROUP BY 子句根据常用值对行进行分组。例如，如果在 SKU\_data 表的 SELECT 语句中指定 GROUP BY Department，DBMS 将首先按部门对所有行进行排序，然后将所有具有相同值的行合并为该部门的一个组。每个部门的值都会组成一个分组。
+
+例如，我们可以在 SQL 查询中使用 GROUP BY 子句:
+
+```sql
+/* *** SQL-Query-CH02-39 *** */  
+
+SELECT Department, COUNT(*) AS Dept_SKU_Count  
+FROM SKU_DATA  
+GROUP BY Department;
+```
+
+我们得到的结果是:
+
+![image-20200703201033974](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703201033974.png)
+
+> To obtain this result, the DBMS first sorts the rows according to Department and then counts the number of rows having the same value of Department.Here is another example of an SQL query using GROUP BY:
+>
+> /* *** SQL-Query-CH02-40 \*\*\* */
+>
+> SELECT SKU, AVG(ExtendedPrice) AS AvgEP
+>
+> FROM ORDER\_ITEM
+>
+> GROUP BY SKU;
+>
+> The result for this query is:
+
+为了获得这个结果，DBMS 首先根据 Department 对行进行排序，然后计算具有相同 Department 值的行数。
+下面是另一个使用 GROUP BY 的 SQL 查询示例:
+
+```sql
+/* *** SQL-Query-CH02-40 *** */  
+
+SELECT SKU, AVG(ExtendedPrice) AS AvgEP  
+FROM ORDER_ITEM  
+GROUP BY SKU;
+```
+
+我们得到的结果是:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703201221212.png" alt="image-20200703201221212" style="zoom:80%;" />
+
+> Here the rows have been sorted and grouped by SKU and the average ExtendedPrice for each group of SKU items has been calculated. We can include more than one column in a GROUP BY expression. For example, the SQL statement:
+>
+> /* *** SQL-Query-CH02-41 \*\*\* */
+>
+> SELECT Department, Buyer, COUNT(*) AS Dept\_Buyer\_SKU\_Count
+>
+> FROM SKU\_DATA
+>
+> GROUP BY Department, Buyer;
+>
+> groups rows according to the value of Department first, then according to Buyer, and then counts the number of rows for each combination of Department and Buyer. The result is:
+
+这里按 SKU 对行进行了排序和分组，并计算了每组 SKU 项的平均扩展价格。我们可以在 GROUP BY 表达式中包含多个列。例如，SQL 语句:
+
+```sql
+/* *** SQL-Query-CH02-41 *** */  
+
+SELECT Department, Buyer, COUNT(*) AS Dept_Buyer_SKU_Count  
+FROM SK\_DATA  
+GROUP BY Department, Buyer;
+```
+
+首先根据部门的值对行进行分组，然后根据买方的值对行进行分组，然后计算部门和买方组合的行数。结果是:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703201429534.png" alt="image-20200703201429534" style="zoom:80%;" />
+
+> Notice: When using the GROUP BY clause, any and all column names in the SELECT clause that are not used by or associated with an SQL built-in function must appear in the GROUP BY clause. In SQL-Query-CH02-42 below, the column name SKU is not used in the GROUP BY clause, and therefore the query produces an error:
+>
+> /* *** SQL-Query-CH02-42 \*\*\* */
+>
+> SELECT SKU, Department, COUNT(*) AS Dept\_SKU\_Count
+>
+> FROM SKU\_DATA
+>
+> GROUP BY Department;
+>
+> The resulting error message is:
+
+注意: 当使用 GROUP BY 子句时，SELECT 子句中未被 SQL 内置函数使用或与其关联的任何列名称都必须出现在  GROUP BY 子句中。在下面的 SQL-Query-CH02-42中，列名 SKU 未在 GROUP BY 子句中使用，因此查询产生错误:
+
+```sql
+/* *** SQL-Query-CH02-42 *** */  
+
+SELECT SKU, Department, COUNT(*) AS Dept_SKU_Count  
+FROM SKU_DATA  
+GROUP BY Department;
+```
+
+得到的报错信息是:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703201604731.png" alt="image-20200703201604731" style="zoom:80%;" />
+
+> Statements like this one are invalid because there are many values of SKU for each Department group. The DBMS has no place to put those multiple values in the result.
+>
+> If you do not understand the problem, try to process this statement by hand. It cannot be done. Of course, the SQL WHERE and ORDER BY clauses can also be used with SELECT statements, as shown in the following query:
+>
+> /* *** SQL-Query-CH02-43 \*\*\* */
+>
+> SELECT Department, COUNT(*) AS Dept\_SKU\_Count
+>
+> FROM SKU\_DATA WHERE SKU <> 302000
+>
+> GROUP BY Department
+>
+> ORDER BY Dept\_SKU\_Count;
+>
+> The result is:
+
+像这样的语句是无效的，因为每个 Department 组都有许多 SKU 值。DBMS 在结果中找不到足够的地方来放置那些值。
+
+如果你不理解这个问题，试着手工处理这个语句。这是不可能的。当然，SQL WHERE 和 ORDER BY 子句也可以用于 SELECT 语句，如下面的查询所示:
+
+```sql
+/* *** SQL-Query-CH02-43 *** */
+
+SELECT Department, COUNT(*) AS Dept_SKU_Count  
+FROM SKU_DATA WHERE SKU <> 302000  
+GROUP BY Department  
+ORDER BY Dept_SKU_Count;
+```
+
+结果是:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703201746602.png" alt="image-20200703201746602" style="zoom:80%;" />
+
+> Notice that one of the rows of the Climbing department has been removed from the count because it did not meet the WHERE clause condition.
+>
+> Without the ORDER BY clause, the rows would be presented in arbitrary order of Department. With it, the order is as shown.
+>
+> In general, to be safe(why?), always place the WHERE clause before the GROUP BY clause. Some DBMS products do not require that placement, but others do.
+>
+> SQL provides one more GROUP BY clause feature that extends its functionality even further.
+>
+> The SQL HAVING clause restricts the groups that are presented in the result. We can restrict the previous query to display only groups having more than one row by using the SQL query:
+>
+> /* *** SQL-Query-CH02-44 \*\*\* */*
+>
+> SELECT Department, COUNT(*) AS Dept\_SKU\_Count
+>
+> FROM SKU\_DATA
+>
+> WHERE SKU <> 302000
+>
+> GROUP BY Department
+>
+> HAVING COUNT (*) > 1
+>
+> ORDER BY Dept\_SKU\_Count;
+>
+> The result of this modified query is:
+
+请注意，攀登部门的某一行已从计数中删除，因为它不符合 WHERE 子句条件。
+
+如果没有 ORDER BY 子句，行将以 Department 的任意顺序显示。有了它，顺序将如示排列。
+
+一般来说，为了安全(为什么?)，始终将 WHERE 子句放在 GROUP BY 子句之前。一些 DBMS 产品不需要这样的放置，但是其他的产品需要。
+
+SQL 提供了另一个 GROUP BY 子句特性，进一步扩展了它的功能。
+
+ SQL HAVING 子句限制结果中显示的组。通过使用 SQL 查询，我们可以将前面的查询限制为只显示多于一行的组:
+
+```sql
+/* *** SQL-Query-CH02-44 *** */ 
+
+SELECT Department, COUNT(*) AS Dept_SKU_Count  
+FROM SKU_DATA  
+WHERE SKU <> 302000  
+GROUP BY Department  
+HAVING COUNT (*) > 1  
+ORDER BY Dept_SKU_Count;
+```
+
+这个修改后的查询的结果是:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703202123170.png" alt="image-20200703202123170" style="zoom:80%;" />
+
+> Comparing this result with the previous one, the row for Climbing (which has a count of 1) has been eliminated.
+>
+> SQL built-in functions can be used in the HAVING clause(why can not be used in where clause?).
+>
+> For example, the following is a valid SQL query:
+>
+> /* *** SQL-Query-CH02-45 \*\*\* */
+>
+> SELECT COUNT(*) AS SKU\_Count, SUM(Price) AS TotalRevenue, SKU
+>
+> FROM ORDER\_ITEM
+>
+> GROUP BY SKU
+>
+> HAVING SUM(Price)=100;
+>
+> The results for this query are:
+
+与之前的结果相比，这一行(计数结果为1的行)已经被删除。SQL 内置函数可以在 HAVING 子句中使用(为什么不能在 where 子句中使用?).例如，以下是一个有效的 SQL 查询:
+
+```sql
+/* *** SQL-Query-CH02-45 *** */
+
+SELECT COUNT(*) AS SKU_Count, SUM(Price) AS TotalRevenue, SKU  
+FROM ORDER_ITEM  
+GROUP BY SKU  
+HAVING SUM(Price)=100;
+```
+
+这个查询的结果是:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703202302511.png" alt="image-20200703202302511" style="zoom:80%;" />
+
+> Be aware that there is an ambiguity(含糊; 意义不明确)in statements that include both WHERE and HAVING clauses. The results vary depending on whether the WHERE condition is applied before or after the HAVING. To eliminate this ambiguity, the WHERE clause is always applied before the HAVING clause.
+
+注意，在同时包含 WHERE 和 HAVING 子句的语句中存在歧义。结果取决于 WHERE 条件是在 HAVING 之前还是之后应用。为了消除这种歧义，总是在 HAVING 子句之前应用 WHERE 子句。
+
+## 3.6. 在真实的NASDAQ数据集查询
+
+> Looking for Patterns in NASDAQ Trading
+>
+> Before we continue our discussion of SQL, consider an example problem that will illustrate the power of the SQL just described. Suppose that a friend tells you that she suspects the stock market tends to go up on certain days of the week and down on others. She asks you to investigate past trading data to determine if this is true. Specifically, she wants to trade an index fund called the NASDAQ 100, which is a stock fund of the 100 top companies traded on the NASDAQ stock exchange. She gives you a dataset with 20 years (1985–2004) of NASDAQ 100 trading data for analysis. Assume she gives you the data in the form of a table named NDX containing 4611 rows of data for use with a relational database.
+
+在继续我们对 SQL 的讨论之前，考虑一个示例问题，它将演示刚才描述的 SQL 的作用。假设一位朋友告诉你，她怀疑股市在一周的特定几天上涨，而在其他几天下跌。她要求你调查过去的交易数据，以确定这是否属实。具体来说，她希望交易一只名为 NASDAQ 100的指数基金，这是一只由在 NASDAQ 证券交易所上市的100家顶级公司组成的股票基金。她给你一个20年(1985-2004)的纳斯达克100交易数据的数据集进行分析。假设她以一个名为 NDX 的表格的形式提供给你数据，这个表格包含4611行数据，可以用于关系数据库。
+
+### 3.6.1. 调查数据的特征
+
+> Investigating the Characteristics of the Data Suppose you first decide to investigate the general characteristics of the data. You begin by seeing what columns are present in the table by issuing the SQL query:
+>
+> /* *** SQL-Query-NDX-CH02-01 \*\*\* */
+>
+> SELECT * FROM NDX;
+>
+> The first five(4611) rows of that query are as follows:
+
+调查数据的特征假设您首先决定调查数据的一般特征。首先，通过发出 SQL 查询:
+
+```sql
+/* *** SQL-Query-NDX-CH02-01 *** */
+
+SELECT * FROM NDX;
+```
+
+该查询的前(5/4611)行如下:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703202951393.png" alt="image-20200703202951393" style="zoom:80%;" />
+
+> By The Way To control how many rows an SQL query displays, use the SQL TOP {NumberOfRows} property. To show the top five rows in SQL-QueryNDX-CH02-02, modify it as:
+>
+> /* *** SQL-Query-NDX-CH02-01A \*\*\* */
+>
+> SELECT TOP 5 * FROM NDX;
+>
+> Assume that you learn that the first column has the value of the fund at the close of a trading day, the second column has the value of the fund at the close of the prior trading day, and the third column has the difference between the current day’s close and the prior day’s close. Volume is the number of shares traded, and the rest of the data concern the trading date.
+>
+> Next, you decide to investigate the change of the stock price by issuing the SQL query:
+>
+> /* *** SQL-Query-NDX-CH02-02 \*\*\* */
+>
+> SELECT
+>
+> ​	AVG(ChangeClose) AS AverageChange,
+>
+> ​	MAX(ChangeClose) AS MaxGain,
+>
+> ​	MIN(ChangeClose) AS MaxLoss
+>
+> FROM NDX;
+>
+> The result of this query is:
+
+要控制 SQL 查询显示多少行，请使用 SQL TOP { NumberOfRows }属性。要显示 SQL-QueryNDX-CH02-02中的前五行，请将其修改为:
+
+```sql
+/* *** SQL-Query-NDX-CH02-01A *** */
+
+SELECT TOP 5 * FROM NDX;
+```
+
+假设你知道第一栏是某个交易日收盘时的基金价值，第二栏是前一交易日收盘时的基金价值，第三栏是当日收盘时与前一交易日收盘时的差额。成交量是指成交的股票数量，其余数据关系到成交日期。
+
+接下来，您决定通过发出 SQL 查询来调查股票价格的变化:
+
+```sql
+/* *** SQL-Query-NDX-CH02-02 *** */ 
+
+SELECT
+	AVG(ChangeClose) AS AverageChange,
+	MAX(ChangeClose) AS MaxGain,
+	MIN(ChangeClose) AS MaxLoss  
+FROM NDX;
+```
+
+此查询的结果是:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703203248656.png" alt="image-20200703203248656" style="zoom:80%;" />
+
+> Just out of curiosity, you decide to determine which days had the maximum and minimum change. To avoid having to key in the long string of decimal places that would be required to make an equal comparison, you use a greater than and less than comparison with values that are close:
+>
+> /* *** SQL-Query-NDX-CH02-03 \*\*\* */
+>
+> SELECT ChangeClose, TMonth, TDayOfMonth, TYear
+>
+> FROM NDX
+>
+> WHERE ChangeClose > 398 OR ChangeClose < -400;
+>
+> The result is:
+
+只是出于好奇，您决定先确定哪些天变化最大，哪些天变化最小。为了避免键的位数过长，需要进行相等的比较，您可以使用大于和小于比较的值相近:
+
+```sql
+/* *** SQL-Query-NDX-CH02-03 *** */
+
+SELECT ChangeClose, TMonth, TDayOfMonth, TYear
+FROM NDX
+WHERE ChangeClose > 398 OR ChangeClose < -400;
+```
+
+结果是:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703203428894.png" alt="image-20200703203428894" style="zoom:80%;" />
+
+> This result is surprising!Is there some reason that both the greatest loss and the greatest gain both occurred on January 3?You begin to wonder if your friend might have a promising idea(有希望的 想法).
+
+这个结果令人惊讶！是否有什么原因使得最大的损失和最大的收益都发生在1月3日？你开始怀疑你的朋友是否有一个很有前途的想法。
+
+### 3.6.2. 搜索每周每天的交易模式
+
+> Searching for Patterns in Trading by Day of Week
+>
+> You want to determine if there is a difference in the average trade by day of week. Accordingly, you create the SQL query:
+>
+> /* *** SQL-Query-NDX-CH02-04 \*\*\* */
+>
+> SELECT TDayOfWeek, AVG(ChangeClose) AS AvgChange
+>
+> FROM NDX
+>
+> GROUP BY TDayOfWeek;
+>
+> The result is:
+
+你想要确定在平均交易的每一天的一个星期内是否有一个差异。因此，创建 SQL 查询:
+
+```sql
+/* *** SQL-Query-NDX-CH02-04 *** */
+
+SELECT TDayOfWeek, AVG(ChangeClose) AS AvgChange  
+FROM NDX  
+GROUP BY TDayOfWeek;
+```
+
+结果是:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703204004781.png" alt="image-20200703204004781" style="zoom:80%;" />
+
+> Indeed, there does seem to be a difference according to the day of the week. The NASDAQ 100 appears to go down on Monday and Tuesday and then go up on the other three days of the week.Thursday, in particular, seems to be a good day to trade long.
+
+事实上，根据星期几的不同似乎确实有所不同。纳斯达克100指数似乎在周一和周二下跌，然后在一周的其他三天上涨。特别是周四，似乎是做多的好日子。
+
+> But, you begin to wonder, is this pattern true for each year? To answer that question, you use the query:
+>
+> /* *** SQL-Query-NDX-CH02-05 \*\*\* */
+>
+> SELECT TDayOfWeek, TYear, AVG(ChangeClose) AS AvgChange
+>
+> FROM NDX
+>
+> GROUP BY TDayOfWeek, TYear
+>
+> ORDER BY TDayOfWeek, TYear DESC;
+>
+> Because there are 20 years of data, this query results in 100 rows, of which the first 12 are shown in the following results:
+
+但是，你开始怀疑，这种模式是否适用于每一年? 为了回答这个问题，你可以使用下面的查询:
+
+```sql
+/* *** SQL-Query-NDX-CH02-05 *** */
+
+SELECT TDayOfWeek, TYear, AVG(ChangeClose) AS AvgChange  
+FROM NDX  
+GROUP BY TDayOfWeek, TYear  
+ORDER BY TDayOfWeek, TYear DESC;
+```
+
+因为有20年的数据，这个查询结果有100行，其中前12行显示在以下结果中:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703204359811.png" alt="image-20200703204359811" style="zoom:80%;" />
+
+> To simplify your analysis, you decide to restrict the number of rows to the most recent 5 years (2000–2004):
+>
+> /* *** SQL-Query-NDX-CH02-06 \*\*\* */
+>
+> SELECT TDayOfWeek, TYear, AVG(ChangeClose) AS AvgChange
+>
+> FROM NDX
+>
+> WHERE TYear > '1999'
+>
+> GROUP BY TDayOfWeek, TYear
+>
+> ORDER BY TDayOfWeek, TYear DESC;
+>
+> Partial results from this query are as follows:
+
+为了简化分析，您决定将行数限制为最近的5年(2000-2004) :
+
+```sql
+/* *** SQL-Query-NDX-CH02-06 *** */  
+
+SELECT TDayOfWeek, TYear, AVG(ChangeClose) AS AvgChange  
+FROM NDX  
+WHERE TYear > '1999'  
+GROUP BY TDayOfWeek, TYear  
+ORDER BY TDayOfWeek, TYear DESC; 
+```
+
+该查询的部分结果如下:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703204549936.png" alt="image-20200703204549936" style="zoom:67%;" />
+
+## 3.7. 多表查询 
+
+> So far we’ve worked with only one table. Now we will describing SQL statements for querying two or more tables. Suppose that you want to know the revenue generated by SKUs managed by the Water Sports department. We can compute revenue as the sum of ExtendedPrice, but we have a problem. ExtendedPrice is stored in the ORDER\_ITEM table, and Department is stored in the SKU\_DATA table. We need to process data in two tables, and all of the SQL presented so far operates on a single table at a time.
+>
+> SQL provides two different techniques for querying data from multiple tables: subqueries and joins.
+>
+> Although both work with multiple tables, they are used for slightly different purposes, as you will learn.
+
+到目前为止，我们只使用了一个表。现在，我们将查询两个或多个表。假设您想知道由水上运动部门管理的 sku 产生的收入。我们可以将收入计算为扩展价格之和，但是我们有一个问题。ExtendedPrice 存储在 order\_item 表中，而 Department 存储在 sku\_data 表中。我们需要在两个表中处理数据，目前提供的所有 SQL 一次处理一个表。
+
+SQL 为从多个表查询数据提供了两种不同的技术: 子查询和联接。
+
+虽然两者都可以使用多个表，但是它们的用途略有不同，您将了解到这一点。
+
+### 3.7.1. 使用子查询查询多个表
+
+> Querying Multiple Tables with Subqueries
+>
+> How can we obtain the sum of ExtendedPrice for items managed by the Water Sports department?
+>
+> If we somehow knew the SKU values for those items, we could use a WHERE clause with the IN keyword.
+>
+> For the data in Figure 2-5, the SKU values for items in Water Sports are 100100, 100200, 101100, and 101200. Knowing those values, we can obtain the sum of their ExtendedPrice with the following SQL query:
+>
+> /* *** SQL-Query-CH02-46 \*\*\* */
+>
+> SELECT SUM(ExtendedPrice) AS Revenue
+>
+> FROM ORDER\_ITEM
+>
+> WHERE SKU IN (100100, 100200, 101100, 101200);
+>
+> The result is:
+
+如何获得水上活动部门管理的项目的扩展价格总和？如果我们以某种方式知道这些项的 SKU 值，我们可以使用带有 IN 关键字的 WHERE 子句。对于图2-5中的数据，水上运动项目的 SKU 值分别为100100、100200、101100和101200。了解了这些值，我们可以使用以下 SQL 查询获得它们的 ExtendedPrice 之和:
+
+```sql
+/* *** SQL-Query-CH02-46 *** */  
+
+SELECT SUM(ExtendedPrice) AS Revenue  
+FROM ORDER_ITEM  
+WHERE SKU IN (100100, 100200, 101100, 101200);
+```
+
+结果是:
+
+![image-20200703205246367](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703205246367.png)
+
+> But, in general, we do not know the necessary SKU values ahead of time. However, we do have a way to obtain them from an SQL query on the data in the SKU\_DATA table.
+>
+> To obtain the SKU values for the Water Sports department, we use the SQL statement:
+>
+> /* *** SQL-Query-CH02-47 \*\*\* */
+>
+> SELECT SKU FROM SKU\_DATA
+>
+> WHERE Department='Water Sports'
+>
+> The result of this SQL statement is:
+
+但是，一般来说，我们并不提前知道必要的 SKU 值。但是，我们确实有一种方法可以从 SKU\_data 表中的数据的 SQL 查询中获得它们。
+
+为了获得水上运动部门的 SKU 值，我们使用 SQL 语句:
+
+```sql
+/* *** SQL-Query-CH02-47 *** */  
+
+SELECT SKU FROM SKU_DATA  
+WHERE Department='Water Sports'
+```
+
+这个 SQL 语句的结果是:
+
+![image-20200703205437788](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703205437788.png)
+
+> which is, indeed, the desired list of SKU values.
+>
+> Now we need only combine the last two SQL statements to obtain the result we want. We replace the list of values in the WHERE clause of the first SQL query with the second SQL statement as follows:
+>
+> /* *** SQL-Query-CH02-48 \*\*\* */
+>
+> SELECT SUM(ExtendedPrice) AS Revenue
+>
+> FROM ORDER\_ITEM
+>
+> WHERE SKU IN (
+>
+> ​	SELECT SKU FROM SKU\_DATA
+>
+> ​	WHERE Department='Water Sports'
+>
+> );
+>
+> The result of the query is:
+
+实际上，这是 SKU 值的理想列表。
+
+现在我们只需要结合最后两个 SQL 语句就可以得到我们想要的结果。我们将第一个 SQL 查询的 WHERE 子句中的值列表替换为第二个 SQL 语句，如下:
+
+```sql
+/* *** SQL-Query-CH02-48 *** */  
+
+SELECT SUM(ExtendedPrice) AS Revenue  
+FROM ORDER_ITEM  
+WHERE SKU IN (
+​	SELECT SKU FROM SKU_DATA
+​	WHERE Department='Water Sports' 
+);
+```
+
+查询的结果是:
+
+![image-20200703205719701](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703205719701.png)
+
+> which is the same result we obtained before when we knew which values of SKU to use. In the preceding SQL query, the second SELECT statement, the one enclosed in parentheses, is called a subquery. We can use multiple subqueries to process three or even more tables. For example, suppose we want to know the names of the buyers who manage any product purchased in January 2013. First, note that Buyer data is stored in the SKU\_DATA table and OrderMonth and OrderYear data are stored in the RETAIL\_ORDER table.
+>
+> Now, we can use an SQL query with two subqueries to obtain the desired data as follows:
+>
+> /* *** SQL-Query-CH02-49 \*\*\* */
+>
+> SELECT Buyer FROM SKU\_DATA
+>
+> WHERE SKU IN (
+>
+> ​	SELECT SKU FROM ORDER\_ITEM
+>
+> ​	WHERE OrderNumber IN (
+>
+> ​		SELECT OrderNumber FROM RETAIL\_ORDER
+>
+> ​		WHERE OrderMonth='January' AND OrderYear=2013
+>
+> ​	)
+>
+> );
+>
+> The result of this statement is:
+
+这和我们之前知道使用哪个 SKU 值时得到的结果是一样的。在前面的 SQL 查询中，括在括号中的第二个 SELECT 语句称为子查询。我们可以使用多个子查询来处理三个甚至更多的表。例如，假设我们想知道管理2013年1月购买的任何产品的买家的姓名。首先，请注意 Buyer 数据存储在 SKU\_data 表中，OrderMonth 和 OrderYear 数据存储在 RETAIL\_order 表中。
+
+现在，我们可以使用带有两个子查询的 SQL 查询来获取所需的数据，如下所示:
+
+```SQL
+/* *** SQL-Query-CH02-49 *** */  
+
+SELECT Buyer FROM SKU_DATA  
+WHERE SKU IN (
+	SELECT SKU FROM ORDER_ITEM
+	WHERE OrderNumber IN (
+		SELECT OrderNumber FROM RETAIL_ORDER
+		WHERE OrderMonth='January' AND OrderYear=2013
+	) 
+);
+```
+
+此语句的结果为：
+
+![image-20200703210114518](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703210114518.png)
+
+> To understand this statement, work from the bottom up. The bottom SELECT statement obtains the list of OrderNumbers of orders sold in January 2013.
+>
+> The middle SELECT statement obtains the SKU values for items sold in orders in January 2013.
+>
+> Finally, the top-level SELECT query obtains Buyer for all of the SKUs found in the middle SELECT statement. Any parts of the SQL language that you learned earlier in this chapter can be applied to a table generated by a subquery, regardless of how complicated the SQL looks.
+>
+> For example, we can apply the DISTINCT keyword on the results to eliminate duplicate rows. Or we can apply the GROUP BY and ORDER BY clauses as follows:
+>
+> /* *** SQL-Query-CH02-50 \*\*\* */
+>
+> SELECT Buyer, COUNT(*) AS NumberSold
+>
+> FROM SKU\_DATA
+>
+> WHERE SKU IN (
+>
+> ​	SELECT SKU FROM ORDER\_ITEM
+>
+> ​	WHERE OrderNumber IN (
+>
+> ​		SELECT OrderNumber FROM RETAIL\_ORDER
+>
+> ​		WHERE OrderMonth='January' AND OrderYear=2013
+>
+> ​	)
+>
+> )
+>
+> GROUP BY Buyer
+>
+> ORDER BY NumberSold DESC;
+>
+> The result is:
+
+要理解这句话，就要从下到上地执行语句。底部的 SELECT 语句获取2013年1月销售的订单的 OrderNumbers 列表。
+
+中间的 SELECT 语句获取2013年1月订单中销售的项目的 SKU 值。
+
+最后，顶级 SELECT 查询获得中间 SELECT 语句，中找到的所有 sku 的 Buyer。本章前面所学的 SQL 语言的任何部分都可以应用于子查询生成的表，无论 SQL 看起来有多复杂。
+
+例如，我们可以在结果中应用 DISTINCT 关键字来消除重复行。或者我们可以应用 GROUP BY 和 ORDER BY 语句如下:
+
+```sql
+/* *** SQL-Query-CH02-50 *** */ 
+
+SELECT Buyer, COUNT(*) AS NumberSold  
+FROM SKU_DATA  
+WHERE SKU IN (
+	SELECT SKU FROM ORDER_ITEM
+    WHERE OrderNumber IN (
+    	SELECT OrderNumber FROM RETAIL_ORDER
+        WHERE OrderMonth='January' AND OrderYear=2013
+    )
+)  
+GROUP BY Buyer  
+ORDER BY NumberSold DESC;
+```
+
+结果是：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/qq_pic_merged_1593782718860-1593782809769.jpg" alt="qq_pic_merged_1593782718860" style="zoom: 33%;" />
+
+### 3.7.2. 使用连接查询多个表
+
+> Querying Multiple Tables with Joins
+>
+> Subqueries are very powerful, but they do have a serious limitation. The selected data can only come from the top-level table. We cannot use a subquery to obtain data that arise from more than one table. To do so, we must use a join instead.
+>
+> The SQL join operator is used to combine two or more tables by concatenating (sticking together) the rows of one table with the rows of another table. Consider how we might combine the data in the RETAIL\_ORDER and ORDER\_ITEM tables. We can concatenate the rows of one table with the rows of the second table with the following SQL statement, where we simply list the names of the tables we want to combine:
+>
+> /* *** SQL-Query-CH02-51 \*\*\* */
+>
+> SELECT *
+>
+> FROM RETAIL\_ORDER, ORDER\_ITEM;
+>
+> This statement will just stick every row of one table together with every row of the second table. For the data in Figure 2-5, Because there are 3 rows of retail order and 7 rows of order items, there are 3 times 7, or 21, rows in this table. Notice that the retail order with OrderNumber 1000 has been combined with all seven of the rows in ORDER\_ITEM, the retail order with OrderNumber 2000 has been combined with all seven of the same rows, and, finally, the retail order with OrderNumber 3000 has again been combined with all seven rows.
+
+子查询非常强大，但是它们有一个严重的限制。选定的数据只能来自顶级表。我们不能使用子查询来获取来自多个表的数据。为此，我们必须使用连接来代替。SQL 连接操作符用于通过将一个表的行与另一个表的行连接(粘在一起)来组合两个或多个表。考虑如何组合 RETAIL\_ORDER 和 ORDER\_item 表中的数据。我们可以使用下面的 SQL 语句将一个表的行与第二个表的行连接起来，在这里我们只需列出我们想要组合的表的名称:
+
+```sql
+/* *** SQL-Query-CH02-51 *** */  
+
+SELECT *  
+FROM RETAIL_ORDER, ORDER_ITEM;
+```
+
+这个语句只是将一个表的每一行与第二个表的每一行粘在一起。对于图2-5中的数据，因为有3行零售订单和7行订单项，所以该表中有3乘以7，即21行。注意，带 OrderNumber 1000的零售订单已经与 ORDER\_item 中的所有七行合并，带 OrderNumber 2000的零售订单已经与所有相同的七行合并，最后，带 OrderNumber 3000的零售订单再次与所有七行合并。
+
+> This is illogical— What we need to do is to select only those rows for which the OrderNumber of RETAIL\_ORDER matches the OrderNumber in ORDER\_ITEM. This is easy to do; we simply add an SQL WHERE clause to the query:
+>
+> /* *** SQL-Query-CH02-52 \*\*\* */
+>
+> SELECT * FROM RETAIL\_ORDER, ORDER\_ITEM
+>
+> WHERE RETAIL\_ORDER.OrderNumber=ORDER\_ITEM.OrderNumber;
+
+这是不合逻辑的ーー我们需要做的是只选择那些 OrderNumber of RETAIL\_ORDER 与 OrderNumber in ORDER\_item 匹配的行。这很容易做到; 我们只需在查询中添加一个 SQL WHERE 子句:
+
+```sql
+/* *** SQL-Query-CH02-52 *** */
+
+SELECT * FROM RETAIL_ORDER, ORDER_ITEM  
+WHERE RETAIL_ORDER.OrderNumber=ORDER_ITEM.OrderNumber;
+```
+
+> This is technically correct, but it will be easier to read if we sort the results using an ORDER BY clause:
+>
+> /* *** SQL-Query-CH02-53 \*\*\* */
+>
+> SELECT * FROM RETAIL\_ORDER, ORDER\_ITEM
+>
+> WHERE RETAIL\_ORDER.OrderNumber=ORDER\_ITEM.OrderNumber
+>
+> ORDER BY RETAIL\_ORDER.OrderNumber, ORDER\_ITEM.SKU;
+>
+>  If you compare this result with the data in Figure 2-5, you will see that only the appropriate order items are associated with each retail order.
+>
+> You also can tell that this has been done by noticing that, in each row, the value of OrderNumber from RETAIL\_ORDER (the first column) equals the value of OrderNumber from ORDER\_ITEM (the seventh column). This was not true for our first result.
+
+这在技术上是正确的，但是如果我们使用 ORDER BY 子句对结果进行排序:
+
+```sql
+/* *** SQL-Query-CH02-53 *** */
+
+SELECT * FROM RETAIL_ORDER, ORDER_ITEM  
+WHERE RETAIL_ORDER.OrderNumber=ORDER_ITEM.OrderNumber  
+ORDER BY RETAIL_ORDER.OrderNumber, ORDER_ITEM.SKU;
+```
+
+如果将此结果与图2-5中的数据进行比较，您将看到只有适当的订单项与每个零售订单相关联。
+
+您还可以以下思路注意到这一点：在每一行中，RETAIL\_ORDER (第一列)中的 OrderNumber 的值等于 ORDER\_item (第七列)中的 OrderNumber 的值。这对我们的第一个结果来说并不正确。
+
+> You can think of the join operation working as follows:
+>
+> Start with the first row in RETAIL\_ORDER. Using the value of OrderNumber in this first row (1000 for the data in Figure 2-5), examine the rows in ORDER\_ITEM. When you find a row in ORDER\_ITEM where OrderNumber is also equal to 1000, join all the columns of the first row of RETAIL\_ORDER with the columns from the row you just found in ORDER\_ITEM. For the data in Figure 2-5, the first row of ORDER\_ITEM has OrderNumber equal to 1000, so you join the first row of RETAIL\_ORDER with the columns from the first row in ORDER\_ITEM to form the first row of the join.
+>
+> Now, still using the OrderNumber value of 1000, look for a second row in ORDER\_ITEM that has OrderNumber equal to 1000. For our data, the second row of ORDER\_ITEM has such a value. So, join the first row of RETAIL\_ORDER to the second row of ORDER\_ITEM to obtain the second row of the join, as follows:
+>
+> Continue in this way, looking for matches for the OrderNumber value of 1000. At this point, no more OrderNumber values of 1000 appear in the sample data, so now you move to the second row of RETAIL\_ORDER, obtain the new value of OrderNumber (2000), and begin searching for matches for it in the rows of ORDER\_ITEM. In this case, the third row has such a match, so you combine those rows with the previous result to obtain the new result: You continue until all rows of RETAIL\_ORDER have been examined
+
+正确的连接操作如下:
+
+从 RETAIL\_order 中的第一行开始。使用第一行中的 OrderNumber 值(图2-5中的数据为1000) ，检查 ORDER\_item 中的行。当在 ORDER\_item 中找到一行，其中 OrderNumber 也等于1000时，将 RETAIL\_ORDER 第一行的所有列与刚刚在 ORDER\_item 中找到的行中的列联接起来。对于图2-5中的数据，ORDER\_item 的第一行的 OrderNumber 等于1000，因此将 RETAIL\_ORDER 的第一行与 ORDER\_item 中第一行的列联接起来，形成联接的第一行。
+
+现在，仍然使用 OrderNumber 值1000，在 order\_item 中寻找 OrderNumber 等于1000的第二行。对于我们的数据，order\_item 的第二行有这样一个值。因此，将 RETAIL\_ORDER 的第一行连接到 ORDER\_item 的第二行，以获得连接的第二行，如下所示: 继续以这种方式查找 OrderNumber 值1000的匹配项。此时，样例数据中不再出现1000的 OrderNumber 值，因此现在移动到 RETAIL\_ORDER 的第二行，获得新的 OrderNumber (2000)值，并开始在 ORDER\_item 行中搜索匹配项。在这种情况下，第三行有这样一个匹配，因此您可以将这些行与以前的结果结合起来，以获得新的结果: 您将继续执行，直到检查了 RETAIL\_order 的所有行
+
+> Actually, that is the theoretical result. But remember that row order in an SQL query can be arbitrary, as is shown in the results to SQL-Query-CH02-52 above. To ensure that you get the above result, you need to add an ORDER BY clause to the query, as shown in SQLQuery-CH02-53 above.
+>
+> You may have noticed that we introduced a new variation in SQL statement syntax in the previous two queries, where the terms RETAIL\_ORDER.OrderNumber, ORDER\_ITEM.OrderNumber, and ORDER\_ITEM.SKU were used.
+>
+> The new syntax is simply TableName. ColumnName, and it is used to specify exactly which table each column is linked to. RETAIL\_ORDER.OrderNumber simply means the OrderNumber from the RETAIL\_ORDER table. Similarly, ORDER\_ITEM.OrderNumber refers to the OrderNumber in the ORDER\_ITEM table, and ORDER\_ITEM.SKU refers to the SKU column in the ORDER\_ITEM table. You can always qualify a column name with the name of its table like this. We have not done so previously because we were working with only one table, but the SQL statements shown previously would have worked just as well with syntax like SKU\_DATA.Buyer rather than just Buyer or ORDER\_ITEM.Price instead of Price.
+>
+> The table that is formed by concatenating two tables is called a join. The process of creating such a table is called joining the two tables, and the associated operation is called a join operation. When the tables are joined using an equal condition (like the one on OrderNumber), this join is called an equijoin. When people say join, 99.99999 percent of the time they mean an equijoin. This type of join is also referred to as an inner join.
+>
+> We can use a join to obtain data from two or more tables. For example, using the data in Figure 2-5, suppose we want to show the name of the Buyer and the ExtendedPrice of the sales of all items managed by that Buyer. The following SQL query will obtain that result:
+>
+> /* *** SQL-Query-CH02-54 \*\*\* */
+>
+> SELECT Buyer, ExtendedPrice FROM SKU\_DATA, ORDER\_ITEM
+>
+> WHERE SKU\_DATA.SKU=ORDER\_ITEM.SKU;
+
+实际上，这就是理论上的结果。但请记住，SQL 查询中的行顺序可以是任意的，正如上面对 SQL query-ch02-52的结果所示。为了确保得到上面的结果，需要向查询添加一个 ORDER BY 子句，如上面的 SQLQuery-CH02-53所示。
+
+您可能已经注意到，我们在前两个查询中引入了 SQL 语句语法的新变体，其中使用了术语 RETAIL\_ORDER.OrderNumber，ORDER\_ITEM.OrderNumber 和 ORDER\_ITEM.SKU。
+
+新语法只是简单的 TableName.ColumnName，它用于指定每个列到底链接到哪个表。零售订单。OrderNumber 只是指 RETAIL\_ORDER 表中的 OrderNumber。类似地，ORDER\_item。OrderNumber 引用 ORDER_ITEM 表中的 OrderNumber 和 order\_item。SKU 指 ORDER\_item 表中的 SKU 列。您总是可以使用列名的表名来限定列名，如下所示。我们之前没有这样做，因为我们只处理一个表，但是前面显示的 SQL 语句对于像 SKU data 这样的语法也可以很好地工作。买方，而不只是买方或订单项目。价格而不是价格。
+
+将两个表连接起来形成的表称为连接。创建这样一个表的过程称为连接两个表，关联的操作称为连接操作。当使用相等的条件(如 OrderNumber 上的条件)进行表连接时，这种连接称为等连接。当人们说 join 时，99.99999% 的时间他们指的是 equijoin。这种类型的联接也称为内部联接。
+我们可以使用联接从两个或多个表中获取数据。例如，使用图2-5中的数据，假设我们希望显示 Buyer 的名称和该 Buyer 管理的所有项目的销售的 ExtendedPrice。下面的 SQL 查询将获得该结果:
+
+```sql
+/* *** SQL-Query-CH02-54 *** */
+
+SELECT Buyer, ExtendedPrice FROM SKU_DATA, ORDER_ITEM  
+WHERE SKU_DATA.SKU=ORDER_ITEM.SKU;
+```
+
+> Again, the result of every SQL statement is just a single table, so we can apply any of the SQL syntax you learned for a single table to this result.
+>
+> For example, we can use the GROUP BY and ORDER BY clauses to obtain the total revenue associated with each buyer, as shown in the following SQL query:
+>
+> /* *** SQL-Query-CH02-55 \*\*\* */
+>
+> SELECT Buyer, SUM(ExtendedPrice) AS BuyerRevenue
+>
+> FROM SKU\_DATA, ORDER\_ITEM
+>
+> WHERE SKU\_DATA.SKU=ORDER\_ITEM.SKU
+>
+> GROUP BY Buyer
+>
+> ORDER BY BuyerRevenue DESC;
+
+同样，每个 SQL 语句的结果只是一个表，因此我们可以将您学习的针对单个表的任何 SQL 语法应用于此结果。例如，我们可以使用 GROUP BY 和 ORDER BY 子句来获得与每个买家相关的总收入，如下面的 SQL 查询所示:
+
+```sql
+/* *** SQL-Query-CH02-55 *** */
+
+SELECT Buyer, SUM(ExtendedPrice) AS BuyerRevenue  
+FROM SKU_DATA, ORDER_ITEM  
+WHERE SKU_DATA.SKU=ORDER_ITEM.SKU  
+GROUP BY Buyer  
+ORDER BY BuyerRevenue DESC;
+```
+
+> We can extend this syntax to join three or more tables.
+>
+> For example, suppose we want to obtain the Buyer and the ExtendedPrice and OrderMonth for all purchases of items managed by each buyer. To retrieve that data, we need to join all three tables together, as shown in this SQL query:
+>
+> /* *** SQL-Query-CH02-56 \*\*\* */
+>
+> SELECT Buyer, ExtendedPrice, OrderMonth
+>
+> FROM SKU\_DATA, ORDER\_ITEM, RETAIL\_ORDER
+>
+> WHERE
+>
+> ​	SKU\_DATA.SKU=ORDER\_ITEM.SKU
+>
+> ​	AND ORDER\_ITEM.OrderNumber=RETAIL\_ORDER.OrderNumber;
+
+我们可以扩展这个语法来连接三个或更多的表。
+
+例如，假设我们希望获得 Buyer 和每个买家管理的所有项目的所有采购的 ExtendedPrice 和 OrderMonth。要检索这些数据，我们需要将所有三个表连接在一起，如下面的 SQL 查询所示:
+
+```sql
+/* *** SQL-Query-CH02-56 *** */  
+
+SELECT Buyer, ExtendedPrice, OrderMonth  
+FROM SKU_DATA, ORDER_ITEM, RETAIL_ORDER  
+WHERE  
+	SKU_DATA.SKU=ORDER_ITEM.SKU
+	AND ORDER_ITEM.OrderNumber=RETAIL_ORDER.OrderNumber;
+```
+
+> We can improve this result by sorting with the ORDER BY clause and grouping by Buyer with the GROUP BY clause:
+>
+> /* *** SQL-Query-CH02-57 \*\*\* */
+>
+> SELECT Buyer, OrderMonth, SUM(ExtendedPrice) AS BuyerRevenue
+>
+> FROM SKU\_DATA, ORDER\_ITEM, RETAIL\_ORDER
+>
+> WHERE
+>
+> ​	SKU\_DATA.SKU=ORDER\_ITEM.SKU
+>
+> ​	AND ORDER\_ITEM.OrderNumber=RETAIL\_ORDER.OrderNumber
+>
+> GROUP BY Buyer, OrderMonth
+>
+> ORDER BY Buyer, OrderMonth DESC;
+
+我们可以通过使用 ORDER BY 子句进行排序，并通过 Buyer 使用 GROUP BY 子句进行分组来改进这个结果:
+
+```sql
+/* *** SQL-Query-CH02-57 *** */
+
+SELECT Buyer, OrderMonth, SUM(ExtendedPrice) AS BuyerRevenue  
+FROM SKU_DATA, ORDER_ITEM, RETAIL_ORDER  
+WHERE
+	SKU_DATA.SKU=ORDER_ITEM.SKU
+	AND ORDER_ITEM.OrderNumber=RETAIL_ORDER.OrderNumber  
+GROUP BY Buyer, OrderMonth  
+ORDER BY Buyer, OrderMonth DESC;
+```
+
+### 3.7.3. 比较子查询和联接
+
+> Comparing Subqueries and Joins
+>
+> Subqueries and joins both process multiple tables, but they differ slightly. As mentioned earlier, a subquery can only be used to retrieve data from the top table. A join can be used to obtain data from any number of tables. Thus, a join can do everything a subquery can do, and more. So why learn subqueries?
+>
+> For one, if you just need data from a single table, you might use a subquery because it is easier to write and understand. This is especially true when processing multiple tables.
+
+子查询和联接两者都处理多个表，但略有不同。如前所述，子查询只能用于从顶表检索数据。可以使用联接从任意数量的表中获取数据。因此，连接可以做子查询可以做的一切事情，甚至更多。那么为什么要学习子查询呢？
+
+首先，如果只需要单个表中的数据，可以使用子查询，因为它更容易编写和理解。在处理多个表时尤其如此。
+
+### 3.7.4. 关于 SQL JOIN 的语法
+
+> The SQL JOIN ON Syntax
+>
+> So far, we have learned to code SQL joins using the following syntax:
+>
+> /* *** SQL-Query-CH02-53 \*\*\* */
+>
+> SELECT * FROM RETAIL\_ORDER, ORDER\_ITEM
+>
+> WHERE RETAIL\_ORDER.OrderNumber=ORDER\_ITEM.OrderNumber
+>
+> ORDER BY RETAIL\_ORDER.OrderNumber, ORDER\_ITEM.SKU;
+>
+> However, there is another way to code this join. In this second case, we use the SQL JOIN ON syntax:
+>
+> /* *** SQL-Query-CH02-58 \*\*\* */
+>
+> SELECT * FROM RETAIL\_ORDER JOIN ORDER\_ITEM
+>
+> ON RETAIL\_ORDER.OrderNumber=ORDER\_ITEM.OrderNumber
+>
+> ORDER BY RETAIL\_ORDER.OrderNumber, ORDER\_ITEM.SKU;
+>
+> The result is:
+
+到目前为止，我们已经学会了使用以下语法编写 SQL 连接:
+
+```sql
+/* *** SQL-Query-CH02-53 *** */
+
+SELECT * FROM RETAIL_ORDER, ORDER_ITEM  
+WHERE RETAIL_ORDER.OrderNumber=ORDER_ITEM.OrderNumber  
+ORDER BY RETAIL_ORDER.OrderNumber, ORDER_ITEM.SKU;
+```
+
+然而，还有另外一种方法来编写这个连接，在第二种情况下，我们使用 SQL JOIN ON 语法:
+
+```sql
+/* *** SQL-Query-CH02-58 *** */
+
+SELECT * FROM RETAIL_ORDER JOIN ORDER_ITEM  
+ON RETAIL_ORDER.OrderNumber=ORDER_ITEM.OrderNumber  
+ORDER BY RETAIL_ORDER.OrderNumber, ORDER_ITEM.SKU;
+```
+
+结果是:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703215427907.png" alt="image-20200703215427907" style="zoom: 67%;" />
+
+> These two join syntaxes are equivalent, and it is a matter of personal preference which one you use.
+>
+> Some people think that the SQL JOIN ON syntax is easier to understand than the first. Note that when using the SQL JOIN ON syntax:
+>
+> - The SQL JOIN keyword is placed between the table names in the SQL FROM clause, where it replaces the comma that previously separated the two table names.
+> - The SQL ON keyword now leads into an SQL ON clause, which includes the statement of matching key values that was previously in an SQL WHERE clause.
+>
+> Note that the SQL ON clause does not replace the SQL WHERE clause, which can still be used to determine which rows will be displayed.
+>
+> For example, we can use the SQL WHERE clause to limit the records shown to those for the OrderYear of 2012:
+>
+> /* *** SQL-Query-CH02-59 \*\*\* */
+>
+> SELECT *
+>
+> FROM RETAIL\_ORDER JOIN ORDER\_ITEM
+>
+> ON RETAIL\_ORDER.OrderNumber=ORDER\_ITEM.OrderNumber
+>
+> WHERE OrderYear = '2012'
+>
+> ORDER BY RETAIL\_ORDER.OrderNumber, ORDER\_ITEM.SKU;
+>
+> The result is:
+
+这两种连接语法是等价的，使用哪一种是个人喜好的问题。
+有些人认为 SQL JOIN ON 语法比第一种语法更容易理解。注意，在使用 SQL JOIN ON 语法时:
+
+- SQL JOIN 关键字位于 SQL FROM 子句中的表名之间，它替换了之前分隔两个表名的逗号。
+- SQL ON 关键字现在引入一个 SQL ON 子句，其中包括匹配以前在 SQL WHERE 子句中的键值的语句。
+
+请注意，SQL ON 子句不会替换 SQL WHERE 子句，该子句仍然可用于确定将显示行的条件。
+
+例如，我们可以使用 SQL WHERE 子句将显示的记录限制为2012年的 OrderYear:
+
+```sql
+/* *** SQL-Query-CH02-59 *** */
+
+SELECT *  
+FROM RETAIL_ORDER JOIN ORDER_ITEM  
+ON RETAIL_ORDER.OrderNumber=ORDER_ITEM.OrderNumber  
+WHERE OrderYear = '2012'  
+ORDER BY RETAIL_ORDER.OrderNumber, ORDER_ITEM.SKU;
+```
+
+结果是:
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703215918478.png" alt="image-20200703215918478" style="zoom:67%;" />
+
+> You can use the SQL JOIN ON syntax as an alternate format for joins of three or more tables as well. If, for example, you want to obtain a list of the order data, order line data and SKU data, you can use the following SQL statement:
+>
+> /* *** SQL-Query-CH02-60 \*\*\* */
+>
+> SELECT
+>
+> ​	RETAIL\_ORDER.OrderNumber,
+>
+> ​	StoreNumber, OrderYear, ORDER\_ITEM.SKU,
+>
+> ​	SKU\_Description, Department
+>
+> FROM RETAIL\_ORDER
+>
+> JOIN ORDER\_ITEM
+>
+> ​	ON RETAIL\_ORDER.OrderNumber=ORDER\_ITEM.OrderNumber
+>
+> JOIN SKU\_DATA
+>
+> ​	ON ORDER\_ITEM.SKU=SKU\_DATA.SKU
+>
+> WHERE OrderYear = '2012'
+>
+> ORDER BY RETAIL\_ORDER.OrderNumber, ORDER\_ITEM.SKU;
+>
+> The result is:
+
+您还可以使用 SQL JOIN ON 语法作为三个或更多表联接的替代格式。例如，如果您想获得订单数据、订单行数据和 SKU 数据的列表，可以使用以下 SQL 语句:
+
+```sql
+/* *** SQL-Query-CH02-60 *** */
+
+SELECT
+	RETAIL_ORDER.OrderNumber,
+	StoreNumber, OrderYear, ORDER_ITEM.SKU,
+	SKU_Description, Department
+FROM RETAIL_ORDER
+JOIN ORDER_ITEM
+	ON RETAIL_ORDER.OrderNumber=ORDER_ITEM.OrderNumber
+JOIN SKU_DATA
+	ON ORDER_ITEM.SKU=SKU_DATA.SKU
+WHERE OrderYear = '2012'
+ORDER BY RETAIL_ORDER.OrderNumber, ORDER_ITEM.SKU;
+```
+
+结果是:
+
+
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703220255311.png" alt="image-20200703220255311" style="zoom:80%;" />
+
+> You can make that statement even simpler by using the SQL AS keyword to create table aliases as well as for naming output columns:
+>
+> /* *** SQL-Query-CH02-61 \*\*\* */
+>
+> SELECT
+>
+> RO.OrderNumber, StoreNumber, OrderYear, OI.SKU, SKU\_Description, Department
+>
+> FROM RETAIL\_ORDER AS RO JOIN ORDER\_ITEM AS OI
+>
+> ​	ON RO.OrderNumber=OI.OrderNumber
+>
+> JOIN SKU\_DATA AS SD
+>
+> ​	ON OI.SKU=SD.SKU
+>
+> WHERE OrderYear = '2012'
+>
+> ORDER BY RO.OrderNumber, OI.SKU;
+>
+> When a query produces a result table with many rows, we may want to limit the number of rows that we see. We can do this using the SQL TOP {NumberOfRows} property(属性), which produces our final SQL query statement:
+>
+> /* *** SQL-Query-CH02-62 \*\*\* */
+>
+> SELECT TOP 3 RO.OrderNumber, StoreNumber, OrderYear, OI.SKU, SKU\_Description, Department
+>
+> FROM RETAIL\_ORDER AS RO
+>
+> JOIN ORDER\_ITEM AS OI
+>
+> ​	ON RO.OrderNumber=OI.OrderNumber
+>
+> JOIN SKU\_DATA AS SD
+>
+> ​	ON OI.SKU=SD.SKU
+>
+> WHERE OrderYear = '2012'
+>
+> ORDER BY RO.OrderNumber, OI.SKU;
+>
+> The result of this statement is:
+
+通过使用 SQL AS 关键字创建表别名以及命名输出列，可以使语句更加简单:
+
+```sql
+/* *** SQL-Query-CH02-61 *** */
+
+SELECT   RO.OrderNumber, StoreNumber, OrderYear, OI.SKU, SKU_Description, Department  
+FROM RETAIL_ORDER AS RO 
+JOIN ORDER_ITEM AS OI
+	ON RO.OrderNumber=OI.OrderNumber
+JOIN SKU_DATA AS SD
+	ON OI.SKU=SD.SKU  
+WHERE OrderYear = '2012'  
+ORDER BY RO.OrderNumber, OI.SKU;
+```
+
+当查询生成包含许多行的结果表时，我们可能希望限制所看到的行数。我们可以使用 SQL TOP { NumberOfRows }属性来实现这一点，它生成我们最后的 SQL 查询语句:
+
+```sql
+/* *** SQL-Query-CH02-62 *** */
+
+SELECT TOP 3
+	RO.OrderNumber, StoreNumber, OrderYear,
+	OI.SKU, SKU_Description, Department  
+FROM RETAIL_ORDER AS RO  
+JOIN ORDER_ITEM AS OI
+	ON RO.OrderNumber=OI.OrderNumber
+JOIN SKU_DATA AS SD
+	ON OI.SKU=SD.SKU
+WHERE OrderYear = '2012'
+ORDER BY RO.OrderNumber, OI.SKU;
+```
+
+此语句的结果为：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703220839637.png" alt="image-20200703220839637" style="zoom:80%;" />
+
+### 3.7.5. 外连接
+
+> Suppose that we would like to see how the sales at Cape Codd Outdoor Sports are related to the buyers—are the buyers acquiring products that sell? We can start with the SQL-Query-CH02-63:
+>
+> /* *** SQL-Query-CH02-63 \*\*\* */
+>
+> SELECT
+>
+> ​	OI.OrderNumber, Quantity, SD.SKU,
+>
+> ​	SKU\_Description, Department, Buyer
+>
+> FROM ORDER\_ITEM AS OI JOIN SKU\_DATA AS SD
+>
+> ON OI.SKU=SD.SKU
+>
+> ORDER BY OI.OrderNumber, SD.SKU;
+>
+> This produces the result set:
+
+假设我们想了解科德角户外运动的销售与购买者之间的关系，即购买产品的购买者是购买者吗？ 我们可以从SQL-Query-CH02-63开始：
+
+```sql
+/* *** SQL-Query-CH02-63 *** */
+
+SELECT
+	OI.OrderNumber, Quantity, SD.SKU,
+	SKU_Description, Department, Buyer
+FROM ORDER_ITEM AS OI JOIN SKU_DATA AS SD
+ON OI.SKU=SD.SKU
+ORDER BY OI.OrderNumber, SD.SKU;
+```
+
+这将产生结果集：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703222409000.png" alt="image-20200703222409000" style="zoom:67%;" />
+
+> This result is correct, but it shows the names of only five of the eight SKU items in the SKU\_ITEM table. What happened to the other three SKU items and their associated buyers?
+
+此结果是正确的，但是它仅显示SKU\_ITEM表中八个SKU项中五个的名称。 其他三个SKU项目及其关联的买家发生了什么？
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703222441759.png" alt="image-20200703222441759" style="zoom: 80%;" />
+
+> Look closely at the data in Figure 2-5, and you will see that the three SKU items and their buyers that do not appear in the results (SKU 100100 with buyer Pete Hansen, SKU 301000 with buyer Jerry Martin, and SKU 302000 with buyer Jerry Martin) are SKU items that have never been sold to as part of a retail order.
+
+仔细查看图2-5中的数据，您会看到三个SKU项目及其买方未出现在结果中（买方Pete Hansen的SKU 100100，买方Jerry Martin的SKU 301000，以及买方Jerry Martin 的 SKU 302000 ）是从未零售订单中售出的SKU产品。
+
+> Therefore, the primary key values of these three SKU items do not match any foreign key value in the ORDER\_ITEM, and because they have no match, they do not appear in the result of this join statement.
+>
+> What can we do about this case when we are creating an SQL query?
+>
+> onsider the STUDENT and LOCKER tables in Figure 2-23(a), where we have drawn two tables to highlight the relationships between the rows in each table.
+
+因此，这三个SKU项的主键值与ORDER\_ITEM中的任何外键值都不匹配，并且由于它们不匹配，因此它们不会出现在此join语句的结果中。
+
+创建SQL查询时，该情况该怎么办?
+
+考虑图2-23（a）中的STUDENT和LOCKER表，其中我们绘制了两个表以突出显示每个表中的行之间的关系。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703222610694.png" alt="image-20200703222610694" style="zoom:67%;" />
+
+> The STUDENT table shows the StudentPK (student number) and StudentName of students at a university. The LOCKER(更衣柜) table shows the LockerPK (locker number 更衣柜号码) and LockerType ( full size or half size) of lockers at the recreation center on campus. If we run a standard join between these two tables as shown in SQL-QUERY-CH02-64, we get a table of students who have lockers assigned to them together with their assigned locker. This result is shown in Figure 2-23(b).
+>
+> /* *** EXAMPLE CODE – DO NOT RUN \*\*\* */
+>
+> /* *** SQL-Query-CH02-64 \*\*\* */
+>
+> SELECT StudentPK, StudentName, LockerFK, LockerPK, LockerType
+>
+> FROM STUDENT, LOCKER
+>
+> WHERE STUDENT.LockerFK = LOCKER.LockerPK
+>
+> ORDER BY StudentPK;
+
+学生表显示大学的学生的StudentPK（学生编号）和StudentName。  LOCKER（更衣柜）表显示校园娱乐中心内的LockerPK（更衣室号码更衣柜号码）和LockerType（全尺寸或半尺寸）储物柜。 如果我们在这两个表之间运行标准联接（如SQL-QUERY-CH02-64所示），则会得到一个学生表，该表将分配给他们的储物柜以及分配给他们的储物柜。 结果如图2-23（b）所示。
+
+```sql
+/* *** EXAMPLE CODE – DO NOT RUN *** */
+/* *** SQL-Query-CH02-64 *** */
+
+SELECT StudentPK, StudentName, LockerFK, LockerPK, LockerType 
+FROM STUDENT, LOCKER  
+WHERE STUDENT.LockerFK = LOCKER.LockerPK  
+ORDER BY StudentPK;
+```
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703222822726.png" alt="image-20200703222822726" style="zoom:67%;" />
+
+> The type of SQL join is known as an SQL inner join, and we can also run the query using SQL JOIN ON syntax using the SQL INNER JOIN phrase. This is shown in SQL QUERY-CH02-65, which produces exactly the same result shown in Figure 2-23(b).
+>
+> /* *** EXAMPLE CODE – DO NOT RUN \*\*\* */
+>
+> /* *** SQL-Query-CH02-65 \*\*\* */
+>
+> SELECT StudentPK, StudentName, LockerFK, LockerPK, LockerType
+>
+> FROM STUDENT INNER JOIN LOCKER
+>
+> ON STUDENT.LockerFK = LOCKER.LockerPK
+>
+> ORDER BY StudentPK;
+>
+> Now, suppose we want to show all the rows already in the join, but also want to show any rows (students) in the STUDENT table that are not included in the inner join. This means that we want to see all students, including those who have not been assigned to a locker.
+>
+> To do this, we use the SQL outer join, which is designed for this very purpose.
+>
+> And because the table we want is listed first in the query and is thus on the left side of the table listing, we specifically(具体) use an SQL left outer join, which uses the SQL LEFT JOIN syntax. This is shown in SQL QUERY-CH02-66, which produces the results shown in Figure 2-23(c).
+>
+> /* *** EXAMPLE CODE – DO NOT RUN \*\*\* */
+>
+> /* *** SQL-Query-CH02-66 \*\*\* */
+>
+> SELECT StudentPK, StudentName, LockerFK, LockerPK, LockerType
+>
+> FROM STUDENT LEFT OUTER JOIN LOCKER
+>
+> ON STUDENT.LockerFK = LOCKER.LockerPK
+>
+> ORDER BY StudentPK;
+
+这种SQL连接的类型称为SQL内部连接，我们还可以使用SQL INNER JOIN短语使用SQL JOIN ON语法运行查询。 这在SQL QUERY-CH02-65中显示，其结果与图2-23（b）完全相同。
+
+```sql
+/* *** EXAMPLE CODE – DO NOT RUN *** */
+/* *** SQL-Query-CH02-65 \*\*\* */ 
+
+SELECT StudentPK, StudentName, LockerFK, LockerPK, LockerType  
+FROM STUDENT INNER JOIN LOCKER
+ON STUDENT.LockerFK = LOCKER.LockerPK
+ORDER BY StudentPK;
+```
+
+现在，假设我们要显示联接中已经存在的所有行，而且还希望显示STUDENT表中未包含在内部联接中的任何行（学生）。 这意味着我们希望看到所有学生（包括尚未分配到储物柜的学生。
+
+为此，我们使用了SQL外连接，它是为此目的而设计的。
+
+并且由于我们想要的表在查询中首先列出，因此位于表列表的左侧，因此我们专门使用SQL左外部联接，该联接使用SQL LEFT JOIN语法。 这在SQL QUERY-CH02-66中显示，其结果如图2-23（c）所示。
+
+```sql
+/* *** EXAMPLE CODE – DO NOT RUN *** */
+/* *** SQL-Query-CH02-66 *** */
+
+SELECT StudentPK, StudentName, LockerFK, LockerPK, LockerType  
+FROM STUDENT LEFT OUTER JOIN LOCKER  
+ON STUDENT.LockerFK = LOCKER.LockerPK  
+ORDER BY StudentPK;
+```
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703223148733.png" alt="image-20200703223148733" style="zoom:80%;" />
+
+> In the results shown in Figure 2-23(c), note that all the rows from the STUDENT table are now included and that rows that have no match in the LOCKER table are shown with NULL values.
+>
+> Looking at the output, we can see that the students Adams and Buchanan have no linked rows in the LOCKER table. This means that Adams and Buchanan have not been assigned a locker in the recreation center.
+>
+> If we want to show all the rows already in the join, but now also any rows in the LOCKER table that are not included in the inner join, we specifically use an SQL right outer join, which uses the SQL RIGHT JOIN syntax because the table we want is listed second in the query and is thus on the right side of the table listing. This means that we want to see all lockers, including those that have not been assigned to a student. This is shown in SQL QUERY-CH02-67, which produces the results shown in Figure 2-23(d).
+>
+> /* *** EXAMPLE CODE – DO NOT RUN \*\*\* */
+>
+> /* *** SQL-Query-CH02-67 \*\*\* */
+>
+> SELECT StudentPK, StudentName, LockerFK, LockerPK, LockerType
+>
+> FROM STUDENT RIGHT OUTER JOIN LOCKER
+>
+> ON STUDENT.LockerFK
+>
+> ORDER BY StudentPK;
+
+在图2-23（c）所示的结果中，请注意，现在包括了STUDENT表中的所有行，并且LOCKER表中不匹配的行显示为NULL值。
+
+查看输出，我们可以看到学生Adams和Buchanan在LOCKER表中没有链接的行。 这意味着，Adams 和 Buchanan 尚未在娱乐中心分配储物柜。
+
+如果我们要显示联接中已经存在的所有行，但是现在也要显示内部联接中不包括的LOCKER表中的任何行，则我们专门使用SQL右外部联接，该联接使用SQL RIGHT JOIN语法，因为该表 我们想要的内容在查询中排第二，因此位于表列表的右侧。 这意味着我们要查看所有储物柜，包括尚未分配给学生的储物柜。 这在SQL QUERY-CH02-67中显示，其结果如图2-23（d）所示。
+
+```sql
+/* *** EXAMPLE CODE – DO NOT RUN *** */
+/* *** SQL-Query-CH02-67 *** */ 
+
+SELECT StudentPK, StudentName, LockerFK, LockerPK, LockerType 
+FROM STUDENT RIGHT OUTER JOIN LOCKER
+ON STUDENT.LockerFK 
+ORDER BY StudentPK;
+```
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703223456030.png" alt="image-20200703223456030" style="zoom:67%;" />
+
+> In the results shown in Figure 2-23(d), note that all the rows from the LOCKER table are now included and that rows that have no match in the STUDENT table are shown with NULL values.
+>
+> Looking at the output, we can see that the lockers numbered 70, 80 and 90 have no linked rows in the STUDENT table. This means that these lockers are currently unassigned to a student, and available for use. In terms of our question about SKUs and buyers, this means that we can use an SQL OUTER JOIN and specifically an SQL RIGHT OUTER JOIN to obtain the desired results:
+>
+> /* *** SQL-Query-CH02-68 \*\*\* */
+>
+> SELECT
+>
+> ​	OI.OrderNumber, Quantity, SD.SKU,
+>
+> ​	SKU\_Description, Department, Buyer
+>
+> FROM ORDER\_ITEM AS OI RIGHT OUTER JOIN SKU\_DATA AS SD
+>
+> ON OI.SKU=SD.SKU
+>
+> ORDER BY OI.OrderNumber, SD.SKU;
+>
+> This produces the following results, which clearly show the SKUs and their associated buyers that have not been part of a retail order (in particular, note that we haven’t sold any of the 300000 range SKUs, which are climbing equipment—perhaps management should look into that):
+
+在图2-23（d）所示的结果中，请注意，现在包括了LOCKER表中的所有行，并且STUDENT表中不匹配的行显示为NULL值。
+
+查看输出，可以看到编号为70、80和90的储物柜在STUDENT表中没有链接的行。 这意味着这些储物柜当前未分配给学生，可以使用。 就我们与SKU和购买者有关的问题而言，这意味着我们可以使用SQL OUTER JOIN（特别是SQL RIGHT OUTER JOIN）来获得所需的结果：
+
+```sql
+/* *** SQL-Query-CH02-68 *** */ 
+SELECT
+	OI.OrderNumber, Quantity, SD.SKU,
+	SKU_Description, Department, Buyer
+FROM ORDER_ITEM AS OI RIGHT OUTER JOIN SKU_DATA AS SD 
+ON OI.SKU=SD.SKU 
+ORDER BY OI.OrderNumber, SD.SKU;
+```
+
+这将产生以下结果，清楚地显示了SKU及其关联的购买者尚未成为零售订单的一部分（尤其要注意，我们尚未售出任何300000范围的SKU，它们都是攀岩设备，也许管理层应该注意这一点）：
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200703223733526.png" alt="image-20200703223733526" style="zoom:67%;" />
+
+> This completes our discussion of SQL query statements. We have covered the needed SQL syntax to allow you to write ad-hoc SQL queries on one or more tables, displaying only the specific row, column, or calculated values that you want to see. In Chapter 7, we will return to SQL to discuss SQL DDL, some other parts of SQL DML, and SQL/PSM.
+>
+> By The Way It is easy to forget that inner joins will drop nonmatching rows. Some years ago, one of the authors had a very large organization as a consulting （咨询）client. The client had a budgetary(预算)-planning application that included a long sequence of complicated SQL statements. One of the joins in that sequence was an inner join that should have been an outer join. As a result, some 3,000 employees dropped out of the budgetary calculations. The mistake was discovered only months later when the actual salary expense exceeded the budget salary expense by a large margin（范围）. The mistake was an embarrassment（尴尬） all the way to the board of directors.
+
+这样就完成了我们对SQL查询语句的讨论。 我们已经介绍了所需的SQL语法，使您可以在一个或多个表上编写临时SQL查询，从而仅显示要查看的特定行，列或计算值。 在第7章中，我们将返回SQL讨论SQL DDL，SQL DML的其他部分以及SQL / PSM。
+
+顺便说一句，很容易忘记内部联接，这将导致丢弃不匹配的行。 几年前，其中一位作者为一个非常大的组织作咨询。 客户有一个预算计划应用程序，其中包含一系列复杂的SQL语句。 在这些语句中有一个本应该是外部联接的语句被错用成了内部连接。 结果，约有3,000名员工被排除在了预算计算之外。 几个月后才发现错误，当时实际工资支出大大超出了预算工资支出（范围）。 这个错误一直困扰着董事会。
+
+## 3.8. 第三章小结
+
+> Structured Query Language (SQL) was developed by IBM and has been endorsed by the ANSI SQL-92 and following standards. SQL is a data sublanguage that can be embedded into full programming languages or submitted directly to the DBMS. Knowing SQL is critical for knowledge workers, application programmers, and database administrators.
+>
+> All DBMS products process SQL. Microsoft Access hides SQL, but Microsoft SQL Server, Oracle Database, and MySQL require that you use it.
+>
+> We are primarily interested in five categories of SQL statements: DML, DDL, SQL/PSM statements, TCL, and DCL. DML statements include statements for querying data and for inserting, updating, and deleting data. This chapter addresses only DML query statements. Additional DML statements, DDL and SQL/PSM are discussed in Chapter 7.
+>
+> TCL and DCL are discussed in Chapter 9. The examples in this chapter are based on three tables extracted from the operational database at Cape Codd Outdoor Sports. Such database extracts are common and important.
+>
+> Sample data for the three tables is shown in Figure 2-5.
+>
+> The basic structure of an SQL query statement is SELECT/FROM/WHERE. The columns to be selected are listed after SELECT, the table(s) to process is listed after FROM, and any restrictions on data values are listed after WHERE. In a WHERE clause, character and date data values must be enclosed in single quotes. Numeric data need not be enclosed in quotes. You can submit SQL statements directly to Microsoft Access, Microsoft SQL Server, Oracle Database, and MySQL, as described in this chapter.
+
+结构化查询语言(SQL)由IBM开发，并已由ANSI SQL-92及以下标准认可。 SQL是一种数据子语言，可以嵌入到完整的编程语言中，也可以直接提交给DBMS。 了解SQL对于知识工作者、应用程序编程人员和数据库管理员至关重要。
+
+所有DBMS产品都处理SQL。 Microsoft Access隐藏SQL，但Microsoft SQL Server、Oracle数据库和MySQL要求您使用它。
+
+我们主要对五类SQL语句感兴趣：DML、DDL、SQL/PSM语句、TCL和DCL。 DML语句包括用于查询数据以及用于插入、更新和删除数据的语句。 本章仅介绍DML查询语句。 第7章将讨论其他DML语句、DDL和SQL/PSM。
+
+TCL和DCL将在第9章中讨论。本章中的示例基于从科德角户外运动运营数据库中提取的三个表。 这样的数据库摘录很常见，也很重要。
+
+这三个表的样本数据如图2-5所示。
+
+SQL查询语句的基本结构是SELECT/FROM/WHERE。 SELECT之后列出了要选择的列，FROM之后列出了要处理的表，WHERE之后列出了对数据值的任何限制。 在WHERE子句中，字符和日期数据值必须用单引号引起来。 数字数据不需要用引号引起来。 您可以将SQL语句直接提交到Microsoft Access、Microsoft SQL Server、Oracle数据库和MySQL，如本章所述。
+
+> This chapter explained the use of the following SQL clauses: SELECT, FROM, WHERE, ORDER BY, GROUP BY, and HAVING. This chapter explained the use of the following SQL keywords: DISTINCT, DESC, ASC, AND, OR, IN, NOT IN, BETWEEN, LIKE, % (* for Microsoft Access),\_(? for Microsoft Access), SUM, AVG, MIN, MAX, COUNT, and AS. You should know how to mix and match these features to obtain the results you want. By default, the WHERE clause is applied before the HAVING clause.
+>
+> You can query multiple tables using subqueries and joins. Subqueries are nested queries that use the SQL keywords IN and NOT IN. An SQL SELECT expression is placed inside parentheses. Using a subquery, you can display data from the top table only. A join is created by specifying multiple table names in the FROM clause. An SQL WHERE clause is used to obtain an equijoin. In most cases, equijoins are the most sensible option. Joins can display data from multiple tables. In Chapter 8, you will learn another type of subquery that can perform work that is not possible with joins. Some people believe the JOIN ON syntax is an easier form of join. Rows that have no match in the join condition are dropped from the join results when using a regular, or INNER, join. To keep such rows, use a LEFT OUTER or RIGHT OUTER join rather than an INNER join.
+
+本章介绍以下SQL子句的用法：SELECT、FROM、WHERE、ORDER BY、GROUP BY和HAVING。 同时解释了以下SQL关键字的用法：DISTINCT、DESC、ASC、AND、OR、IN、NOT IN、BETWEEN、LIKE、% (在Microsoft Access是 * ) 、\_ (在Microsoft Access中是 ？) 、SUM、AVG、MIN、MAX、COUNT和AS。 您应该知道如何混合和匹配这些功能以获得您想要的结果。 默认情况下，WHERE子句在HAVING子句之前应用。
+
+您可以使用子查询和联接查询多个表。 子查询是使用SQL关键字IN和NOT IN的嵌套查询。 SQL SELECT表达式放在括号内。 使用子查询，您只能显示顶表中的数据。 联接是通过在FROM子句中指定多个表名创建的。 SQL WHERE子句用于获取等值联接。 在大多数情况下，等联接是最明智的选择。 联接可以显示多个表中的数据。 在第8章中，您将学习另一种类型的子查询，它可以执行连接不可能完成的工作。 有些人认为JOIN ON语法是一种更简单的连接形式。 使用常规联接或内部联接时，联接条件中没有匹配项的行将从联接结果中删除。 要保留这样的行，请使用左外联接或右外联接，而不是内联接。
+
+# 4. 第四章：关系数据库规范化理论
+
+## 4.1. 为什么要强调数据库设计的规范
+
+> As we discussed in Chapter 1, databases arise from three sources: from existing data, from the development of new information systems, and from the redesign of existing databases.
+>
+> In this chapter and the next, we consider the design of databases from existing data, such as data from spreadsheets or extracts of existing databases. The premise(前提) of Chapters 4 and 5 is that you have received one or more tables of data from some source that are to be stored in a new database.
+>
+> The question is: Should this data be stored as is, or should it be transformed in some way before it is stored?
+>
+> For example, consider the two tables in the top part of Figure 3-1.
+>
+> These are the SKU\_DATA and ORDER\_ITEM tables extracted from the Cape Codd Outdoor Sports database as used in the database in Chapter 2.
+
+正如我们在第一章中所讨论的，数据库因以下三个方面而产生: 现有数据、新信息系统的开发和现有数据库的重新设计。
+
+在本章和下一章中，我们考虑依据现有数据来设计数据库，比如从电子表格获取数据，或从现有的数据库中提取数据。 第4章和第5章的前提是，您已经从某个数据来源接收到一个或多个数据表，这些数据表将存储在一个新的数据库中。
+
+问题是: 这些数据是应该保持原样存储，还是应该在存储前，根据某种规则进行适当的转换？
+
+例如图3-1上部的两个表 (ORDER\_ITEM+SKU\_DATA)。
+
+这些是从 Cape Codd Outdoor Sports 数据库中提取的 SKU\_DATA 和 ORDER\_ITEM 表，如第2章中数据库中所使用的那样。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200630115906738.png" alt="image-20200630115906738" style="zoom:70%;" />
+
+> You can design the new database to store this data as two separate tables, or you can join the tables together and design the database with just one table.
+>
+> Each alternative has advantages and disadvantages.When you make the decision to use one design, you obtain certain advantages at the expense of certain costs. The purpose of this chapter is to help you understand those advantages and costs. Such questions do not seem difficult, and you may be wondering why we need two chapters to answer them. In truth, even a single table can have surprising complexity. Consider, for example, the table in Figure 3-2,
+
+您可以设计新的数据库，将这些数据存储为两个单独的表，或者您可以将这些表连接在一起，并使用一个表来设计数据库。
+
+**每种选择都有其优点和缺点**。当你决定使用一种设计时，你会以牺牲一定的成本为代价获得一定的优势。 本章的目的是帮助你了解这些优点和成本。 这样的问题看起来并不难，你可能想知道为什么我们需要两章来回答它们。 事实上，即使是单个表也可能具有令人惊讶的复杂性。 例如，考虑图3-2中的表,
+
+![image-20200630120210145](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200630120210145.png)
+
+> which shows sample data extracted from a corporate database. This simple table has three columns: the buyer’s name, the SKU of the products that the buyer purchases, and the names of the buyer’s college major(s). Buyers manage more than one SKU, and they can have multiple college majors.
+>
+> To understand why this is an odd(古怪的) table, suppose that Nancy Meyers is assigned a new SKU, say 101300. What addition should we make to this table? Clearly, we need to add a row for the new SKU, but if we add just one row, say the row ('Nancy Meyers', 101300, 'Art'), it will appear that she manages product 101300 as an Art major, but not as an Info Systems major. To avoid such an illogical state, we need to add two rows: ('Nancy Meyers', 101300, 'Art') and ('Nancy Meyers', 101300, 'Info Systems').
+
+该表显示了从公司数据库中提取的样本数据。 这个简单的表有三列: 买家的姓名、买家购买产品的 SKU 以及买家的大学专业的名称。 单个买家可能拥有不止一个 SKU，他们也可能有多个大学专业。
+
+为了理解为什么这是一个奇怪的表，假设 Nancy Meyers 被分配了一个新的 SKU ，比如说 101300 。 我们应该在这张表里增加什么？ 很明显，我们需要为新的 SKU 增加一行，但是如果我们只增加一行，比如说这一行(Nancy Meyers，101300，Art) ，看起来她拥有产品 101300 ，而且是艺术专业，而不是信息系统专业。 为了避免这种不合逻辑的状态，我们需要添加两行: (Nancy Meyers，101300，Art) 和 (Nancy Meyers，101300，Info Systems)。
+
+> This is a strange requirement. Why should we have to add two rows of data simply to record the fact that a new SKU has been assigned to a buyer? Further, if we assign the product to Pete Hansen instead, we would only have to add one row, but if we assigned the product to a buyer who had four majors, we would have to add four new rows.
+>
+> The more one thinks about the table in Figure 3-2, the more strange it becomes. What changes should we make if SKU 101100 is assigned to Pete Hansen? What changes should we make if SKU 100100 is assigned to Nancy Meyers? What should we do if all the SKU values in Figure 3-2 are deleted? Later in this chapter, you will learn that these problems arise because this table has a problem called a ==multivalued dependency==. Even better, you will learn how to remove that problem. Tables can have many different patterns; some patterns are susceptible（可以接受的） to serious problems and other patterns are not. Before we can address this question, however, you need to learn some basic terms.
+
+这是一个奇怪的要求。 为什么我们要为了 记录一个新增给买家的 SKU 添加两行数据？ 此外，如果我们将产品分配给 Pete Hansen（只有一个专业），我们只需要添加一行，但是如果我们将产品分配给一个拥有四个主要专业的买家，我们就必须添加四个新行。
+
+对图3-2中的表分析得越深，它就变得越奇怪。 如果将 SKU 101100 分配给 Pete Hansen，我们应该做些什么改变？ 如果将 SKU 100100 分配给 Nancy Meyers，我们应该做些什么改变？ 如果图3-2中的所有 SKU 值都被删除了，我们应该怎么做？ 在本章的后面，您将了解到这些问题的出现是因为这个表有一个称为==多值依赖==的问题。 更进一步的，你将学会如何解决这个问题。 表可以有许多不同的模式; 有些模式容易受到严重问题的影响，而其他模式则不会。 然而，在我们解决这个问题之前，需要学习一些基本术语。
+
+## 4.2. 关系模型术语
+
+> Figure 3-3 lists the most important terms used by the relational model. By the time you finish Chapters 3 and 4, you should be able to define each of these terms and explain how each pertains to the design of relational databases. Use this list of terms as a check on your comprehension.
+
+图3-3列出了关系模型使用的最重要的术语。 在你完成第3章和第4章的时候，你应该能够解释这些术语，并且解释它们与关系数据库设计之间的关系。 使用这个术语列表来检查你的理解。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200630204818717.png" alt="image-20200630204818717" style="zoom:67%;" />
+
+### 4.2.1. 关系
+
+#### 4.2.1.1. 关系简述
+
+> a. Relations
+>
+> So far, we have used the terms table and relation interchangeably. In fact, a relation is a special case of a table. This means that all relations are tables, but not all tables are relations. Codd defined the characteristics of a relation in his 1970 paper that laid the foundation for the relational model. Those characteristics are summarized in Figure 3-4.
+
+到目前为止，我们一直将表和关系混用。 事实上，**关系是表的一种特殊情况。 这意味着所有关系都是表，但并非所有表都是关系**。 Codd在他1970年的论文中定义了关系的特征，这篇论文奠定了关系模型的基础。 图3-4总结了这些特征。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200630205122914.png" alt="image-20200630205122914" style="zoom: 80%;" />
+
+|             Characteristics of Relations              |          关系的特点          |
+| :---------------------------------------------------: | :--------------------------: |
+|           Rows contain data about an entity           |  行包含有关 单个实体 的数据  |
+| Columns contain data about attributes of the entities |  列包含有关 实体属性 的数据  |
+|     All entries in a column are of the same kind      | 列中的所有条目都属于同一种类 |
+|             Each column has a unique name             |   每个列都有一个唯一的名称   |
+|        Cells of the table hold a single value         |     表的单元格只有一个值     |
+|        The order of the columns is unimportant        |       列的顺序并不重要       |
+|         The order of the rows is unimportant          |       行的顺序并不重要       |
+|             No two rows may be identical              |       没有两行是相同的       |
+
+> By The Way In Figure 3-4 and in this discussion, we use the term entity to mean some dentifiable thing. A customer, a salesperson, an order, a part, and a lease are all examples of what we mean by an entity. When we introduce the entity-relationship model in Chapter 5, we will make the definition of entity more precise. For now, just think of an entity as some identifiable thing that users want to track.
+
+在图3-4和本文的讨论中，我们使用术语“实体”来表示一些可识别的东西。 客户、销售人员、订单、部件和租约都是我们所说的实体的例子。 当我们在第5章介绍 ER 模型的时候，我们会使实体的定义更加精确。 现在，就把一个实体想象成 用户想要跟踪的 一些可识别的东西。
+
+#### 4.2.1.2. 关系的特征
+
+> b. Characteristics of Relations
+>
+> A relation has a specific definition, as shown in Figure 3-4, and for a table to be a relation, the criteria of this definition must be met.
+>
+> First, the rows of the table must store data about an entity and the columns of the table must store data about the characteristics of those entities.
+>
+> Next, the names of the columns are unique; no two columns in the same relation may have the same name. Further, in a relation, all of the values in a column are of the same kind. If, for example, the second column of the first row of a relation has FirstName, then the second column of every row in the relation has FirstName. This is an important requirement that is known as the ==domain integrity constraint==, where the ==term domain== means a grouping of data that meets a specific type definition. For example, FirstName would have a domain of names such as Albert, Bruce, Cathy, David, Edith, and so forth, and all values of FirstName must come from the names in that domain. The EMPLOYEE table shown in Figure 3-5 meets these criteria and is a relation.
+
+关系有一个特定的定义，如图3-4所示，如果一个表是一个关系，必须满足关系的定义。
+
+首先，表的行必须存储有关实体的数据，表的列必须存储有关这些实体属性的数据。
+
+接下来，**列的名称是唯一的**; 同一关系中的任何两个列都不能具有相同的名称。 此外，在关系中，**列中的所有值都必须属于同一类型**。 例如，如果关系的第一行的第二列具有 FirstName，那么关系中每一行的第二列都必须具有 FirstName。 这是一个被称为 ==域完整性约束== 的重要要求，其中 ==术语域== 意味着**满足特定类型定义的一组数据**。 例如，FirstName 的术语域包含Albert、 Bruce、 Cathy、 David、 Edith 等等，而 FirstName 的所有值都必须来自该术语域。 图3-5中显示的 EMPLOYEE 表符合这些标准，是一个关系。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200630205317699.png" alt="image-20200630205317699" style="zoom:67%;" />
+
+> By The Way Columns in different relations may have the same name. In Chapter 2, for example, two relations had a column named SKU. When there is risk of confusion, we precede the column name with the relation name followed by a period(句号).Thus, the name of the SKU column in the SKU\_DATA relation is SKU\_DATA.SKU, and column C1 of relation R1 is named R1.C1. Because relation names are unique within a database and because column names are unique within a relation, the combination of relation name and column name uniquely identifies every column in the database.
+>
+> Each cell of a relation has only a single value or item; multiple entries are not allowed. The table in Figure 3-6 is not a relation because the Phone values of employees Caruthers and Bandalone store multiple phone numbers.
+
+不同关系中的列可能具有相同的名称。 例如，在第二章中，两个关系都有一个名为 SKU 的列。 当存在混淆的风险时，我们采用**“关系名+句点+列名”**的模式进行区分。 因此，SKU\_data 关系中， SKU 列的名称为 SKU\_data.SKU。关系 R1的列 C1命名为 R1.C1。因为关系名称在数据库中是唯一的，并且列名在关系中是唯一的，所以**关系名称和列名称的组合能唯一地标识数据库中的每个列**。
+
+**关系的每个单元格只有一个值或项**; 不允许有多个条目。 图3-6中的表格不是一个关系，因为雇员 Caruthers 和 Bandalone 的电话列存储了多个电话号码。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200630205401185.png" alt="image-20200630205401185" style="zoom:67%;" />
+
+> In a relation, the order of the rows and the order of the columns are immaterial. No information can be carried by the ordering of rows or columns. The table in Figure 3-7 is not a relation because the entries for employees Caruthers and Caldera require a particular row arrangement. If the rows in this table were rearranged, we would not know which employee has the indicated Fax and Home numbers.
+
+在关系中，**行的顺序和列的顺序是无关紧要的**。 按行或列的排列顺序不包含任何信息。 图3-7中的表格不是一个关系，因为雇员 Caruthers 和 Caldera 的条目需要一个特定的行排列。 如果重新排列此表中的行，我们将不知道哪个员工具有指定的传真号和主页号。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200630205502026.png" alt="image-20200630205502026" style="zoom: 80%;" />
+
+> Finally, according to the last characteristic in Figure 3-4, for a table to be a relation, no two rows can be identical. As you learned in Chapter 2, some SQL statements do produce tables with duplicate rows. In such cases, you can use the DISTINCT keyword to force uniqueness. Such row duplication only occurs as a result of SQL manipulation. Tables that you design to be stored in the database should never contain duplicate rows.
+>
+> By The Way Do not fall into a common trap.
+>
+> Even though every cell of a relation must have a single value, this does not mean that all values must have the same length. The table in Figure 3-8 is a relation even though the length of the Comment column varies from row to row. It is a relation because, even though the comments have different lengths, there is only one comment per cell.
+
+最后，根据图3-4中的最后一个特征，**对于一个关系表，没有两行是相同的**。 正如在第2章中了解到的，一些 SQL 语句确实会生成具有重复行的表。 在这种情况下，可以使用 DISTINCT 关键字强制显示单一条目。 只有在 SQL 操作的结果中才会出现这种行重复。 设计存储在数据库中的表不应该包含重复的行。
+顺便说一句，不要掉进一个普通的陷阱。
+即使关系的每个单元格必须具有单个值，但这**并不意味着所有值必须具有相同的长度**。 图3-8中的表是一个关系，尽管 Comment 列的长度因行而异。 此表仍然是一个关系，因为尽管注释的长度不同，但是每个单元格只有一个注释。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200630205620238.png" alt="image-20200630205620238" style="zoom:80%;" />
+
+#### 4.2.1.3. 可替代的词汇
+
+> c. Alternative Terminology
+>
+> As defined by Codd, the columns of a relation are called ==attributes== and the rows of a relation are called ==tuples== (rhymes with “couples”). Most practitioners, however, do not use these academic-sounding terms and instead use the terms ==column== and ==row==.
+>
+> Also, even though a table is not necessarily a relation, most practitioners mean relation when they say table. Thus, in most conversations the terms relation and table are synonymous（同义的）. In fact, for the rest of this book table and relation will be used synonymously.
+>
+> Additionally, a third set of terminology also is used.
+>
+> Some practitioners use the ==terms file==, ==field==, and ==record== for the terms table, column, and row, respectively. These terms arose from traditional data processing and are common in connection with legacy systems.
+>
+> Sometimes, people mix and match these terms. You might hear someone say, for example, that a relation has a certain column and contains 47 records. These three sets of terms are summarized in Figure 3-9.
+
+在Codd 的定义中，关系的列称为==属性==，关系的行称为==元组==(与“ couples”押韵)。 然而，大多数用户并不使用这些听上去学术味浓重的词汇，而是使用==列==和==行==代替。
+
+此外，即使表不一定是关系，大多数人在说”表“时，其实就是在说“关系”。 因此，在大多数交流中，关系和表是同义词。 事实上，对于本书的其余部分，表和关系将被当作同义词使用。
+
+此外，还使用了第三套术语。
+
+一些从业人员分别用==档案==、==字段==和==记录==来称呼表、列和行。 这些术语起源于传统的数据处理，在遗留系统中很常见。
+
+有时，人们混合搭配这些术语。 例如，你可能听到有人说，一个关系有一个特定的列，包含47条记录。 图3-9总结了这三组术语。
+
+![image-20200630205714706](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200630205714706.png)
+
+|          |           |        |
+| :------: | :-------: | :----: |
+|  Table   |  Column   |  Row   |
+|    表    |    列     |   行   |
+| Relation | Attribute | Tuple  |
+|   关系   |   属性    |  元组  |
+|   File   |   Field   | Record |
+|   档案   |   字段    |  记录  |
+
+### 4.2.2. 函数依赖
+
+> a. Functional Dependencies
+>
+> Functional dependencies are the heart of the database design process, and it is vital（至关重要的） for you to understand them. We first explain the concept in general terms and then examine two examples. We begin with a short excursion（远足） into the world of algebra（代数）.
+>
+> Suppose you are buying boxes of cookies and someone tells you that each box costs \$ 5.00. With this fact, you can compute the cost of several boxes with the formula:
+>
+> $$CookieCost = NumberOfBoxes × $ 5$$
+
+函数依赖是数据库设计过程的核心，理解它们是至关重要的。 我们首先用一般的术语解释这个概念，然后考察两个例子。 我们从代数世界的一个短途旅行开始。
+
+假设你正在买一盒饼干，有人告诉你每盒要5美元。 有了这个事实，您可以使用以下公式计算总成本:
+
+$$CookieCost = NumberOfBoxes × $ 5$$
+
+> A more general way to express the relationship between CookieCost and NumberOfBoxes is to say that CookieCost depends on NumberOfBoxes. Such a statement tells us the character of the relationship between CookieCost and NumberOfBoxes, even though it doesn't give us the formula. More formally, we can say that CookieCost is functionally dependent on NumberOfBoxes. Such a statement can be written as:
+>
+> $$NumberOfBoxes →CookieCost$$
+
+表达 CookieCost 和 NumberOfBoxes 之间关系的更一般的方式是说 CookieCost 取决于 NumberOfBoxes。 这样的语句告诉我们 CookieCost 和 NumberOfBoxes 之间关系的性质，尽管它没有给出公式。 更正式地说，我们可以说CookieCost 在函数上依赖于 NumberOfBoxes。 这样的语句可以写成:
+
+$$NumberOfBoxes →CookieCost$$
+
+> This expression can be read as “NumberOfBoxes determines CookieCost.”
+>
+> The variable on the left, here NumberOfBoxes, is called the ==determinant==. Using another formula, we can compute the extended price of a part order by multiplying the quantity of the item times its unit price, or:
+>
+> $$ExtendedPrice = Quantity × UnitPrice$$
+>
+> In this case, we say that ExtendedPrice is ==functionally dependent== on Quantity and UnitPrice, or:
+>
+> $$(Quantity, UnitPrice) → ExtendedPrice$$
+
+这个表达式可以理解为“ 购买的盒数决定了饼干总价”
+
+在左边的变量（购买盒数（NumberOfBoxes）），被称为==决定因素==。我们可以通过求物品数量和物品单价的乘积来计算部分订单的扩展价格。即：
+
+$$ExtendedPrice = Quantity × UnitPrice$$
+
+在这种情况下，我们也可以说，扩展价格==函数依赖==于购买数量和商品单价，即:
+
+$$(Quantity, UnitPrice) → ExtendedPrice$$
+
+
+> Here the determinant is the composite (Quantity, UnitPrice). Functional Dependencies That Are Not Equations In general, a functional dependency exists when the value of one or more attributes determines the value of another attribute. Many functional dependencies exist that do not involve equations.
+>
+> Consider an example. Suppose you know that a sack contains either red, blue, or yellow objects.
+> Further, suppose you know that the red objects weigh 5 pounds, the blue objects weigh 5 pounds, and the yellow objects weigh 7 pounds. If a friend looks into the sack, sees an object, and tells you the color of the object, you can tell her the weight of the object. We can formalize this as:
+>
+> $$ObjectColor→ Weight$$
+
+这里的决定因素是组合(数量（Quantity），单价（UnitPrice）)。 一般来说，当一个或多个属性的值决定另一个属性的值时，就存在==函数依赖==。 **许多函数依赖的存在，并不涉及方程**。
+
+举个例子，假设你知道一个袋子里装着红色、蓝色或者黄色的物体。
+
+再进一步，假设你知道红色物体重5磅，蓝色物体重5磅，黄色物体重7磅。 如果一个朋友看了一眼袋子，然后告诉你物体的颜色，你可以告诉她物体的重量。 我们可以将其形式化为:
+
+$$ObjectColor→ Weight$$
+
+> Thus, we can say that Weight is ==functionally dependent== on ObjectColor and that ObjectColor determines Weight. The relationship here does not involve an equation, but the ==functional dependency== holds. Given a value for ObjectColor, you can determine the object's weight.
+>
+> If we also know that the red objects are balls, the blue objects are cubes（立方体）, and the yellow objects are cubes, we can also say:
+>
+> $$ObjectColor→ Shape$$
+>
+> Thus, ObjectColor determines Shape. We can put these two together to state:
+>
+> $$ObjectColor →(Weight, Shape)$$
+>
+> Thus, ObjectColor determines Weight and Shape. Another way to represent these facts is to put them into a table:
+
+因此，我们可以说重量==函数依赖==于对象颜色，而物体颜色决定重量。 这里的关系不涉及方程式，但是==函数依赖==是成立的。 给定物体的颜色，就可以确定物体的重量。
+
+如果我们还知道红色的物体是球，蓝色的物体是立方体 ，黄色的物体是立方体，我们也可以说:
+
+$$ObjectColor → Shape$$
+
+因此，物体颜色决定形状。 我们可以把这两者放在一起来表示:
+
+$$ObjectColor →(Weight, Shape)$$
+
+因此，物体颜色同时决定重量和形状。 另一种表示这些事实的方法是，把它们放到一张表中:
+
+![image-20200630225835126](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200630225835126.png)
+
+> This table meets all of the conditions listed in Figure 3-4, and therefore it is a relation.
+>
+> You may be thinking that we performed a trick or sleight of hand（表演了一个魔术或者戏法） to arrive at this relation, but, in truth, the only reason for having relations is to store instances of functional dependencies. If there were a formula by which we could take ObjectColor and somehow compute Weight and Shape, then we would not need the table. We would just make the computation.
+>
+> Similarly, if there were a formula by which we could take EmployeeNumber and compute EmployeeName and HireDate, then we would not need an EMPLOYEE relation.
+>
+> However, because there is no such formula, we must store the combinations of EmployeeNumber, EmployeeName, and HireDate in the rows of a relation.
+
+此表满足图3-4中列出的所有条件，因此它是一个关系。
+
+你可能会认为我们为了得到这个关系而玩了一个小把戏，但实际上，拥有关系的唯一原因在于存储函数依赖的实例。 如果有一个公式，我们可以采取对象颜色，并以某种方式计算重量和形状，那么我们就不需要表。 我们只需要进行计算。
+
+类似地，如果有一个公式可以用来获取 EmployeeNumber 并计算 EmployeeName 和 HireDate，那么我们就不需要建立 EMPLOYEE 关系。
+
+但是，由于没有这样的公式，我们必须将 EmployeeNumber、 EmployeeName 和 HireDate 的组合存储在关系的行中。 复合函数依赖函数依赖的决定因素可以由多个属性组成。 例如，一个班的成绩是由学生和该班共同决定的，或者:
+
+### 4.2.3. 复合函数依赖
+
+> Composite Functional Dependencies  
+>
+> The determinant of a functional dependency can consist of more than one attribute. For example, a grade in a class is determined by both the student and the class,or:  
+>
+> $$(StudentNumber, ClassNumber) → Grade$$ 
+>
+> In this case, the determinant is called a ==composite determinant==. Notice that both the student and the class are needed to determine the grade.
+>
+>  In general, if (A, B) → C, then neither A nor B will determine C by itself. However, if A→ (B, C), then it is true that A → B and A→C. Work through examples of your own for both of these cases so that you understand why this is true.
+
+函数依赖的决定因素可以由多个属性组成。 例如，一个班的成绩是由学生和该班共同决定的，或者:
+
+(学生数，班级数)→年级（人数）
+
+在这种情况下，决定因素称为==组合决定因素==。 注意，学生和班级共同决定年级（人数）。
+
+一般来说，如果(a，b)→ c，那么 a 和 b 都不能自己决定 c。 然而，如果 a →(b，c) ，那么 a → b 和 a → c 就是正确的，通过你自己举例子来模拟这两种情况，你就会明白为什么这是正确的。
+
+> To fix the idea of ==functional dependency== in your mind, consider what ==functional dependencies== exist in the SKU\_DATA and ORDER\_ITEM tables in Figure 3-1. To find functional dependencies in a table, we must ask “Does any column determine the value of another column?” For example, consider the values of the SKU\_DATA table in Figure 3-1:
+
+为了解决==函数依赖==的问题，请考虑图3-1中的 SKU\_data 和 ORDER\_item 表中存在哪些==函数依赖==。 要查找表中的函数依赖关系，就是寻找“是否有任何列决定另一列的值? ” 例如，考虑图3-1中 SKU\_data 表的值:
+
+![image-20200630231319736](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200630231319736.png)
+
+> Consider the last two columns. If we know the value of Department, can we determine a unique value of Buyer? No, we cannot, because a Department may have more than one Buyer. In these sample data, 'Water Sports' is associated with Pete Hansen and Nancy Meyers.
+>
+> Therefore, Department does not ==functionally determine== Buyer. What about the reverse? Does Buyer determine Department? In every row, for a given value of Buyer, do we find the same value of Department? Every time Jerry Martin appears, for example, is he paired with the same department? The answer is yes.
+>
+> Further, every time Cindy Lo appears, she is paired with the same department.
+>
+> The same is true for the other buyers. Therefore, assuming that these data are representative, Buyer does determine Department, and we can write: Buyer → Department
+
+考虑一下最后两列。 如果我们知道具体的 Department，我们可以确定一个唯一的购 Buyer 吗？ 并不能，因为一个 Department 可能有一个以上的 Buyer。 在这些样本数据中，“Water Sports”与 Pete Hansen 和 Nancy Meyers 都有关系。
+
+因此，部门并不==函数依赖==于 Buyer。 反过来呢？Buyer 是否能决定 Department？ 在每一行中，对于一个给定的 Buyer，我们能否保证每个 Department 都是相同的？ 例如，每次 Jerry Martin 出现时，他是否都与同一个 Department 对应？ 答案是肯定的。
+
+此外，每次 Cindy Lo 出现，她都会和同一个 Department 相配对。
+
+其他 Buyer 也是如此。 因此，假设这些数据具有代表性，买方可以确定 Department，我们可以写做:
+
+Buyer→Department
+
+> Does Buyer determine any other column? If we know the value of Buyer, do we know the value of SKU? No, we do not, because a given buyer has many SKUs assigned to him or her. Does Buyer determine SKU\_Description? No, because a given value of Buyer occurs with many values of SKU\_Description. By the way, As stated, for the Buyer→Department ==functional dependency==, a Buyer is paired with one and only one value of Department. Notice that a buyer can appear more than once in the table, but, if so, that buyer is always paired with the same department. This is true for all functional dependencies. If A→B, then each value of A will be paired with one and only one value of B.
+>
+> A particular value of A may appear more than once in the relation, but, if so, it is always paired with the same value of B.
+>
+> Note, too, that the reverse is not necessarily true. If A→B, then a value of B may be paired with many values of A.
+>
+> What about the other columns? It turns out that if we know the value of SKU, we also know the values of all of the other columns. In other words:
+>
+> $$SKU→SKU\_Description$$
+>
+> because a given value of SKU will have just one value of SKU\_Description. Next,
+>
+> $$SKU→ Department$$
+>
+> because a given value of SKU will have just one value of Department. And, finally,
+>
+> $$SKU → Buyer$$
+>
+> because a given value of SKU will have just one value of Buyer. We can combine these three statements as:
+>
+> $$SKU→ (SKU\_Description, Department, Buyer)$$
+>
+> For the same reasons, SKU\_Description determines all of the other columns, and we can write:
+>
+> $$SKU\_Description → (SKU, Department, Buyer)$$
+>
+> In summary, the functional dependencies in the SKU\_DATA table are:
+>
+> $$SKU →(SKU\_Description, Department, Buyer)$$
+>
+> $$SKU\_Description →(SKU, Department, Buyer)$$
+>
+> $$Buyer →Department$$
+
+Buyer 是否能够确定其他列呢？ 如果我们知道具体的 Buyer，我们能确定 SKU 吗？不能，因为对于一个给定的 Buyer，能找到到多个不同的 SKU。 Buyer 是否决定 SKU\_Description？ 不，因为给定的 Buyer 对应许多 SKU\_description。 顺便说一下，如前所述，对于 Buyer→Department 的函数==函数依赖==，买方与部门有且只有一个值配对（一一对应）。 注意，同一个买家可以在表中出现不止一次，但是，如果是这样，必须保证这个买家总是与同一个部门配对。 这对于所有函数依赖都是必要的。 如果 a → b，那么每个 a 都将与 b 的唯一值配对。
+
+特定值 a 可能在关系中出现不止一次，但是，如果是这样，它每次出现必须对应唯一的 b 。同时还要注意，这个规则反过来也不一定正确。 如果 a → b，那么 b 的值可能对应不止一个 a。
+
+其他的列呢？ 只要我们知道 SKU 的值，我们也就知道了所有其他列的值。 换句话说: 
+
+$$SKU → SKU\_Description$$
+
+因为给定的 SKU 只有唯一的 SKU 描述。 接下来，SKU → Department，因为给定的 SKU 对应唯一的 Department 。最后
+
+$$SKU → Buyer$$
+
+因为给定的 SKU 对应唯一的 Buyer 。 我们可以将以下三种说法结合起来:
+
+$$SKU →(SKU\_description，Department，Buyer)$$
+
+出于同样的原因，SKU\_description 决定了所有其他列，我们可以写作: 
+
+$$SKU\_description →(SKU，Department，Buyer) $$
+
+总的来说，SKU\_data 表中的函数依赖是:
+
+$$SKU →(SKU\_description，Department，Buyer)$$
+
+$$SKU\_description →(SKU，Department，Buyer)$$
+
+$$Buyer → Department$$
+
+> By the way, You cannot always determine functional dependencies from sample data. You may not have any sample data, or you may have just a few rows that are not representative of all of the data conditions. In such cases, you must ask the users who are experts in the application that creates the data.
+> For the SKU\_DATA table, you would ask questions such as, “Is a Buyer always associated with the same Department?” and “Can a Department have more than one Buyer?” In most cases, answers to such questions are more reliable than sample data. When in doubt, trust the users.
+> Functional Dependencies in the ORDER\_ITEM Table Now consider the ORDER\_ITEM table in Figure 3-1. For convenience, here is a copy of the data in that table:
+
+顺便说一下，不能总是从样本数据中决定函数依赖。 您可能没有任何示例数据，或者只有几行，这些数据不能代表所有数据。 在这种情况下，您必须询问相关领域的专家。
+
+对于 SKU\_data 表，您可以问这样的问题，“买方是否总是与同一个部门相关联?” 及 “一个部门可否有多于一名买家? ” 在大多数情况下，这些问题的答案比样本数据更可靠。 如果有疑问，始终相信专家。
+
+现在考虑图3-1中的 ORDER\_item 表中的函数依赖关系。 为了方便起见，下面给出该表中数据的副本:
+
+![image-20200630231438818](%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200630231438818.png)
+
+> What are the functional dependencies in this table?
+>
+> Start on the left. Does OrderNumber determine another column? It does not determine SKU because several SKUs are associated with a given order. For the same reasons, it does not determine Quantity, Price, or ExtendedPrice.
+>
+> What about SKU? SKU does not determine OrderNumber because several OrderNumbers are associated with a given SKU. It does not determine Quantity or ExtendedPrice for the same reason.
+>
+> What about SKU and Price? From this data, it does appear that
+>
+> $$SKU → Price$$
+>
+> but that might not be true in general. In fact, we know that prices can change after an order has been processed. Further, an order might have special pricing due to a sale or promotion. To keep an accurate record of what the customer actually paid, we need to associate a particular SKU price with a particular order. Thus:
+>
+> $$(OrderNumber, SKU) → Price$$
+
+这个表中的函数依赖关系是什么？
+
+从这个表的左边开始看。 OrderNumber 是否决定另一列？ 它不能决定 SKU，因为多个 SKU 都与给定的订单相关联。 出于同样的原因，它不确定数量、价格或扩展价格。
+
+SKU 怎么样？ SKU 不能决定 OrderNumber，因为多个 OrderNumber 与给定的 SKU 相关联。 出于同样的原因，它不确定 Quantity 或 ExtendedPrice。
+
+SKU 和 Price 怎么样？ 从这个数据来看，似乎
+
+$$SKU → Price$$
+
+但这可能一般事实。 实际上我们知道，订单处理后价格会发生变化。 此外，由于销售或促销，订单可能有特殊的价格。 为了保持客户实际支付的准确记录，我们需要将特定 SKU 价格与特定订单关联起来。 因此:
+
+$$(OrderNumber，SKU)→Price$$
+
+> Considering the other columns, Quantity, Price, and ExtendedPrice do not determine anything else. You can decide this by looking at the sample data. You can reinforce this conclusion by thinking about the nature of sales. Would a Quantity of 2 ever determine an OrderNumber or a SKU? This makes no sense. At the grocery store, if I tell you I bought two of something, you have no reason to conclude that my OrderNumber was 1010022203466 or that I bought carrots. Quantity does not determine OrderNumber or SKU. Similarly, if I tell you that the price of an item was $3.99, there is no logical way to conclude what my OrderNumber was or that I bought a jar of green olives. Thus, Price does not determine OrderNumber or SKU. Similar comments pertain to ExtendedPrice. It turns out that no single column is a determinant in the ORDER\_ITEM table. What about pairs of columns? We already know that 
+>
+> $$(OrderNumber, SKU) → Price$$  
+>
+> Examining the data, (OrderNumber, SKU) determines the other two columns as well. Thus: 
+>
+> $$(OrderNumber, SKU) → (Quantity, Price, ExtendedPrice)$$  
+>
+> This functional dependency makes sense. It means that given a particular order and a particular item on that order, there is only one quantity, one price, and one extended price. Notice, too, that because ExtendedPrice is computed from the formula
+>
+> $$ExtendedPrice = (Quantity * Price)$$
+>
+> we have:  
+>
+> $$(Quantity, Price) →ExtendedPrice$$  
+>
+> In summary, the functional dependencies in ORDER\_ITEM are:  
+>
+> $$(OrderNumber, SKU) →(Quantity, Price, ExtendedPrice)$$ 
+>
+> $$(Quantity, Price) → ExtendedPrice$$
+
+考虑到其他列，数量、价格和总价格不能决定任何其他内容。 您可以通过查看示例数据来确定这一点。 你可以通过思考销售的本质来强化这个结论。 商品数量2是否决定了一个订单号或一个 SKU？ 这毫无意义。 在杂货店，如果我告诉你我买了两样东西，你没有理由得出结论说我的订单号是1010022203466或者我买了胡萝卜。 数量不能决定订单号或 SKU。 类似地，如果我告诉你一件商品的价格是3.99美元，那么就没有合乎逻辑的方法来推断：我的订单号是多少，或者我买了一罐绿橄榄。 因此，价格不能决定订单号或 SKU。 类似的注释也适用于 ExtendedPrice。 结果表明，order\_item 表中没有一个列是==决定因素==。 那么对于成对的列呢？ 我们已经知道
+
+$$(OrderNumber，SKU)→ Price$$
+
+检查数据，(OrderNumber，SKU)也可以同时确定其他两列。 因此:(OrderNumber，SKU)→(Quantity，Price，ExtendedPrice)这个函数依赖是有意义的。 这意味着，给定一个特定的订单号和该订单上的特定项目，就可以确定数量、单价和扩展价格。 还要注意，因为 ExtendedPrice 是从公式 ExtendedPrice = (Quantity * Price)中计算出来的:
+
+$$(Quantity，Price)→ ExtendedPrice$$
+
+总之，ORDER\_item 中的函数依赖关系是:
+
+$$(OrderNumber, SKU) →(Quantity, Price, ExtendedPrice)$$ 
+
+ $$(Quantity, Price) → ExtendedPrice$$
+
+> No single skill is more important for designing databases than the ability to identify functional dependencies. Make sure you understand the material in this section. You must understand functional dependencies and be able to work with them.
+> When Are Determinant Values Unique? In the previous section, you may have noticed an irregularity(不规则，无规律 ).
+>
+> Sometimes the ==determinants== of a functional dependency are unique in a relation, and sometimes they are not.
+>
+> Consider the SKU\_DATA relation, with determinants SKU, SKU\_Description, and Buyer. In SKU\_DATA, the values of both SKU and SKU\_Description are unique in the table.
+>
+> For example, the SKU value 100100 appears just once. Similarly, the SKU\_Description value 'Half-dome Tent' occurs just once. From this, it is tempting to conclude that values of ==determinants== are always unique in a relation.
+>
+> However, this is not true. For example, Buyer is a determinant, but it is not unique in SKU\_DATA. The buyer 'Cindy Lo' appears in two different rows. In fact, for these sample data all of the buyers occur in two different rows.
+
+对于设计数据库来说，没有哪种技能比识别函数依赖关系的能力更重要。 确保你理解了这一部分的内容。 你必须了解函数依赖关系，并能够使用它们。
+
+什么时候决定因素值是唯一的? 在上一节中，您可能已经注意到一个不规则的现象：有时函数依赖的==决定因素==在关系中是唯一的，有时则不是。
+
+考虑 SKU\_data 关系，包括决定因素 SKU、 SKU\_Description和Buyer。 在 SKU\_data 中，表中 SKU 和 SKU\_description 的值都是唯一的。例如，SKU 值100100只出现一次。 类似地，SKU\_Description“半圆顶帐篷”只出现一次。 由此，我们很容易得出这样的结论: ==决定因素==的值在一种关系中总是唯一的。
+
+然而，事实并非如此。 例如，Buyer 是一个决定因素，但它在 SKU\_data 中不是唯一的。 买家’辛迪罗’出现在了两个不同的行中。 实际上，对于这些示例数据，所有买家都出现在两个不同的行中。
+
+> In truth, a determinant is unique in a relation only if it determines every other column in the relation. For the SKU\_DATA relation, SKU determines all of the other columns.
+>
+> Similarly, SKU\_Description determines all of the other columns. Hence, they both are unique.
+>
+> Buyer, however, only determines the Department column. It does not determine SKU or SKU\_Description. The determinants in ORDER\_ITEM are (OrderNumber, SKU) and (Quantity, Price). Because (OrderNumber, SKU) determines all of the other columns, it will be unique in the relation. The composite (Quantity and Price) only determines ExtendedPrice. Therefore, it will not be unique in the relation. This fact means that you cannot find the determinants of all functional dependencies simply by looking for unique values. Some of the determinants will be unique, but some will not be. Instead, to determine if column A determines column B, look at the data and ask, “Every time a value of column A appears, is it matched with the same value of Column B?” If so, it can be a determinant of B. Again, however, sample data can be incomplete, so the best strategies are to think about the nature of the business activity from which the data arise and to ask the users.
+
+事实上，**一个==决定因素==当且仅当它能决定关系中的每一列时，它在一个关系中唯一**。 对于 SKU\_data 关系，SKU 确定所有其他列。（因此SKU唯一）
+
+同样，SKU\_description 决定了所有其他列，因此它们都是唯一的。
+
+然而，买方只确定部门一栏。 它不确定 SKU 或 SKU\_Description。 Order\_item 中的决定因素是(OrderNumber，SKU)和(Quantity，Price)。 因为(OrderNumber，SKU)确定所有其他列，所以它在关系中是唯一的。 组合(Quantity and Price)仅确定 ExtendedPrice。 因此，再此关系中它并不唯一。 这意味着：**不能仅仅通过寻找唯一的值，来找到所有==函数依赖关系==的==决定因素==**。 一些决定因素将是独一无二的，但一些不会。 相反，要确定列 a 是否决定列 b，请查看数据并询问: “每次出现列 a 的值时，它是否与列 b 的相同值相匹配? ” 如果是这样的话，它可能是 b 的决定因素，然而，样本数据可能是不完整的，所以最好的策略是考虑数据产生的业务活动的性质，并询问用户。
+
+### 4.2.4. 键
+
+> There are ==candidate keys==, ==composite keys==, ==primary keys==, ==surrogate keys==, and ==foreign keys==. In this section, we will define each of these types of keys. Because key definitions rely on the concept of functional dependency, make sure you understand that concept before reading on. In general, a key is a combination of one or more columns that is used to identify particular rows in a relation. Keys that have two or more columns are called composite keys.
+
+键主要有==候选键==、==组合键==、==主键==、==代理键==和==外键==。 在本节中，我们将定义这些键的每种类型。 因为键的定义依赖于函数依赖的概念，所以在继续阅读之前一定要理解这个概念。 通常，键是用于标识关系中特定行的一个或多个列的组合。 具有两个或多个列的键称为复合键。
+
+#### 4.2.4.1. 候选键
+
+> ==Candidate Keys==
+>
+> A ==candidate key== is a determinant that determines all of the other columns in a relation. The SKU\_DATA relation has two ==candidate keys==: SKU and SKU\_Description.Buyer is a determinant, but it is not a ==candidate key== because it only determines Department.
+>
+> The ORDER\_ITEM table has just one candidate key: (OrderNumber, SKU). The other determinant in this table, (Quantity, Price), is not a candidate key because it determines only ExtendedPrice. Candidate keys identify a unique row in a relation. Given the value of a candidate key, we can find one and only one row in the relation that has that value. For example, given the SKU value of 100100, we can find one and only one row in SKU\_DATA. Similarly, given the OrderNumber and SKU values (2000, 101100), we can find one and only one row in ORDER\_ITEM.
+
+==候选键==是一个决定关系中所有其他列的决定因素。 SKU\_data 关系有两个==候选键==: SKU 和 SKU\_description。买方是一个决定因素，但它不是一个==候选键==，因为它只确定部门。
+
+Order\_item 表只有一个候选键: (OrderNumber，SKU)。 此表中的另一个决定因素(Quantity，Price)不是候选键，因为它只确定 ExtendedPrice。 **候选键标识关系中的唯一行**。 给定一个候选键的值，我们可以找到并且只能找到关系中具有该值的一行。 例如，给定 SKU 值为100100，我们可以在 SKU data 中找到一行并且只能找到一行。 类似地，给定 OrderNumber 和 SKU 值(2000,101100) ，我们可以在 ORDER\_item 中找到一行且只只能找到一行。
+
+#### 4.2.4.2. 主键  （表结构中用下划线标记）
+
+> ==Primary Keys==
+>
+> When designing a database, one of the ==candidate keys== is selected to be the ==primary key==. This term is used because this key will be defined to the DBMS, and the DBMS will use it as its primary means for finding rows in a table. A table has only one primary key. The primary key can have one column, or it can be a composite. In this text, to clarify discussions we will sometimes indicate table structure by showing the name of a table followed by the names of the table’s columns enclosed in parentheses. When we do this, we will underline the column(s) that comprise the primary key.
+
+设计数据库时，**选择其中一个==候选键==作为==主键==**。 之所以使用这个术语，是因为这个键将被定义到 DBMS 中，DBMS 将使用它作为在表中查找行的主要手段。 一个表只有一个主键。 **==主键==可以有一列，也可以是复合键**。 在本文中，为了澄清讨论，我们有时会用
+
+表名称（列名称1，列名称2···，列名称n）
+
+的方式表示表的结构。 当我们这样做时，我们会给 包含主键的列 加下划线 。
+
+> For example, we can show the structure of SKU\_DATA and ORDER\_ITEM as follows:
+>
+> SKU\_DATA (SKU, SKU\_Description, Department, Buyer)
+>
+> ORDER\_ITEM (OrderNumber, SKU, Quantity, Price, ExtendedPrice)
+>
+> This notation indicates that SKU is the primary key of SKU\_DATA and that (OrderNumber, SKU) is the primary key of ORDER\_ITEM. In order to function properly, a primary key, whether it is a single column or a composite key, must have unique data values inserted into every row of the table. While in fact this may seem obvious, it is significant enough to be named the ==entity integrity constraint==, and is a fundamental requirement for the proper functioning of a relational database.
+>
+> By the way What do you do if a table has no candidate keys? In that case, define the primary key as the collection of all of the columns in the table. Because there are no duplicate rows in a stored relation, the combination of all of the columns of the table will always be unique. Again, although tables generated by SQL manipulation may have duplicate rows, the tables that you design to be stored should never be constructed to have data duplication. Thus, the combination of all columns is always a candidate key (All Key).
+
+例如，我们可以将 SKU\_data 和 ORDER\_item 的结构表示如下:
+
+$$SKU\_data (\underline{SKU}，SKU\_description，Department，Buyer)$$
+
+$$ORDER\_item (\underline{OrderNumber，SKU}，Quantity，Price，ExtendedPrice)$$
+
+这个符号表示 SKU 是 SKU\_data 的主键，而 ORDER\_item 的主键是(OrderNumber，SKU)。 为了正常工作，**主键(无论是单个列还是复合键)必须在表的每一行中插入唯一的数值**。 虽然这可能看起来很明显，但是它的重要性足以被命名为==实体完整性==约束，并且是关系数据库正常工作的一个基本要求。
+
+顺便问一下，如果一个表没有候选键，你该怎么办？ 在这种情况下，可以**将主键定义为表中所有列的集合**。 因为存储关系中没有重复的行，所以表中所有列的组合将始终是唯一的。 同样，尽管 SQL 操作生成的表可能有重复的行，但是设计用于存储的表不应该构造成数据重复。 因此，所有列的组合始终是一个候选键(All Key)。
+
+#### 4.2.4.3. 代理键
+
+> ==Surrogate Keys==
+>
+> A ==surrogate key== is an artificial(人为的) column that is added to a table to serve as the primary key. The DBMS assigns a unique value to a surrogate key when the row is created. The assigned value never changes. Surrogate keys are used when the primary key is large and unwieldy. For example, consider the relation RENTAL\_PROPERTY:
+>
+> RENTAL\_PROPERTY (Street, City, State/Province, Zip/PostalCode, Country, Rental\_Rate)
+>
+> The primary key of this table is (Street, City, State/Province, Zip/PostalCode, Country). As we will discuss further(in Chapter 6), for good performance a primary key should be short and, if possible, numeric. The primary key of RENTAL\_PROPERTY is neither.
+>
+> In this case, the designers of the database would likely create a surrogate key. The structure of the table would then be:
+>
+> RENTAL\_PROPERTY (PropertyID, Street, City, State/Province, Zip/PostalCode, Country, Rental\_Rate)
+>
+> The DBMS can then be used to assign a numeric value to PropertyID when a row is created (exactly how this is done depends upon which DBMS product is being used). Using that key will result in better performance than using the original key. Note that surrogate key values are artificial and have no meaning to the users. In fact, surrogate key values are normally hidden in forms and reports.
+
+==代理键==是添加到表中作为主键的，**人为增加的列** 。 当创建行时，DBMS 将一个唯一的值分配给代理键。 分配的值永远不会改变。 **当主键大且笨拙时，考虑使用代理键**。 例如，关系 RENTAL\_property:
+
+$$RENTAL\_property (\underline{Street，City，state / province，zip / postalcode，Country}，RENTAL\_rate)$$
+
+此表的主键是(Street，City，state / province，zip / postalcode，Country)。 正如我们将在第6章中进一步讨论的那样，为了获得良好的性能，**主键应该是简短的，如果可能的话，最好是数值的**。 Rental\_property 的主键不符合任何条件。
+
+在这种情况下，**数据库的设计人员可能会创建一个==代理键==**。 表的结构是:
+
+$$RENTAL\_property (\underline{PropertyID}，Street，City，state / province，zip / postalcode，Country，RENTAL\_rate)$$
+
+然后，当创建行时，DBMS 可用于为 PropertyID 分配一个数值(具体如何完成取决于使用的是哪个 DBMS 产品)。 使用该键将比使用原始键获得更好的性能。 注意，代理键值是人为的，对用户没有意义。 事实上，代理键值通常隐藏在窗体和报表中。
+
+#### 4.2.4.4. 外键  (表结构中用斜体标记)
+
+> ==Foreign Keys==
+>
+> A ==foreign key== is a column or composite of columns that is the primary key of a table other than the one in which it appears. The term arises because it is a key of a table foreign to the one in which it appears. In the following two tables, DEPARTMENT.DepartmentName is the primary key of DEPARTMENT and EMPLOYEE.DepartmentName is a foreign key. In this text, we will show foreign keys in italics:
+>
+> DEPARTMENT (DepartmentName, BudgetCode, ManagerName)
+>
+> EMPLOYEE (EmployeeNumber, EmployeeLastName, EmployeeFirstName, DepartmentName)
+>
+> Foreign keys express relationships between rows of tables. In this example, the foreign key EMPLOYEE.DepartmentName stores the relationship between an employee and his or her department. Consider the SKU\_DATA and ORDER\_ITEM tables. SKU\_DATA.SKU is the primary key of SKU\_DATA, and ORDER\_ITEM.SKU is a foreign key.
+>
+> SKU\_DATA (SKU, SKU\_Description, Department, Buyer)
+>
+> ORDER\_ITEM (OrderNumber, SKU, Quantity, Price, ExtendedPrice)
+>
+> Notice that ORDER\_ITEM.SKU is both a foreign key and also part of the primary key of ORDER\_ITEM. This condition sometimes occurs, but it is not required. In the example above, EMPLOYEE.DepartmentName is a foreign key, but it is not part of the EMPLOYEE primary key. You will see some uses for foreign keys later in this chapter and the next, and you will study them at length in Chapter 6.
+
+**==外键==是一个列或多个列的组合，且这些列（列组合）是==其它表的主键==。** 这个术语之所以出现，是因为它是其他表的主键，而不是本表的主键。 在以下两个表中，DEPARTMENT.DepartmentName 是 DEPARTMENT 和 EMPLOYEE.DepartmentName 的主键。 在本文中，我们将以加粗正体显示外键:
+
+$$DEPARTMENT (\underline{DepartmentName}、 BudgetCode、 ManagerName)$$
+
+$$EMPLOYEE (\underline{EmployeeNumber}、 EmployeeLastName、 EmployeeFirstName、 \textbf{DepartmentName})$$
+
+外键表示表行之间的关系。 在这个示例中，外键 EMPLOYEE.DepartmentName 存储雇员与其部门之间的关系。 考虑 SKU\_data 和 ORDER\_item 表。 数据库。 SKU 是 SKU\_data 和 ORDER\_item 的主键。 SKU 是一个外键。
+
+$$SKU\_data (\underline{SKU}，SKU\_description，Department，Buyer)$$
+
+$$ORDER\_item (\underline{OrderNumber}，\underline{\textbf{SKU}}，Quantity，Price，extended Price)$$
+
+请注意该 ORDER\_item。 SKU 既是外键，也是 order\_item 的主键的一部分。 这种情况有时会发生，但不是强制的。 在上面的示例中，EMPLOYEE.DepartmentName 是一个外键，但它不是 EMPLOYEE 主键的一部分。 在本章后面和下一章中，您将看到外键的一些用法，并将在第6章中详细研究它们。
+
+> In most cases, we need to ensure that the values of a foreign key match a valid value of a primary key. For the SKU\_DATA and ORDER\_ITEM tables, we need to ensure that all of the values of ORDER\_ITEM.SKU match a value of SKU\_DATA.SKU. To accomplish this, we create a referential integrity constraint, which is a statement that limits the values of the foreign key. In this case, we create the constraint: SKU in ORDER\_ITEM must exist in SKU in SKU\_DATA This constraint stipulates that every value of SKU in ORDER\_ITEM must match a value of SKU in SKU\_DATA. By the way, While we have defined a referential integrity constraint to require a corresponding primary key value in the linked table, the technical definition of the referential integrity constraint allows for one other option–that the foreign key cell in the table is empty and does not have a value. If a cell in a table does not have a value, it is said to have a null value (we will discuss null values in Chapter 4). It is difficult to imagine a foreign key having null values in a real database when the referential integrity constraint is actually in use, and we will stick with our basic definition of the referential integrity constraint in this book. At the same time, be aware that the complete, formal definition of the referential integrity constraint does allow for null values in foreign key columns.
+>
+> We have defined three constraints so far in our discussion:
+>
+> - The domain integrity constraint
+> - The entity integrity constraint
+> - The referential integrity constraint
+>
+> The purpose of these three constraint, taken as a whole, is to create database integrity, which means that the data in our database will be useful, meaningful data.
+
+在大多数情况下，我们需要确保**==外键==的值与==主键==的值**相匹配。 对于 SKU\_data 和 order\_item 表，我们需要确保 order\_item 的所有值。 SKU 与 SKU\_data 值匹配。 SKU. 为了实现这一点，我们创建了一个==参照完整性==约束，这是一个限制外键值的语句。 在这种情况下，我们创建约束: ORDER\_ITEM 中的 SKU 必须对应于 SKU\_DATA 中的 SKU。这个约束规定 ORDER\_ITEM中的每个 SKU 值必须与 SKU\_DATA中的 SKU 值相匹配。 顺便说一下，虽然我们已经定义了一个==参照完整性==来要求在链接表中有一个相应的主键值，但是==参照完整性==的定义允许另外一个选项：表中的==外键==单元是空的，没有值。 如果表中的一个单元格没有值，则称其具有空值(我们将在第4章中讨论空值)。 在实际使用==参照完整性==时，很难想象一个外键在实际数据库中具有空值，我们将在本书中坚持使用参照完整性的基本定义。 与此同时，要注意**完整的、正式的参照完整性约束定义确实允许外键列中存在空值**。
+
+到目前为止，我们已经在讨论中定义了3个约束:
+
+- 域完整性约束
+- 实体完整性约束
+- 参照完整性约束
+
+这3个约束的目的，作为一个整体，是创建数据库完整性，这意味着我们数据库中的数据将是有用的，有意义的数据。
+
+## 4.3. 范式
+
+> Normal Forms
+>
+> All relations are not equal. Some are easy to process, and others are problematic. Relations are categorized into normal forms based on the kinds of problems that they have. Knowledge of these normal forms will help you create appropriate database designs. To understand normal forms, we need first to define modification anomalies.
+
+并非所有的关系都是平等的。 有些很容易处理，有些则较为棘手。 根据各种问题种类的不同，关系可以划分为不同的范式。 了解这些范式将帮助您创建适当的数据库设计。 为了理解范式，我们首先需要定义修正异常。
+
+### 4.3.1. 修正异常
+
+> Modification Anomalies
+>
+> Consider the EQUIPMENT\_REPAIR relation in Figure 3-10, which stores data about manufacturing equipment and equipment repairs. Suppose we delete the data for repair number 2100. When we delete this row (the second one in Figure 3-10), we remove not only data about the repair, but also data about the machine itself.
+
+考虑图3-10中的 EQUIPMENT\_repair 关系，该关系存储关于制造设备和设备维修的数据。 假设我们删除修复号2100的数据。 当我们删除这一行(图3-10中的第二行)时，我们不仅删除了关于修复的数据，还删除了关于机器本身的数据。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701125423432.png" alt="image-20200701125423432" style="zoom: 80%;" />
+
+> We will no longer know, for example, that the machine was a Lathe and that its AcquisitionPrice was 4750.00. When we delete one row, the structure of this table forces us to lose facts about two different things, a machine and a repair. This condition is called a ==deletion anomaly==.
+>
+> Now suppose we want to enter the first repair for a piece of equipment. To enter repair data, we need to know not just RepairNumber, RepairDate, and RepairCost, but also ItemNumber, EquipmentType, and AcquisitionCost. If we work in the repair department, this is a problem because we are unlikely to know the value of AcquisitionCost. The structure of this table forces us to enter facts about two entities when we just want to enter facts about one. This condition is called an ==insertion anomaly==.
+>
+> Finally, suppose we want to change existing data. If we alter a value of RepairNumber, RepairDate, or RepairCost, there is no problem. But if we alter a value of ItemNumber, EquipmentType, or AcquisitionCost, we may create a ==data inconsistency==.
+>
+> To see why,(Tell me why?) suppose we update the last row of the table in Figure 3-10 using the data (100, 'Drill Press', 5500, 2500,'08/17/13', 275). Figure 3-11 shows the table after this erroneous update. The drill press has two different AcquisitionCosts. Clearly, this is an error. Equipment cannot be acquired at two different costs. If there were, say, 10,000 rows in the table, however, it might be very difficult to detect this error. This condition is called an ==update anomaly==.
+
+
+
+例如，当我们删除一行时，我们将不再知道：这台机器是一台车床，而且它的收购价格是4750.00。 这个表的结构设计，会导致一次删除丢失关于两个不同事物的数据，即一台机器记录和一个修复记录。 这种情况称为==删除异常==。
+
+现在假设我们想要了解某台设备的第一次维修。要输入维修数据来定位这次维修，我们不仅需要知道修复号、修复日期和修复成本，还需要知道设备编号、设备类型和维修支出。 如果我们在维修部门工作，这是一个问题，因为我们不太可能知道采购成本的价值。 当我们只想输入关于一个实体的事实时，这个表的结构要求我们输入关于两个实体的事实。 这种情况称为==插入异常==。
+
+最后，假设我们想要更改现有的数据。 如果我们修改 RepairNumber、 RepairDate 或 RepairCost 的值，就没有问题。 但是，如果我们修改 ItemNumber、 EquipmentType 或者 hungtioncost 的值，我们可能会创建一个==数据不一致==。
+
+为什么? 假设我们使用数据(100，‘ Drill Press’ ，5500 , 2500，’08 / 17 / 13’ ，275)更新图3-10中表的最后一行。 图3-11显示了错误更新后的表。 钻床有两种不同的收购成本。 显然，这是一个错误。 因为同一件设备的购置成本不可能变化。 但是，如果表中有10,000行，则可能很难检测到此错误。 这种情况称为==更新异常==。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701125551733.png" alt="image-20200701125551733" style="zoom:80%;" />
+
+> By the way Notice that the EQUIPMENT\_REPAIR table in Figures 3-10 and 3-11 duplicates data.
+>
+> For example, the AcquisitionCost of the same item of equipment appears several times. Any table that duplicates data is susceptible（容易受到影响的） to update anomalies like the one in Figure 3-11.
+>
+> A table that has such inconsistencies(矛盾) is said to have ==data integrity problems==. As we will discuss further (in Chapter 4), to improve query speed we sometimes design a table to have duplicated data. Be aware, however, that any time we design a table this way, we open the door to ==data integrity problems==.
+
+顺便说一下，留意图3-10和3-11中的 EQUIPMENT\_repair 表重复的数据。
+
+例如，同一个设备的购买成本会多次出现。 任何具有重复数据的表都容易受到更新异常的影响，如图3-11所示（ItemNumber=100的机器）。
+
+有这种不一致的表称为有==数据完整性问题==。 正如我们将在第4章中进一步讨论的那样，为了提高查询速度，我们有时会设计一个具有重复数据的表。 但是要注意，只要我们以这种方式设计表，就有可能出现==数据完整性问题==。
+
+### 4.3.2. 范式的历史
+
+> A Short history of Normal Forms
+>
+> When Codd defined the relational model, he noticed that some tables had modification anomalies. In his second paper, he defined first normal form, second normal form, and third normal form. He defined first normal form (1NF) as the set of conditions for a relation shown in Figure 3-4. Any table meeting the conditions in Figure 3-4 is therefore a relation in 1NF.
+
+当 Codd 定义关系模型时，他注意到一些表格有修正异常。 在他的第二篇论文中，他定义了第一范式、第二范式和第三范式。 他将第一范式(1NF)定义为图3-4所示关系的条件集。 因此，任何满足图3-4中条件的表都是1NF 中的一个关系。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701125838014.png" alt="image-20200701125838014" style="zoom:70%;" />
+
+> Codd also noted that some tables (or, interchangeably in this book, relations) in 1NF had modification anomalies. He found that he could remove some of those anomalies by applying certain conditions. A relation that met those conditions, which we will discuss later in this chapter, was said to be in second normal form (2NF). He also observed, however, that relations in 2NF could also have anomalies, and so he defined third normal form (3NF), which is a set of conditions that removes even more anomalies and which we will also discuss later in this chapter.
+>
+> As time went by, other researchers found still other ways that anomalies can occur, and the conditions for ==Boyce-Codd Normal Form (BCNF)== were defined. These normal forms are defined so that a relation in BCNF is in 3NF, a relation in 3NF is in 2NF, and a relation in 2NF is in 1NF. Thus, if you put a relation into BCNF, it is automatically in the lesser normal forms.
+>
+> Normal forms 2NF through BCNF concern anomalies that arise from functional dependencies. Other sources of anomalies were found later. They led to the definition of fourth normal form (4NF) and fifth normal form (5NF), both of which we will discuss later in this chapter.
+>
+> So it went, with researchers chipping away at modification anomalies, each one improving on the prior normal form. In 1982, Fagin published a paper that took a different tack. Instead of looking for just another normal form, Fagin asked, “What conditions need to exist for a relation to have no anomalies?” In that paper, he defined ==domain/key normal form== ==(DK/NF)==. Fagin ended the search for normal forms by showing that a relation in ==DK/NF== has no modification anomalies and, further, that a relation that has no modification anomalies is in ==DK/NF==. ==DK/NF== is discussed in more detail later in this chapter.
+
+Codd 还指出，==1NF== 中的一些表(或者在本书中被称为关系的结构)有修改异常。 他发现，可以通过应用某些条件来消除一些异常现象。 我们将稍后讨论一个满足这些条件的关系，被称为==第二范式(2NF)==。 然而，他也观察到==2NF== 中的关系也可能有异常，所以他定义了==第三范式(3NF)== ，这是一组条件，可以去除更多的异常，我们也将稍后讨论。
+
+随着时间的推移，其他研究人员还发现了异常发生的其他方式，并确定了 ==BC范式（BCNF）==的条件。 这些范式的定义使得 ==BCNF== 中的一个关系满足==3NF==，**满足==3NF== 中的关系自动满足==2NF==，满足==2NF== 的关系自动满足==1NF==**。 因此，如果你把一个关系放到 ==BCNF== 中，会自动满足较小的范式。
+
+标准形式2NF 到 BCNF 关注由函数依赖引起的异常。 后来发现了其他异常的来源。 他们导出了第四范式(4NF)和第五范式(5NF)的定义，这两个定义我们将稍后讨论。
+
+于是，随着研究人员逐渐消除修正异常，每一个范式都在先前的版本上得到了改进。 1982年，费金发表了一篇采取不同策略的论文。 费金没有寻找另一种新的范式，而是寻求 “一个关系要具有什么样的条件，才不会出现任何异常? ” 在那篇文章中，他定义了==域 / 键范式(DK / NF)==。 费金通过证明凡是符合 ==DK / NF==中的关系都没有修改异常，进而证明范式没有修改异常的关系都符合dk/nf范式，从而结束了对范式的研究。 ==DK/ NF== 将稍后更详细地讨论。
+
+### 4.3.3. 正规化理论
+
+> Normalization Categories
+>
+> As shown in Figure 3-12, normalization theory can be divided into three major categories. Some anomalies arise from ==functional dependencies==, some arise from ==multivalued dependencies==, and some arise from ==data constraints== and ==odd conditions==.
+
+正如图3-12所示，正规化理论可以分为三大类。 有些异常源于==函数依赖==，有些异常源于==多值依赖==，还有一些异常源于==数据约束==和==奇数条件==。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701130046432.png" alt="image-20200701130046432" style="zoom:80%;" />
+
+> BCNF, 3NF, and 2NF are all concerned with anomalies that are caused by functional dependencies. A relation that is in BCNF has no modification anomalies from functional dependencies. It is also automatically in 2NF and 3NF, and, therefore, we will focus on transforming relations into BCNF. However, it is instructive(有益的) to work through the progression of normal forms from 1NF to BCNF in order to understand how each normal form deals with specific anomalies, and we will do this later in this chapter.
+>
+> As shown in the second row of Figure 3-12, some anomalies arise because of another kind of dependency called a multivalued dependency. Those anomalies can be eliminated by placing each multivalued dependency in a relation of its own, a condition known as 4NF.
+>
+> The third source of anomalies is esoteric（深奥的）. These problems involve specific, rare, and even strange data constraints. Accordingly, we will not discuss them in this text.
+
+BCNF、3NF 和2NF 都与函数依赖引起的异常有关。 满足 BCNF 的关系，不会出现因为函数依赖而产生的修正异常。 它在2NF 和3NF 中也是自动的满足的，因此，我们将着重于将关系转换为 BCNF。 然而，通过跟踪从1NF 到 BCNF 的范式转化，对于理解每个范式如何处理特定的异常是有益的，我们将在本章后面做这件事。
+
+如图3-12的第二行所示，一些异常是由于另一种称为多值依赖的依赖关系引起的。 将每个多值依赖放在的独立表中，可以消除这些异常，这种情况被称为4NF。
+
+异常的第三个来源是深奥的、只有内行才懂的的原因。 这些问题涉及特定的、罕见的、甚至奇怪的数据约束。 因此，我们不在本案文中讨论这些问题。
+
+### 4.3.4. 从第一范式到 D/K 范式
+
+#### 4.3.4.1. 第一范式
+
+> ==First Normal Form==
+>
+> Any table that meets the definition of a relation in Figure 3-4 is defined as being in ==1NF==. This means that the following must hold:
+>
+> 1. The cells of a table must be a single value, and neither repeating groups nor arrays are allowed as values;
+> 2. all entries in a column must be of the same data type;
+> 3. each column must have a unique name, but the order of the columns in the table is not significant;
+> 4. no two rows in a table may be identical（完全一样的）, but the order of the rows is not significant
+
+符合图3-4中关系定义的任何表都在==1NF== 中定义。 这意味着以下内容必须包含:
+
+1. 表的单元格必须是单个值，且不允许重复组或数组作为值；
+2. 一列中的所有条目必须具有相同的数据类型；
+3. 每列必须有唯一的名称，但表中列的顺序不重要；
+4. 表中的任何两行都不能相同(完全一样的)，但行的顺序不重要
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701125838014.png" alt="image-20200701125838014" style="zoom:70%;" />
+
+#### 4.3.4.2. 第二范式
+
+> ==Second Normal Form==
+>
+> When Codd discovered anomalies in ==1NF== tables, he defined ==2NF== to eliminate some of these anomalies. A relation is in 2NF if and only if it is in 1NF and all non-key attributes are determined by the entire primary key. This means that if the primary key is a composite primary key, then no non-key attribute can be determined by an attribute or set of attributes that make up only part of the key. Thus, if you have a relation R (A, B, N, O, P) with the composite key (A, B), then none of the non-key attributes N, O, or P can be determined by just A or just B. Note that the only way a non-key attribute can be dependent on part of the primary key is if there is a composite primary key. This means that relations with single-attribute primary keys are automatically in 2NF. For example, consider the STUDENT\_ACTIVITY relation:
+>
+> STUDENT\_ACTIVITY (StudentID, Activity, ActivityFee)
+>
+> The STUDENT\_ACTIVITY relation is shown with sample data in Figure 3-13.Note that STUDENT\_ACTIVITY has the composite primary key (StudentID, Activity), which allows us to determine the fee a particular student will have to pay for a particular activity. However, because fees are determined by activities, Fee is also functionally dependent on just Activity itself, and we can say that Fee is partially dependent on the key of the table. The set of functional dependencies is therefore:
+>
+> $$(StudentID, Activity)→ (ActivityFee)$$
+>
+> $$(Activity) → (ActivityFee)$$
+
+当Codd在满足1NF的表中发现异常时，他定义了2NF来消除其中的一些异常。 **当且仅当关系在==1NF==中，并且所有非键属性由整个主键确定时，关系才在==2NF==中**。 这意味着，如果主键是复合主键，则非键属性不能由仅构成该键一部分的属性或属性集确定。 因此，如果表R(A，B，N，O，P)的组合键为(A，B)，则非键属性N、O或P都不能仅由A或B确定。请注意，**非键属性依赖于部分主键的唯一方式是存在组合主键**。 这意味着**单属性主键的表自动满足2NF**。 举个例子，考虑STUDENT\_ACTIVITY：
+
+$$STUDENT\_ACTIVITY (\underline{StudentID, Activity}, ActivityFee)$$
+
+学生\_活动关系如图3-13中的示例数据所示。 请注意，Student\_Activity具有复合主键(StudentID，Activity)，它允许我们查找：特定学生为特定活动所支付的费用。 但是，因为费用是由活动决定的，所以费用在函数上也仅仅取决于活动本身，我们可以说费用部分依赖于表的键。 因此，函数依赖项集合是：
+
+$$(StudentID，Activity)→(ActivityFee)$$
+
+$$(Activity)→(ActivityFee)$$
+
+> Thus, there is a non-key attribute determined by part of the composite primary key, and the STUDENT\_ACTIVITY relation is not in 2NF. What do we do in this case? We will have to move the columns of the functional dependency based on the partial primary key attribute into a separate relation while leaving the determinant in the original relation as a foreign key. We will end up with two relations:
+>
+> $$STUDENT\_ACTIVITY (StudentID, Activity)$$
+>
+> $$ACTIVITY\_FEE (Activity, ActivityFee)$$
+
+因此，存在由复合主键的一部分确定的非键属性，因此Student\_Activity关系不符合2NF。 在这种情况下我们该怎么做？ 我们必须**把基于部分主键属性的函数依赖项的列，移动到单独的表中，同时将原始关系中的列保留做为外键**。 我们将得到两个关系：
+
+$$Student\_Activity(StudentID，Activity)$$
+
+$$Activity\_Fee(Activity，ActivityFee)$$
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701154205742.png" alt="image-20200701154205742" style="zoom: 50%;" />
+
+> The Activity column in STUDENT\_ACTIVITY becomes a foreign key. The new relations are shown in Figure 3-14. Now, are the two new relations in 2NF? Yes. STUDENT\_ACTIVITY still has a composite primary key, but now has no attributes that are dependent on only a part of this composite key. ACTIVITY \_FEE has a set of attributes (just one each in this case) that are dependent on the entire primary key.
+
+STUMENT\_ACTIVATION中的ACTIVATION列此时修改为外键。 新的关系如图3-14所示。 现在，这两个新关系符合2NF吗？ 是。 STUMENT\_ACTIVATION仍然有一个复合主键，但是现在没有任何一个属性，仅依赖于该复合键的一部分。 ACTIVITY \_FEE的一系列（非键）属性必须依赖于整个主键。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701154256577.png" alt="image-20200701154256577" style="zoom: 67%;" />
+
+#### 4.3.4.3. 第三范式
+
+> ==Third Normal Form==
+>
+> However, the conditions necessary for ==2NF== do not eliminate all anomalies. To deal with additional anomalies, Codd defined ==3NF==. A relation is in ==3NF== if and only if it is in ==2NF== and there are no non-key attributes determined by another non-key attribute.
+>
+> The technical name for a non-key attribute determined by another non-key attribute is transitive dependency. We can therefore restate the definition of 3NF: A relation is in ==3NF== if and only if it is in ==2NF== and it has no transitive dependencies. Thus, in order for our relation R (A, B, N, O, P) to be in ==3NF==, none of the non-key attributes N, O, or P can be determined by N, O, or P.
+
+然而，==2NF==并不能消除所有异常。 为了处理其他异常，Codd定义了==3NF==。 **当且仅当关系满足==2NF==，并且不存在由另一个非键属性确定的非键属性时（即：非键属性之间互相不能唯一确定），该关系才满足==3NF==。**
+
+由另一个非键属性确定的非键属性的技术名为传递依赖。 因此，我们可以定义3NF：**关系满足==3NF==的充要条件是，它满足==2NF==，并且它没有传递依赖。** 因此，为了使我们的关系R(A，B，N，O，P)满足==3NF==，非关键属性N、O、P都不能由N、O、P来确定。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701154357260.png" alt="image-20200701154357260" style="zoom: 67%;" />
+
+> For example, consider the relation STUDENT\_HOUSING (StudentID, Building, Fee) shown in Figure 3-15. The STUDENT\_HOUSING schema is: 
+>
+> $$ STUDENT\_HOUSING (StudentID, Building, HousingFee)$$
+>
+> Here we have a single-attribute primary key, StudentID, so the relation is in 2NF because there is no possibility of a non-key attribute being dependent on only part of the primary key. Furthermore, if we know the student, we can determine the building where he or she is residing, so:
+>
+> $$(StudentID) → (Building)$$
+>
+> However, the building fee is independent of which student is housed in the building, and, in fact, the same fee is charged for every room in a building. Therefore, Building determines HousingFee:
+>
+> $$(Building) → (HousingFee)$$
+>
+> Thus, a non-key attribute (HousingFee) is functionally determined by another non-key attribute (Building), and the relation is not in 3NF. To put the relation into 3NF, we will have to move the columns of the functional dependency into a separate relation while leaving the determinant in the original relation as a foreign key. We will end up with two relations:
+>
+> $$STUDENT\_HOUSING (StudentID, Building)$$
+>
+> $$BUILDING\_FEE (Building, HousingFee).$$
+>
+> The Building column in STUDENT\_HOUSING becomes a foreign key. The two relations are now in 3NF (work through the logic yourself to make sure you understand 3NF) and are shown in Figure 3-16.
+
+例如，考虑图3-15所示的关系：
+
+$$ STUDENT\_HOUSING (\underline{StudentID}, Building, HousingFee)$$
+
+这里我们有一个单属性主键StudentID，因此关系满足2NF（因为非键属性不可能只依赖于主键的一部分）。 此外，如果我们唯一确定了学生，我们可以确定他或她居住的大楼，因此：
+
+$$(StudentID) → (Building)$$
+
+然而，建筑费与房间里居住的学生的身份无关，实际上，大楼中的每个房间都收取相同的费用。 因此，Building确定HousingFee：
+
+$$(Building)→(HousingFee)$$
+
+因此，一个非键属性(HousingFee)在函数依赖于另一个非键属性(Building)，并且该关系不满足3NF。 要使关系满足3NF，我们必须将有函数依赖的列，移动到单独的表中，同时将原始关系中的决定因素保留为外键。 我们将最终得到两个系：
+
+$$Student\_Hook(\underline{StudentID}，*Building*)$$
+
+$$Building\_Fee(\underline{Building}，HousingFee)$$
+
+学生宿舍中的Building列成为外键。 这两个关系现在满足3NF（这里建议自己理一理逻辑，以确保完全理解）如图3-16所示。
+
+#### 4.3.4.4. 修正的第三范式（BCNF）
+
+> ==Boyce-Codd Normal Form==
+>
+> Some database designers normalize their relations to 3NF. Unfortunately, there are still anomalies due to functional dependences in 3NF. Together with Raymond Boyce, Codd defined ==BCNF== to fix this situation. A relation is in ==BCNF== if and only if it is in 3NF and every determinant is a candidate key. For example, consider the relation STUDENT\_ADVISOR shown in Figure 3-17, where a student (StudentID) can have one or more majors (Subject), a major can have one or more faculty advisors (AdvisorName), and a faculty member advises in only one major area. Note that the figure shows two students (StudentIDs 700 and 800) with double majors (both students show Majors of Math and Psychology) and two Subjects (Math and Psychology) with two Advisors. Because students can have several majors, StudentID does not determine Major. Moreover, because students can have several advisors, StudentID does not determine AdvisorName. Therefore, StudentID by itself cannot be a key. However, the composite key (StudentID, Subject) determines AdvisorName, and the composite key (StudentID, AdvisorName) determines Major. This gives us (StudentID, Subject) and (StudentID, AdvisorName) as two candidate keys.
+
+一些数据库设计人员将他们的关系规范化为3NF。 不幸的是，由于3NF 中的函数依赖，仍然存在一些异常。 Codd 和 Raymond Boyce 一起定义了 ==BCNF== 来解决这个问题。 一个满足 ==BCNF== 的关系必须同时满足 3NF ，并且每个决定因素都是候选键。 例如，考虑图3-17所示的 STUDENT\_advisor 关系，其中一个学生(StudentID)可以有一个或多个专业(Subject) ，一个专业可以有一个或多个导师(AdvisorName) ，而教师成员只能在一个主要领域提供指导。 请注意，该图显示两名学生(学生id为700和800)拥有双专业(两名学生同时修习数学和心理学专业)和两门学科(数学和心理学) ，并有两名导师。 因为学生可以有多个专业，所以学生不能唯一决定专业。 此外，因为学生可以同时拥有几个导师，所以学生不能唯一决定导师。 因此，StudentID 本身不能成为键（非键属性）。 但是，复合键(StudentID、 Subject) 可以决定 AdvisorName，复合键(StudentID、 AdvisorName) 可以决定 Major。 因此给出了两个候选键 (StudentID、 Subject) 和 (StudentID、 AdvisorName)。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701164631109.png" alt="image-20200701164631109" style="zoom:80%;" />
+
+> We can select either of these as the primary key for the relation. Thus, two
+> STUDENT\_ADVISOR schemas with different candidate keys are possible:
+>
+> $$STUDENT\_ADVISOR (StudentID, Major, AdvisorName)$$
+>
+> $$STUDENT\_ADVISOR (StudentID, Major, AdvisorName)$$
+>
+> Note that STUDENT\_ADVISOR is in 2NF because it has no non-key attributes in the sense that every attribute is a part of at least one candidate key. This is a subtle (微妙的)condition, based on the fact that technically the definition of 2NF states that no non-prime attribute can be partially dependent on a candidate key, where a non-prime attribute is an attribute that is not contained in any candidate key. Furthermore, STUDENT\_ADVISOR is in 3NF because there are no transitive dependencies in the relation. The two candidate keys for this relation are overlapping （重叠） candidate keys because they share the attribute StudentID. When a table in 3NF has overlapping candidate keys, it can still have modification anomalies based on functional dependencies. In the STUDENT\_ADVISOR relation, there will be modification anomalies because there is one other functional dependency in the relation. Because a faculty member can be an advisor for only one major area, AdvisorName determines Major. Therefore, AdvisorName is a determinant but not a candidate key. Suppose that we have a student (StudentID = 300) majoring in psychology (Major =Psychology) with faculty advisor Perls (AdvisorName = Perls). Further, assume that this row is the only one in the table with the AdvisorName value of Perls. If we delete this row, we will lose all data about Perls. This is a deletion anomaly. Similarly, we cannot insert the data to represent the Economics advisor Keynes until a student majors in Economics. This is an insertion anomaly. Situations like this led to the development of BCNF. What do we do with the STUDENT\_ADVISOR relation? As before, we move the functional dependency creating the problem to another relation while leaving the determinant in the original relation as a foreign key. In this case, we will create the relations:
+>
+> $$STUDENT\_ADVISOR (StudentID, AdvisorName)$$
+>
+> $$ADVISOR\_SUBJECT (AdvisorName, Major)$$
+>
+> The AdvisorName column in STUDENT\_ADVISOR is the foreign key, and the two final relations are shown in Figure 3-18.
+
+我们可以选择其中任何一个作为关系的主键。 因此，有两个带有不同候选键的 STUDENT\_advisor 模式是可能的:
+
+$$STUDENT\_advisor (\underline{StudentID}，\underline{Subject}，AdvisorName)$$
+
+$$STUDENT\_advisor (\underline{StudentID}，Subject，\underline{AdvisorName})$$
+
+注意，STUDENT\_advisor 满足2NF，因为它没有非键属性，即每个属性都是至少是一个候选键的一部分。 这是一个微妙的条件，从技术上来说，2NF 的定义表明：任何非主要属性都不能只由候选键的一部分决定，其中**非主要属性是一个不包含在任何候选键中的属性**。 此外，STUDENT\_advisor 满足3NF，因为关系中没有传递依赖。 这种关系的两个候选键有重叠，因为它们共享属性 StudentID。 **当3NF 中的一个表有重叠的候选键时，它仍然可能出现基于函数依赖关系的修改异常**。 在 STUDENT\_advisor 关系中，会出现修改异常，因为关系中还有另外一个函数依赖项。 由于一个导师只能担任一个主要领域的顾问，所以导师可以确定专业。 因此，导师 是一个决定因素，而不是一个候选键。 假设我们有一个主修心理学(Major =Psychology)的学生(StudentID = 300) ，他的导师是珀尔斯(AdvisorName = Perls)。 此外，假设这一行是表中唯一一个值为 Perls 的 AdvisorName 行。 如果我们删除这一行，我们将失去有关 Perls 的所有数据。 这是一个删除异常。 同样，在没有学生主修经济学的时候，我们无法存储经济学导师凯恩斯。 这是一个插入异常。 这样的情况导致了 BCNF 的发展。 我们如何处理学生顾问关系？ 与前面一样，我们将导致问题的函数依赖关系移动到另一个表，同时将原始关系中的列作为外键保留。 在这种情况下，我们将创建关系:
+
+$$STUDENT\_ADVISOR (\underline{StudentID，\textbf{AdvisorName}})$$
+
+$$ADVISOR\_subject (\underline{AdvisorName}，Major)$$
+
+STUDENT\_ADVISOR 中的 AdvisorName 列是外键，最后两个关系如图3-18所示。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701164709471.png" alt="image-20200701164709471" style="zoom:80%;" />
+
+#### 4.3.4.5. 第五范式（ PJ/NF ）
+
+> Fifth Normal Form
+>
+> There is a fifth normal form (5NF), also known as Project-Join Normal Form (PJ/NF), which involves an anomaly where a table can be split apart but not correctly joined back together. However, the conditions under which this happens are complex, and generally if a relation is in 4NF it is in 5NF. We will not deal with 5NF in this book. For more information about 5NF, start with the works cited earlier in this chapter and the Wikipedia article at http://en.wikipedia.org/wiki/Fifth\_normal\_form.
+
+第五范式(5NF) ，也被称为 Project-Join Normal Form (PJ/NF) ，它涉及到一个异常现象，即表可以分离但不能正确地合并回来。 然而，发生这种情况的条件是复杂的，**一般来说，如果一个关系满足 4NF ，那么它就是满足 5NF 。** 我们将不在本书中处理 5NF 。 要了解更多关于5NF 的信息，可以从本章前面引用的作品和维基百科的 [本条目](http://en.Wikipedia.org/wiki/fifth_normal_form) 开始。
+
+#### 4.3.4.6. D/K范式（域/键范式）
+
+> Domain/Key Normal Form
+>
+> As discussed earlier in this chapter, in 1982 R. Fagin published a paper that defined domain/key normal form (DK/NF). Fagin asked, “What conditions need to exist for a relation to have no anomalies?” He showed that a relation in DK/NF has no modification anomalies and, further, that a relation that has no modification anomalies is in DK/NF. But what does this mean? Basically, DK/NF requires that all the constraints on the data values be logical implications of the definitions of domains and keys. To the level of detail in this text, and to the level of detail experienced by 99 percent of all database practitioners, this can be restated as follows:
+>
+> Every determinant of a functional dependency must be a candidate key.
+>
+> This, of course, is simply our definition of BCNF, and, for practical purposes, relations in BCNF are in DK/NF as well.
+
+正如本章前面所讨论的，1982年 R. Fagin 发表了一篇定义域 / 键范式 (DK/NF) 的论文。 费金问道: “需要具备怎样的条件才能使一种关系没有异常? ” 他指出满足 DK/NF 的关系不会出现修改异常，进一步说明没有修改异常的关系都满足 DK/NF 。 但这意味着什么呢？ 基本上，DK/NF 要求要求所有的数据约束都满足域、键的逻辑定义。从本书所讲的深度和99% 的数据库从业人员所能经历的深度，DK/NF 可以按如下定义:
+
+**函数依赖关系的每个决定因素必须是一个候选键。**
+
+当然，这只是我们对 BCNF 的简单定义，实际上，BCNF 中的关系满足 DK/NF 。
+
+## 4.4. 寻找函数依赖
+
+#### 4.4.0.7. 用 BCNF 消除函数依赖中的异常
+
+> Eliminating Anomalies from Functional Dependencies with BCNF
+>
+> Most modification anomalies occur because of problems with functional dependencies. You can eliminate these problems by progressively（逐步地） testing a relation for 1NF, 2NF, 3NF, and BCNF using the definitions of these normal forms given previously. We will refer to this as the “Step-by-Step” method.
+
+大多数修改异常是由于函数依赖的问题引起的。 可以通过使用前面给出的这些范式的定义**逐步测试1NF、2NF、3NF 和 BCNF 的关系**来消除这些问题。 我们将这种方法称为“循序渐进”法。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701171510239.png" alt="image-20200701171510239" style="zoom: 50%;" />
+
+> You can also eliminate such problems by simply designing (or redesigning) your tables so that every determinant is a candidate key. This condition, which, of course, is the definition of BCNF, will eliminate all anomalies due to functional dependencies. We will refer to this method as the “Straight-to-BCNF” or “general normalization” method.
+>
+> We prefer the “Straight-to-BCNF” general normalization strategy（策略） and will use it extensively（广泛）, but not exclusively(唯一), in this book. However, this is merely our preference（这仅仅是我们的偏好）—either method produces the same results, and you (or your professor) may prefer the “Step-by-Step” method. The general normalization method is summarized in Figure 3-19. Identify every functional dependency in the relation, and then identify the candidate keys. If there are determinants that are not candidate keys, then the relation is not in BCNF and is subject to modification anomalies. To put the relation into BCNF, follow the procedure in step 3. To fix this procedure in your mind, we will illustrate it with five different examples. We will also compare it to the “Step-by-Step” approach.
+
+还可以通过简单地**设计(或重新设计)表，使每个决定因素都成为候选键**，从而消除这些问题。 当然，这个条件就是 BCNF 的定义，它将消除由函数依赖引起的所有异常。 我们将这种方法称为“直达 BCNF法”或“通用归一化”法。
+
+我们更喜欢“直达 BCNF”的一般规范化策略 ，并将在本书中广泛使用，但不仅仅是唯一的方案。 然而，这仅仅是我们的偏好：任何一种方法都产生相同的结果，而你(或你的教授)可能更喜欢“循序渐进”法。 图3-19总结了一般的归一化方法。 识别关系中的每个函数依赖项，然后识别候选键。 如果有决定因素不是候选键，则关系不满足 BCNF ，并且会出现修改异常。 按照步骤3中的步骤可以使关系满足 BCNF 中。 为了让你记住这个过程，我们将用五个不同的例子来说明它。 我们也会把它与“循序渐进”法作比较。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701171908795.png" alt="image-20200701171908795" style="zoom: 50%;" />
+
+|           Process for Putting a Relation into BCNF           |                    使关系满足BCNF 的步骤                     |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+|            Identily every functional dependency.             |                      辨别每个函数依赖。                      |
+|                ldentity every candidate key.                 |                        辨别每个候选键                        |
+| If there is a functional dependency that has a determinant that is not a candidate key |              如果函数依赖中有决定因素不是候选键              |
+| A. Move the columns of that functional dependency into a new relation.<br/>B. Make the determinant of that functional dependency the primary key of the new relation.<br/>C. Leave a copy of the determinant as a foreign key in the original relation.<br/>D. Create a referential integrity constraint between the original relation and the new relation. | 1. 将该函数依赖项的列移到一个新表中。<br/>2. 将函数依赖关系的决定因素作为新关系的主键。<br/>3. 在原始关系中保留决定因素的一个副本作为外键。<br/>4. 在原始表和新表之间创建一个参照完整性约束。 |
+| Repeat step 3 until every determinant of every relation is a candidate key. |         重复步骤3，直到每个关系的决定因素都是候选键          |
+| Note: In step 3, if there is more than one such functional dependency, <br>start with the one with the most columns. | 注意: 在步骤3中，如果有多个这样的函数依赖项，那么从列最多的那个开始。 |
+
+
+> Our process rule that a relation is in BCNF if and only if every determinant is a candidate key is summed up in（总结了） a variation(变异) of a widely known phrase: I swear to construct my tables so that all non-key columns are dependent on the key, the whole key and nothing but the key, so help me Codd!
+>
+> The goal of the normalization process is to create relations that are in BCNF. It is sometimes stated that the goal is to create relations that are in 3NF, but after the discussion in this chapter, you should understand why BCNF is preferred to 3NF. Note that there are some problems that are not resolved by even BCNF, and we will discuss those after we discuss our examples of normalizing to BCNF.
+
+Our process rule that a relation is in BCNF if and only if every determinant is a candidate key is summed up in a variation  of a widely known phrase: I swear to construct my tables so that all non-key columns are dependent on the key, the whole key and nothing but the key, so help me Codd!
+
+我们的过程规定了，**关系满足 BCNF 当且仅当：每一个决定因素都是一个候选键**。
+
+这个规则被总结为一个广为人知的版本 : 我庄严发誓，我在建表过程中，所有非键属性都依赖于键，无他，只有整个键，所以 Codd 大神，请保佑我！
+
+标准化的目标是建立满足 BCNF 的关系。 有时候，目标是创建满足 3NF 的关系，但是在本章的讨论之后，你应该理解为什么 BCNF 比3NF 更受欢迎。 请注意，**有些问题即使是 BCNF 也无法解决**，我们将在 BCNF 的规范化示例之后讨论这些问题。
+
+## 4.5. 规范化问题举例
+
+### 4.5.1. 标准化示例1
+
+> Normalization example 1
+>
+> Consider the SKU\_DATA table: 
+>
+> $$SKU\_DATA (SKU, SKU\_Description, Department, Buyer)$$
+>
+> As discussed earlier, this table has three functional dependencies:
+>
+> $$SKU → (SKU\_Description, Department, Buyer)$$
+>
+> $$SKU\_Description→ (SKU, Department, Buyer)$$
+>
+> $$Buyer → Department$$
+
+考虑 SKU\_data 表：
+
+$$SKU\_DATA (SKU, SKU\_Description, Department, Buyer)$$
+
+如前所述，该表有三个函数依赖项:
+
+$$SKU → (SKU\_Description, Department, Buyer)$$ 
+
+$$SKU\_Description→ (SKU, Department, Buyer)$$ 
+
+$$Buyer → Department$$
+
+且候选键：SKU 和 SKU\_Descripion
+
+#### 4.5.1.1. “循序渐进”法
+
+> Normalization Example 1: ==The “Step-by-Step” Method==  
+>
+> Both SKU and SKU\_Descripion are candidate keys. Logically, SKU makes more sense as the primary key because it is a surrogate key, so our relation, which is shown in Figure 3-20, is:
+>
+> $$SKU\_DATA (SKU, SKU\_Description, Department, Buyer)$$
+>
+> Checking the relation against Figure 3-4, we find that SKU\_DATA is in 1NF.
+>
+> Is the SKU\_DATA relation in 2NF?
+>
+> A relation is in ==2NF== if and only if it is in ==1NF== and all non-key attributes are determined by the entire primary key. Because the primary key SKU is a single attribute key, all the non-key attributes are therefore dependent on the entire primary key. Thus, the SKU\_DATA relation is in 2NF.
+>
+> Is the SKU\_DATA relation in 3NF?
+>
+> A relation is in ==3NF== if and only if it is in ==2NF== and there are no non-key attributes determined by another non-key attribute. Because we seem to have two non-key attributes (SKU\_Description and Buyer) that determine non-key attributes, the relation is not in 3NF! However, this is where things get a bit tricky. A non-key attribute is an attribute that is neither (1) a candidate key itself nor (2) part of a candidate key. SKU\_Description, therefore, is not a non-key attribute (sorry about the double negative). The only non-key attribute is Buyer! Therefore, we must remove only the functional dependency
+>
+> $$Buyer → Department$$
+>
+> We will now have two relations:
+>
+> $$SKU\_DATA\_2 (SKU, SKU\_Description, Buyer)$$
+>
+> $$BUYER (Buyer, Department)$$
+
+SKU 和 SKU\_Descripion 都是候选键。 从逻辑上讲，SKU 作为主键更有意义，因为它是一个代理键，所以我们的表，可以表示为如图3-20所示：
+
+$$SKU\_data (\underline{SKU}，SKU\_description，Department，Buyer)$$
+
+**检查关系对照图3-4**，我们发现 SKU\_data 满足1NF。
+
+SKU\_ data 关系满足2NF吗？
+
+**当且仅当关系满足 ==1NF== 并且所有非键属性都由整个主键确定时，关系才满足==2NF==**。 由于主键 SKU 是单个属性键，因此所有非键属性只能由整个主键决定。 因此，SKU\_data 关系满足2NF。
+
+SKU\_data 关系满足3NF 吗？
+
+**当且仅当关系位于==2NF== 且非键属性之间不能互相确定时，关系才满足==3NF==。** 因为我们似乎有两个非键属性(SKU\_description 和 Buyer)是决定因素，所以关系不满足3NF！ 然而，这就是事情变得有点棘手的地方。 **非键属性是一种既不是候选键本身也不是候选键的一部分**。 因此，SKU\_description 不是一个非键属性。 唯一的非键属性是 Buyer！ 因此，我们只需要删除以下的函数依赖即可：
+
+$$Buyer → Department$$
+
+于是得到两个表:
+
+$$SKU\_data\_2(\underline{SKU}，SKU\_description，\textbf{Buyer})$$
+
+$$Buyer (\underline{Buyer}，Department)$$
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701172029433.png" alt="image-20200701172029433" style="zoom: 67%;" />
+
+> Is SKU\_DATA\_2 in 3NF?
+> Yes, it is—there are no non-key attributes that determine another non-key attribute.
+>
+> Is the SKU\_DATA\_2 relation in BCNF?
+>
+> A relation is in ==BCNF== if and only if it is in ==3NF== and every determinant is a candidate key. The determinants in SKU\_DATA\_2 are SKU and SKU\_Description:  
+>
+> $$SKU → (SKU\_Description, Buyer)$$  
+>
+> $$SKU\_Description→ (SKU, Buyer)$$
+
+SKU\_data\_2满足3NF 吗？
+
+是的，此时没有非键属性可以决定另一个非键属性。
+
+SKU\_data\_2满足BCNF吗？
+
+**一个关系满足 ==BCNF== ，当且仅当它满足 ==3NF== ，并且每个决定因素都是候选键。** 此时SKU\_data\_2中的决定因素为 SKU 和 SKU\_Description: 
+
+$$SKU → (SKU\_Description, Buyer)$$    
+
+$$SKU\_Description→ (SKU, Buyer)$$
+
+> Both determinants are candidate keys (they both determine all the other attributes in the relation). Thus, every determinant is a candidate key, and the relationship is in BCNF. At this point, we need to check the BUYER relation to determine if it is in BCNF. Work through the steps yourself for BUYER to check your understanding of the “Step-by-Step” method. You will find that BUYER is in BCNF, and therefore our normalized relations, as shown with the sample data in Figure 3-21, are:
+>
+> $$SKU\_DATA\_2 (SKU, SKU\_Description, Buyer)$$
+>
+> $$BUYER (Buyer, Department)$$
+>
+> Both of these tables are now in BCNF and will have no anomalies due to functional dependencies. For the data in these tables to be consistent, however, we also need to define a referential integrity constraint (note that this is step 3D in Figure 3-19): SKU\_DATA\_2.Buyer must exist in BUYER.Buyer This statement means that every value in the Buyer column of SKU\_DATA\_2 must also exist as a value in the Buyer column of BUYER.
+
+这两个决定因素都是候选键(它们都决定了关系中的所有其他属性)。 因此，每个决定因素都是一个候选键，这个表满足 BCNF 。 通过这个方式，我们也可以检查 BUYER 表，来确定它是否满足 BCNF 。 你自己通过这些步骤为 BUYER 复习“循序渐进”法。 您会发现 BUYER 在 BCNF 中，因此我们的对其进行了关系规范化，如图3-21中的样本数据所示:
+
+$$SKU\_data\_2(SKU，SKU\_description，BUYER)$$
+
+$$BUYER (BUYER，Department)$$
+
+这两个表都满足 BCNF ，并且没有由于函数依赖性而出现的异常。 然而，**为了使这些表中的数据保持一致，我们还需要定义一个参照完整性约束**(注意，这是图3-19中的步骤3 d) : SKU\_DATA\_2.Buyer必须存在于BUYER.Buyer。这句话意味着 SKU\_data\_2的 Buyer 列中的每一个值也必须同时存在于 Buyer 列中。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701172112987.png" alt="image-20200701172112987" style="zoom: 80%;" />
+
+#### 4.5.1.2. ”直达BCNF“法
+
+> Normalization Example 1: ==The “Straight-to-BCNF” Method==
+>
+> Now let’s rework this example using the “Straight-to-BCNF” method.
+>
+> SKU and SKU\_Description determine all of the columns in the table, so they are candidate keys. Buyer is a determinant, but it does not determine all of the other columns, and hence it is not a candidate key. Therefore, SKU\_DATA has a determinant that is not a candidate key and is therefore not in ==BCNF==. It will have modification anomalies. To remove such anomalies, in step 3A in Figure 3-19, we move the columns of functional dependency whose determinant is not a candidate key into a new table. In this case, we place Buyer and Department into a new table: BUYER (Buyer, Department) Next, in step 3B in Figure 3-19, we make the determinant of the functional dependency the primary key of the new table. In this case, Buyer becomes the primary key:
+>
+> $$BUYER (Buyer, Department)$$
+>
+> Next, following step 3C in Figure 3-19, we leave a copy of the determinant as a foreign key in the original relation. Thus, SKU\_DATA becomes SKU\_DATA\_2: 
+>
+> $$SKU\_DATA\_2 (SKU, SKU\_Description, Buyer) $$
+>
+> The resulting tables are thus:
+>
+> $$SKU\_DATA\_2 (SKU, SKU\_Description, Buyer)$$
+>
+> $$BUYER (Buyer, Department)$$
+>
+> where SKU\_DATA\_2.Buyer is a foreign key to the BUYER table. Both of these tables are now in ==BCNF== and will have no anomalies due to functional dependencies. For the data in these tables to be consistent, however, we also need to define the referential integrity constraint in step 3D in Figure 3-19: SKU\_DATA\_2.Buyer must exist in BUYER.Buyer This statement means that every value in the Buyer column of SKU\_DATA\_2 must also exist as a value in the Buyer column of BUYER. Sample data for the resulting tables is the same as shown in Figure 3-21. Note that both the “Step-by-Step” method and the “Straight-to-BCNF” method produced exactly the same results. Use the method you prefer; the results will be the same. To keep this chapter reasonably short, we will use only the “Straight-to-BCNF” method for the rest of the normalization examples.
+
+现在让我们使用“ Straight-to-BCNF”方法重新编写这个示例。
+
+SKU 和 SKU\_description 决定了表中的所有列，因此它们是候选键。 Buyer 是一个决定因素，但它不能决定所有其他列，因此它不是一个候选键。 因此，SKU\_data 的**决定因素不是候选键，因此不满足 ==BCNF== ，会出现修改异常**。 为了去除这些异常，在图3-19中的步骤3A 中，**我们将函数依赖的列（Buyer 和 Department）移动到一个新表中**：
+
+$$Buyer (Buyer，Department)$$
+
+接下来，在图3-19中的步骤3B 中，我们**将函数依赖的决定因素作为新表的主键。** 在这种情况下，Buyer 成为主键:
+
+$$Buyer (\underline{Buyer}，Department)$$
+
+接下来，在图3-19中的步骤3C 之后，我们**将决定因素的一个副本作为原始关系中的外键保留下来。** 这样处理的结果是:
+
+$$SKU\_data\_2(\underline{SKU}，SKU\_description，\textbf{Buyer})$$
+
+$$Buyer (\underline{Buyer}，Buyer，Department)$$
+
+其中 SKU\_DATA\_2.Buyer是 BUYER 表的外键。 这两个表都满足 ==BCNF== ，并且没有因为函数依赖而出现的异常。 然而，为了使这些表中的数据保持一致，我们还需要**在图3-19中的步骤3 d 中定义参照完整性约束**: SKU\_DATA\_2.Buyer必须存在于BUYER.Buyer。这句话意味着 SKU\_data\_2 的 Buyer 列中的每一个值必须存在于 BUYER 表的 Buyer 列中。 结果表的示例数据与图3-21所示相同。 请注意，**“循序渐进”方法和“直达 BCNF”方法产生的结果完全相同**。使用你喜欢的方法，结果是一样的。 为了使这一章的篇幅合理缩短，我们将只对其余的规范化示例使用“ 直达BCNF”方法。
+
+### 4.5.2. 标准化示例2
+
+> Normalization example 2
+>
+> Now consider the EQUIPMENT\_REPAIR relation in Figure 3-10. The structure of the table is:
+>
+> EQUIPMENT\_REPAIR (ItemNumber, EquipmentType, AcquisitionCost, RepairNumber, RepairDate, RepairCost)
+>
+> Examining the data in Figure 3-10, the functional dependencies are:
+>
+> $$ItemNumber → (EquipmentType, AcquisitionCost)$$
+>
+> $$RepairNumber →(ItemNumber, EquipmentType, AcquisitionCost, RepairDate, RepairCost)$$
+>
+> Both ItemNumber and RepairNumber are determinants, but only RepairNumber is a candidate key. Accordingly, EQUIPMENT\_REPAIR is not in BCNF and is subject to modification anomalies. Following the procedure in Figure 3-19, we place the columns of the problematic functional dependency into a separate table, as follows:
+>
+> $$EQUIPMENT\_ITEM (ItemNumber, EquipmentType, AcquisitionCost)$$
+>
+> and remove all but ItemNumber from EQUIPMENT\_REPAIR (and rearrange the columns so that the primary key RepairNumber is the first column in the relation) to create:
+>
+> $$REPAIR (RepairNumber, ItemNumber, RepairDate, RepairCost)$$
+>
+> We also need to create the referential integrity constraint: REPAIR.ItemNumber must exist in EQUIPMENT\_ITEM.ItemNumber Data for these two new relations are shown in Figure 3-22.
+
+现在考虑图3-10中的 EQUIPMENT\_repair 关系。 该表的结构为:
+
+$$EQUIPMENT\_REPAIR \\(ItemNumber，EquipmentType，AcquisitionCost，RepairNumber，RepairDate，RepairCost)$$
+
+检查图3-10中的数据，得到函数依赖关系为:
+
+$$ItemNumber →(EquipmentType，AcquisitionCost)$$
+
+$$RepairNumber →(ItemNumber，EquipmentType，AcquisitionCost，RepairDate，RepairCost)$$
+
+因此，EQUIPMENT\_repair 不满足 BCNF ，并且会出现修改异常。 按照图3-19中的过程，我们将有问题的函数依赖项的列放置到一个单独的表中，如下:
+
+$$EQUIPMENT\_item (\underline{ItemNumber}，EquipmentType，AcquisitionCost)$$
+
+并从 EQUIPMENT\_REPAIR 中删除除了 ItemNumber 以外的所有列，并重新排列所有列，使主键 RepairNumber 成为关系中的第一个列，得到:
+
+$$REPAIR (\underline{RepairNumber}，\textbf{ItemNumber}，RepairDate，Repaircost)$$
+
+我们还需要创建参照完整性约束: REPAIR.ItemNumber 必须在 EQUIPMENT\_ITEM.ItemNumber 中存在。 这两个新关系的数据如图3-22所示。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701211406666.png" alt="image-20200701211406666" style="zoom: 80%;" />
+
+> There is another, more intuitive way to think about normalization. Do you remember your eighth-grade English teacher? She said that every paragraph should have a single theme. If you write a paragraph that has two themes, you should break it up into two paragraphs, each with a single theme. The problem with the EQUIPMENT\_REPAIR relation is that it has two themes: one about repairs and a second about items. We eliminated modification anomalies by breaking that single table with two themes into two tables, each with a single theme. Sometimes, it is helpful to look at a table and ask, “How many themes does it have?” If it has more than one, redefine the table so that it has a single theme.
+
+还有一种更直观的方式来考虑标准化。 你还记得你八年级的英语老师吗？ 她说每一段都应该有一个单一的主题。 如果你写的一个段落有两个主题，你应该把它分成两个段落，每个段落都有一个主题。 设备维修关系的问题在于它有两个主题: 一个关于维修，另一个关于物品。 我们将带有两个主题的单个表拆分为两个表，每个表都带有一个主题，从而消除了修改异常。 有时候，看着一张桌子问“它有多少个主题? ”这样的问题是很有帮助的。如果它有多个主题，则重新定义表，使其具有单个主题。
+
+### 4.5.3. 标准化示例3
+
+> Normalization example 3
+>
+> Consider now the Cape Codd database ORDER\_ITEM relation with the structure:
+>
+> $$ORDER\_ITEM (OrderNumber, SKU, Quantity, Price, ExtendedPrice)$$
+>
+> with functional dependencies:
+>
+> $(OrderNumber, SKU) → (Quantity, Price, ExtendedPrice)$$$
+>
+> $$(Quantity, Price) → ExtendedPrice$$
+>
+> This table is not in BCNF because the determinant (Quantity, Price) is not a candidate key. We can follow the same normalization practice as illustrated in examples 1 and 2, but in this case, because the second functional dependency arises from the formula
+>
+> $$ExtendedPrice = (Quantity * Price)$$
+>
+> , we reach a silly result. To see why, we follow the procedure in Figure 3-19 to create tables such that every determinant is a candidate key. This means that we move the columns Quantity, Price, and ExtendedPrice to tables of their own, as follows:
+>
+> $$EXTENDED\_PRICE (Quantity, Price, ExtendedPrice)$$
+>
+> $$ORDER\_ITEM\_2 (OrderNumber, SKU, Quantity, Price)$$
+>
+> Notice that we left both Quantity and Price in the original relation as a composite foreign key. These two tables are in BCNF, but the values in the EXTENDED\_PRICE table are ridiculous. They are just the results of multiplying Quantity by Price. The simple fact is that we do not need to create a table to store these results. Instead, any time we need to know ExtendedPrice we will just compute it. In fact, we can define this formula to the DBMS and let the DBMS compute the value of ExtendedPrice when necessary. Using the formula, we can remove ExtendedPrice from the table. The resulting table is in BCNF:
+>
+> $$ORDER\_ITEM\_2 (OrderNumber, SKU, Quantity, Price)$$
+>
+> Note that Quantity and Price are no longer foreign keys. The ORDER\_ITEM\_2 table with sample data now appears as shown in Figure 3-23.
+
+现在考虑 Cape Codd 数据库的 ORDER\_item 关系，它的结构是:
+
+$$ORDER\_item (OrderNumber，SKU，Quantity，Price，ExtendedPrice)$$
+
+具有函数依赖关系:
+
+$$(OrderNumber, SKU) → (Quantity, Price, ExtendedPrice)$$ 
+
+ $$(Quantity, Price) → ExtendedPrice$$
+
+这个表不满足 BCNF ，因为决定因素(Quantity，Price)不是候选键。 我们可以遵循示例1和2中所示的相同的标准化步骤，但是在这种情况下，由于第二个函数依赖来自于公式
+
+$$ExtendedPrice = (Quantity \times Price)$$
+
+我们得到了一个不必要的结果。 为了查明原因，我们按照图3-19中的步骤创建表，使得每个决定因素都是一个候选键。 这意味着我们将 Quantity、 Price 和 ExtendedPrice 列移动到它们自己的表中，如下所示:
+
+$$EXTENDED\_Price (\underline{Quantity，Price}，ExtendedPrice)$$
+
+$$ORDER\_item\_2(\underline{OrderNumber，SKU}，\textbf{Quantity}，\textbf{Price})$$
+
+注意，我们在原始关系中将 Quantity 和 Price 作为复合外键保留。 这两个表位于 BCNF 中，但 EXTENDED\_price 表中的值是荒谬的。 它们只是数量乘以价格的结果。 简单的事实是，**我们不需要创建一个表来存储这些结果**。 相反，任何时候我们需要知道 ExtendedPrice，我们只需要**计算**它。 实际上，我们可以**在 DBMS 中定义这个公式**，并在必要时让 DBMS 计算 ExtendedPrice 的值。 使用这个公式，我们可以从表中删除 ExtendedPrice。 由此产生的表满足 BCNF:
+
+$$ORDER\_ITEM\_2 (\underline{OrderNumber, SKU}, \textbf{Quantity},\textbf{Price})$$
+
+请注意，Quantity 和 Price 不再是外键。 现在，包含示例数据的 ORDER\_item\_2表如图3-23所示。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701211640865.png" alt="image-20200701211640865" style="zoom: 80%;" />
+
+### 4.5.4. 标准化示例4
+
+> Normalization example 4
+>
+> Consider the following table that stores data about student activities: 
+>
+> $$STUDENT\_ACTIVITY (StudentID, StudentName, Activity, ActivityFee, AmountPaid)$$
+>
+>  where StudentID is a student identifier, StudentName is student name, Activity is the name of a club or other organized student activity, ActivityFee is the cost of joining the club or participating in the activity, and AmountPaid is the amount the student has paid toward the ActivityFee. Figure 3-24 shows sample data for this table. StudentID is a unique student identifier, so we know that: 
+>
+> $$StudentID→ StudentName$$ 
+>
+> However, does the following functional dependency exist?
+>
+> $$StudentID→Activity$$
+
+
+
+考虑下表中存储学生活动的数据:
+
+$$STUDENT\_Activity (StudentID，StudentName，Activity，ActivityFee，AmountPaid)$$
+
+StudentID 是学生标识符，StudentName 是学生名称，Activity 是社团或其他有组织的学生活动的名称，ActivityFee 是加入社团或参加活动的成本，而 AmountPaid 是学生支付给 ActivityFee 的金额。 图3-24显示了此表的示例数据。 Studentid 是一个唯一的学生标识符，所以我们知道:
+
+$$StudentID → studename$$
+
+然而，是否存在下列函数依赖项？
+
+$$StudentID→Activity$$
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701211845694.png" alt="image-20200701211845694" style="zoom:80%;" />
+
+> It does if a student belongs to just one club or participates in just one activity,but it does not if a student belongs to more than one club or participates in more than one activity. Looking at the data, student Davis with StudentID 200 participates in both Skiing and Swimming, so StudentID does not determine Club. StudentID does not determine ActivityFee or AmountPaid, either. Now consider the StudentName column. Does StudentName determine StudentID? Is, for example, the value 'Jones' always paired with the same value of StudentID? No, there are two students named 'Jones', and they have different StudentID values. StudentName does not determine any other column in this table, either.
+>
+> Considering the next column, Activity, we know that many students can belong to a club. Therefore, Activity does not determine StudentID or StudentName. Does Activity determine ActivityFee? Is the value 'Skiing', for example, always paired with the same value of ActivityFee? From these data, it appears so, and using just this sample data, we can conclude that Activity determines ActivityFee. However, this data is just a sample. Logically, it is possible for students to pay different costs, perhaps because they select different levels of activity participation. If that were the case, then we would say that
+>
+> $$(StudentID, Activity) → ActivityFee$$
+>
+> To find out, we need to check with the users. Here, assume that all students pay the same fee for a given activity. The last column is AmountPaid, and it does not determine anything.
+
+如果一个学生只参加了一个社团或者只参加了一项活动，那么它就是有效的，但是如果一个学生参加了不止一个社团或者参加了不止一项活动，那么它就不是有效的。 从数据来看，学生 Davis （学生id=200）同时参加了滑雪和游泳，所以学生并不能决定社团。 也不确定 ActivityFee 或 AmountPaid。 现在考虑 StudentName 列。 StudentName决定StudentID吗？ 例如，Jones总是对应 StudentID 的相同值吗？ 不，有两个学生叫Jones，他们有不同的StudentID。 Studentname 也不确定该表中的任何其他列。
+
+考虑到下一个列：活动，我们知道许多学生可以加入一个社团。 因此，活动不决定StudentID或StudentNAME。 活动是否决定活动收费？ 例如，“ Skiing”的值总是对应 ActivityFee 的相同值吗？ 从这些数据来看，似乎是这样的，仅仅使用这些示例数据，我们就可以得出结论: Activity 决定 ActivityFee。 然而，这些数据只是一个样本。 从逻辑上讲，学生支付不同的费用是可能的，也许是因为他们选择了不同程度的活动参与。 如果是这样的话，那么我们会说
+
+$$(StudentID，Activity)→ ActivityFee$$
+
+要找到答案，我们需要检查用户。 在这里，假设所有的学生为一个给定的活动支付相同的费用。 最后一列是 AmountPaid，它不确定任何内容。
+
+> So far, we have two functional dependencies:
+>
+> $$StudentID → StudentName$$
+>
+> $$Activity→ ActivityFee$$
+>
+> Are there other functional dependencies with composite determinants? No single column determines AmountPaid, so consider possible composite determinants for it. AmountPaid is dependent on both the student and the club the student has joined. Therefore, it is determined by the combination of the determinants StudentID and Activity. Thus, we can say
+>
+> $$(StudentID, Activity) →AmountPaid$$
+>
+> So far we have three determinants: StudentID, Activity, and (StudentID, Activity). Are any of these candidate keys? Do any of these determinants identify a unique row? From the data, it appears that (StudentID, Activity) identifies a unique row and is a candidate key. Again, in real situations, we would need to check out this assumption with the users. STUDENT\_ACTIVITY\_PAYMENT is not in BCNF because columns StudentID and Activity are both determinants, but neither is a candidate key. StudentID and Activity are only part of the candidate key (StudentID, Activity).
+>
+> By The Way Both StudentID and Activity are part of the candidate key (StudentID, Activity). This, however, is not good enough. A determinant must have all of the same columns to be the same as a candidate key. Remember, as we stated above: I swear to construct my tables so that all non-key columns are dependent on the key, the whole key, and nothing but the key, so help me Codd!
+
+到目前为止，我们有两个函数依赖:
+
+$$StudentID → StudentName$$
+
+$$Activity → ActivityFee$$
+
+复合决定因素还有其他函数依赖吗？ **没有单个列可以确定 AmountPaid，因此要考虑其可能的复合列**。 Amountpaid 取决于学生和学生参加的社团。 因此，它是由StudentID 和 Activity联合决定的。 因此，我们可以得出:
+
+$$(StudentID，Activity)→ AmountPaid$$
+
+到目前为止，我们有三个决定因素: StudentID，Activity 和(StudentID，Activity)。 这些是候选键吗？ 这些决定因素中是否能确定了一个唯一的行？ 从数据中可以看出(StudentID，Activity)可以决定一个唯一的行，并且是一个候选键。 同样，在实际情况中，我们需要与用户一起检查这个假设。 因为列 StudentID 和 Activity 都是决定因素，但是两者都不是候选键，所以 STUDENT\_Activity\_payment 不满足 BCNF 。 Studentid 和 Activity 只是候选关键字(StudentID，Activity)的一部分。
+
+顺便说一下，学习和活动都是候选关键词(StudentID, Activity)的一部分。 然而，这还不够好。 **决定因素必须与候选键在所有列都完全一致**。 记住，正如我们上面所说的: 我庄严发誓，我在建表过程中，所有非键属性都依赖于键，无他，只有整个键，所以 Codd 大神，请保佑我！
+
+> To normalize this table, we need to construct tables so that every determinant is a candidate key. We can do this by creating a separate table for each functional dependency as we did before. The result is:
+>
+> $$STUDENT (StudentID, StudentName)$$
+>
+> $$ACTIVITY (Activity, ActivityFee)$$
+>
+> $$PAYMENT (StudentID, Activity, AmountPaid)$$
+>
+> with referential integrity constraints: PAYMENT.StudentID must exist in STUDENT.StudentID and PAYMENT.Activity must exist in ACTIVITY.Activity These tables are in BCNF and will have no anomalies from functional dependencies. The sample data for the normalized tables are shown in Figure 3-25.
+
+为了规范化这个表，我们需要构造表，**使每个决定因素都是一个候选键**。 我们可以像前面那样为每个函数依赖项创建一个单独的表。 结果是:
+
+$$STUDENT (\underline{StudentID}, StudentName)$$  
+
+$$ACTIVITY (\underline{Activity}, ActivityFee)$$  
+
+$$PAYMENT (\underline{\textbf{StudentID}},\underline{\textbf{Activity}}, AmountPaid)$$
+
+受参照完整性约束: PAYMENT.StudentID必须存在于STUDENT.StudentID中，PAYMENT.Activity必须存在于ACTIVITY.Activity中。 这些表格满足 BCNF ，不会出现函数依赖性的异常。 经过规范化后，表的示例数据如图3-25所示。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701212058755.png" alt="image-20200701212058755" style="zoom: 80%;" />
+
+### 4.5.5. 标准化示例5
+
+> Normalization example 5
+>
+> Now consider a normalization process that requires two iterations of step 3 in the procedure in Figure 3-19. To do this, we will extend the SKU\_DATA relation by adding the budget code of each department. We call the revised relation SKU\_DATA\_3 and define it as follows:
+>
+> $$SKU\_DATA\_3 (SKU, SKU\_Description, Department, DeptBudgetCode, Buyer)$$
+>
+> Sample data for this relation are shown in Figure 3-26. SKU\_DATA\_3 has the following functional dependencies:
+>
+> $$SKU → (SKU\_Description, Department, DeptBudgetCode, Buyer)$$
+>
+> $$SKU\_Description → (SKU, Department, DeptBudgetCode, Buyer)$$
+>
+> $$Buyer → (Department, DeptBudgetCode)$$
+>
+> $$Department → DeptBudgetCode$$
+>
+> $$DeptBudgetCode → Department$$
+>
+> Of the five determinants, both SKU and SKU\_Description are candidate keys, but Buyer, Department and DeptBudgetCode are not candidate keys. Therefore, this relation is not in BCNF.
+
+现在考虑一个标准化过程，该过程需要在图3-19中的过程中两次执行步骤3。 为此，我们将通过添加各部门的budget code来扩展 SKU\_data 关系。 我们称这个修正关系为 SKU\_data\_3，并将它定义为:
+
+$$SKU\_DATA\_3 (SKU, SKU\_Description, Department, DeptBudgetCode, Buyer)$$
+
+此关系的示例数据如图3-26所示。 SKU\_data\_3具有以下函数依赖关系:
+
+$$SKU → (SKU\_Description, Department, DeptBudgetCode, Buyer)$$  
+
+$$SKU\_Description → (SKU, Department, DeptBudgetCode, Buyer)$$  
+
+$$Buyer → (Department, DeptBudgetCode)$$  
+
+$$Department → DeptBudgetCode   DeptBudgetCode → Department$$
+
+在这五个决定因素中，SKU 和 SKU\_description 都是候选关键，但Buyer, Department , DeptBudgetCode 不是候选关键。 因此，这种关系不满足 BCNF 。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200701221702356.png" alt="image-20200701221702356" style="zoom:80%;" />
+
+>  To normalize this table, we must transform this table into two or more tables that are in BCNF. In this case, there are two problematic functional dependencies. According to the note at the end of the procedure in Figure 3-19, we take the functional dependency whose determinant is not a candidate key and has the largest number of columns first. In this case, we take the columns of
+>
+>  $$ Buyer → (Department, DeptBudgetCode)$$
+>
+>  and place them in a table of their own. Next, we make the determinant the primary key of the new table, remove all columns except Buyer from SKU\_DATA\_3, and make Buyer a foreign key of the new version of SKU\_DATA\_3, which we will name SKU\_DATA\_4. We can also now assign SKU as the primary key of SKU\_DATA\_4. The results are:
+>
+>  $$BUYER (Buyer, Department, DeptBudgetCode)$$
+>
+>  $$SKU\_DATA\_4 (SKU, SKU\_Description, Buyer)$$
+>
+>  We also create the referential integrity constraint: SKU\_DATA\_4.Buyer must exist in BUYER.Buyer The functional dependencies from SKU\_DATA\_4 are:
+>
+>  $$SKU → (SKU\_Description, Buyer)$$
+>
+>  $$SKU\_Description→ (SKU, Buyer)$$
+>
+>  At last, every determinant is a candidate key, and all three of the tables are in BCNF. The resulting relations from these operations are shown in Figure 3-27.
+
+为了规范化这个表，我们必须将这个表转换满足 BCNF 的两个或多个表。 在这种情况下，有两个有问题的函数依赖。 根据图3-19中过程末尾的说明，我们从 决定因素不是一个候选键的函数依赖 下手，并且从 有最多列的函数依赖 开始优化。 在这个例子中，我们使用
+
+$$Buyer →(Department，DeptBudgetCode)$$
+
+并将它们做成一个新表中。 接下来，我们将决定因素作为新表的主键，从 SKU\_data\_3中删除 Buyer 以外的所有列，并将 Buyer 作为新版本的 SKU\_data\_3的外键，我们将其命名为 SKU\_data\_4。 我们现在还可以将 SKU 分配为 SKU\_data\_4的主键。 结果是:
+
+$$BUYER (BUYER，Department，DeptBudgetCode)$$
+
+$$SKU data\_4(SKU，SKU\_description，BUYER)$$
+
+我们还创建了参照完整性约束: SKU\_data\_4。 SKU\_DATA\_4.Buyer必须存在于BUYER.Buyer。SKU\_data\_4的函数依赖是:
+
+$$SKU →(SKU\_description，Buyer)$$
+
+$$SKU\_description →(SKU，Buyer)$$
+
+最后，每个决定因素都是一个候选键，所有三个表都满足 BCNF 。 这些操作产生的关系如图3-27所示。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200702223608876.png" alt="image-20200702223608876" style="zoom:67%;" />
+
+
+
+## 4.6. 多值依赖
+
+> Eliminating Anomalies from Multivalued Dependencies
+>
+> All of the anomalies in the last section were due to functional dependencies, and when we normalize relations to BCNF, we eliminate these anomalies. However, anomalies can also arise from another kind of dependency—the multivalued dependency. A multivalued dependency occurs when a determinant is matched with a particular set of values. Examples of multivalued dependencies are:
+>
+> $$EmployeeName →→ EmployeeDegree$$
+>
+> $$EmployeeName →→ EmployeeSibling$$
+>
+> $$PartKitName →→ Part$$
+
+最后一个案例中的所有异常都是由于函数依赖，当我们将关系规范化到 BCNF 时，我们消除了这些异常。 然而，异常也可能来自另一种依赖 —— 多值依赖。**当决定因素与一组特定的值相匹配时，就会发生多值依赖。** 多值依赖的例子有:
+
+$$EmployeeName →→ EmployeeDegree$$
+
+$$EmployeeName →→ EmployeeSibling$$
+
+$$PartKitName →→ Part$$
+
+> In each case, the determinant is associated with a set of values, and example
+> data for each of these multivalued dependencies are shown in Figure 3-28. Such expressions are read as
+>
+> “EmployeeName multidetermines EmployeeDegree”
+>
+> “EmployeeName multidetermines EmployeeSibling”
+>
+> “PartKitName multidetermines Part.”
+>
+> Note that multideterminants are shown with a double arrow rather than a single arrow. Employee Jones, for example, has degrees AA and BS. Employee Greene has degrees BS, MS, and PhD. Employee Chau has just one degree, BS. Similarly, employee Jones has siblings (brothers and sisters) Fred, Sally, and Frank. Employee Greene has sibling Nikki, and employee Chau has siblings Jonathan and Eileen. Finally, PartKitName Bike Repair has parts Wrench, Screwdriver, and Tube Fix. Other kits have parts as shown in Figure 3-28.
+>
+> Unlike functional dependencies, the determinant of a multivalued dependency can never be the primary key. In all three of the tables in Figure 3-28, the primary key consists of the composite of the two columns in each table. For example, the primary key of the EMPLOYEE\_DEGREE table is the composite key (EmployeeName, EmployeeDegree). Multivalued dependencies pose no problem as long as they exist in tables of their own. None of the tables in Figure 3-28 has modification anomalies. However, if A →→B, then any relation that contains A, B, and one or more additional columns will have modification anomalies.
+
+在每种情况下，决定因素都与一组值相关联，图3-28显示了每种多值依赖关系的示例数据。 这些表达式被读作
+
+“  EmployeeName 多重决定 EmployeeDegree”
+
+“  EmployeeName 多重决定 EmployeeSibling ”
+
+“  PartKitName 多重决定 part”
+
+**注意，多值依赖是用双箭头而不是单箭头显示的。** 例如，员工琼斯拥有 AA 和 BS 学位。 员工格林拥有AA、BS 和 PhD 学位。 员工 Chau 只有一个学位，BS。 类似地，员工 Jones 有兄弟姐妹Fred, Sally 和 Frank.。 员工 Greene 有兄弟姐妹 Nikki，而员工 Chau 有兄弟姐妹 Jonathan 和 Eileen 。 最后，叫做修车工具的工具箱由 parts Wrench, Screwdriver, 和 Tube Fix 组成。 其他工具箱的组成部分如图3-28所示。
+
+**与函数依赖关系不同，多值依赖的决定因素永远不能是主键。** 在图3-28中的所有三个表中，主键由每个表中两列的组合组成。 例如，EMPLOYEE\_degree 表的主键是复合键(EmployeeName，EmployeeDegree)。 **多值依赖的决定因素只要存在于它们自己的表中，就不会造成问题**。 图3-28中的所有表都没有修改异常。 然而，如果 a →→ b，那么任何包含 a、 b 和一个或多个附加列的关系都会有修改异常。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200702223817666.png" alt="image-20200702223817666" style="zoom: 67%;" />
+
+> For example, consider the situation if we combine the employee data in Figure 3-28 into a single EMPLOYEE\_DEGREE\_SIBLING table with three columns (EmployeeName, EmployeeDegree, EmployeeSibling), as shown in Figure 3-29. Now, what actions need to be taken if employee Jones earns an MBA? We must add three rows to the table. If we do not, if we only add the row ('Jones', 'MBA', 'Fred'), it will appear as if Jones is an MBA with her brother Fred, but not with her sister Sally or her other brother Frank. However, suppose Greene earns an MBA. Then we need only add one row ('Greene', 'MBA', 'Nikki'). But, if Chau earns an MBA, we need to add two rows. These are insertion anomalies. There are equivalent modification and deletion anomalies as well.
+
+例如，如果我们将图3-28中的雇员数据合并到一个 EMPLOYEE\_degree\_sibling 表中，该表有三列(EmployeeName、 EmployeeDegree、 EmployeeSibling) ，请考虑如图3-29所示的这种情况。 现在，如果员工琼斯获得了 MBA 学位，需要怎样修改表格？ 我们必须向表中添加三行。 如果我们不这样做，如果我们只加上一行字(“琼斯”、“ MBA”、“弗雷德”) ，就会显得 Jones 获得了 MBA 她有一个弟弟 Fred ，但她妹妹 Sally 或另一个弟弟 Frank 似乎与她无关。 然而，假设 Greene 获得了 MBA 学位。 我们只需要添加一行(“ Greene”、“ MBA”、“ Nikki”)。 但是，如果 Chau 拿到了 MBA 学位，我们需要再加上两行。 这些是插入异常。 同时也存在修改和删除异常。
+
+> In Figure 3-29, we combined two multivalued dependencies into a single table and obtained modification anomalies. Unfortunately, we will also get anomalies if we combine a multivalued dependency with any other column, even if that other column has no multivalued dependency.
+>
+> Figure 3-30 shows what happens when we combine the multivalued dependency
+>
+> $$PartKitName →→Part$$
+>
+> with the functional dependency
+>
+> $$PartKitName → PartKitPrice$$
+
+在图3-29中，我们**将两个多值依赖关系组合到一个表中，会出现修改异常。** 不幸的是，如果我们把多值依赖和任意其他列结合起来，都会得到异常，即使其他列没有多值依赖。
+
+Figure 3-30显示了将多值依赖项
+
+$$PartKitName →→ Part$$
+
+与函数依赖项
+
+$$PartKitName →→ PartKitPrice$$
+
+组合时发生的情况
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200702223917141.png" alt="image-20200702223917141" style="zoom:67%;" />
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200702224023594.png" alt="image-20200702224023594" style="zoom: 80%;" />
+
+> For the data to be consistent, we must repeat the value of price for as many rows as each kit has parts. For this example, we must add three rows for the Bike Repair kit and four rows for the First Aid kit. The result is duplicated data that can cause data integrity problems. Now you also know the problem with the relation in Figure 3-2. Anomalies exist in that table because it contains two multivalued dependencies:
+>
+> $$BuyerName →→ SKU\_Managed$$
+>
+> $$BuyerName →→ CollegeMajor$$
+>
+> Fortunately, it is easy to deal with multivalued dependencies: Put them into a table of their own. None of the tables in Figure 3-28 has modification anomalies because each table consists of only the columns in a single, multivalued dependency. Thus, to fix the table in Figure 3-2, we must move BuyerName and SKU\_Managed into one table and BuyerName and CollegeMajor into a second table:
+>
+> $$PRODUCT\_BUYER\_SKU (BuyerName, SKU\_Managed)$$
+>
+> $$PRODUCT\_BUYER\_MAJOR (BuyerName, CollegeMajor)$$
+>
+> The results are shown in Figure 3-31. If we want to maintain strict equivalence between these tables, we would also add the referential integrity constraint:
+>
+> PRODUCT\_BUYER\_SKU.BuyerName must be identical to PRODUCT\_BUYER\_MAJOR.BuyerName
+
+为了使数据保持一致，我们必须重复价格值，重复次数等同于每个 Kit 包含部件的数量。 在本例中，我们必须为 Bike Repair kit 添加三行，为 First Aid kit 添加四行。 结果是重复数据会导致数据完整性问题。 现在你也知道图3-2中表的问题了。 该表中存在异常，因为它包含两个多值依赖项：
+
+$$BuyerName→→SKU\_Managed$$
+
+$$BuyerName→→CollegeMajor$$
+
+幸运的是，很容易处理多值依赖项：将它们放入自己的表中。 图3-28中的表都没有修改异常，因为每个表只包含单个多值依赖项中的列。 因此，要修复图3-2中的表，我们必须将BuyerName和SKU\_Managed移到一个表中，而将BuyerName和CollegeMajor移到第二个表中：
+
+$$Product\_Buyer\_SKU(BuyerName，SKU\_Managed)$$
+
+$$product\_Buyer\_MAJOR(BuyerName，CollegeMajor)$$
+
+结果如图3-31所示。 如果我们希望在这些表之间保持严格相等，还需要添加参照完整性约束：
+
+PRODUCT\_BUBUR\_SKU.BuyerName 必须与 PRODUCT\_BUTHER\_MAJOR.BuyerName 保持一致
+
+> This referential integrity constraint may not be necessary, depending on the requirements of the application. Notice that when you put multivalued dependencies into a table of their own, they disappear. The result is just a table with two columns, and the primary key (and sole candidate key) is the composite of those two columns. When multivalued dependencies have been isolated in this way, the table is said to be in fourth normal form (4NF). The hardest part of multivalued dependencies is finding them. Once you know they exist in a table, just move them into a table of their own. Whenever you encounter tables with odd anomalies, especially anomalies that require you to insert, modify, or delete different numbers of rows to maintain integrity, check for multivalued dependencies.
+
+根据应用程序的要求，此引用完整性约束可能不必要的。 请注意，当把多值依赖项放入它们自己的表中时，它们会消失。 结果就是一个包含两列的表，主键(和唯一候选键)是这两列的组合。 **当以这种方式隔离多值依赖项时，该表被称为第四范式(4NF)**。 多值依赖项最难的部分是找到它们。 一旦知道它们存在于表中，只需将它们移到自己的表中即可。 **每当遇到具有奇怪异常的表，特别是需要您插入、修改或删除不同数量的行以维护完整性的异常时，请检查多值依赖项。**
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200702224131756.png" alt="image-20200702224131756" style="zoom:80%;" />
+
+> By The Way You will sometimes hear people use the term normalize in phrases like, “that table has been normalized” or “check to see if those tables are normalized.” Unfortunately, not everyone means the same thing with these words. Some people do not know about BCNF, and they will use it to mean tables in 3NF, which is a lesser form of normalization, one that allows for anomalies from functional dependencies that BCNF does not allow. Others use it to mean tables that are both BCNF and 4NF. Others may mean something else. The best choice is to use the term normalize to mean tables that are in both BCNF and 4NF.
+
+顺便说一句，您有时会听到人们在诸如“该表已标准化”或“检查这些表是否标准化”之类的短语中使用术语Normize。 不幸的是，每个人认定的这个词的指代物可能不一样。 有些人不知道BCNF，他们会用该词指代满足 3NF 的表，3NF 是一种较宽松的规范化形式，允许拥有 BCNF 下所不允许的异常。 其他人用它来表示既满足 BCNF 又满足 4NF 的表格。 其他人可能有别的意思。 **最佳选择是使用术语标准化来指代满足 BCNF 和 4NF 的表。**
+
+## 4.7. 小结
+
+> Databases arise from three sources: from existing data, from new systems development, and from the redesign of existing databases. This chapter and the next are concerned with databases that arise from existing data. Even though a table is a simple concept, certain tables can lead to surprisingly difficult processing problems. This chapter uses the concept of normalization to understand and possibly solve those problems. Figure 3-3 lists terms you should be familiar with.
+>
+> A relation is a special case of a table; all relations are tables, but not all tables are relations. Relations are tables that have the properties listed in Figure 3-4. Three sets of terms are used to describe relation structure: 
+>
+> - (relation, attribute, tuple); 
+>
+> - (table, column, row); 
+>
+> -  ( file, field, and record). 
+>
+> Sometimes these terms are mixed and matched. In practice, the terms table and relation are commonly used synonymously, and we will do so for the balance of this text.
+
+数据库因以下三个方面而产生: 现有数据、新信息系统的开发和现有数据库的重新设计。 本章和下一章涉及从现有数据中产生的数据库。 尽管表是一个简单的概念，但某些表可能会导致非常困难的处理问题。 本章使用规范化的概念来理解并可能解决这些问题。 图3-3列出了您应该熟悉的术语。
+
+关系是表的一种特殊情况; 所有关系都是表，但并非所有表都是关系。 关系是具有图3-4所列属性的表。 用三组术语来描述关系结构:
+
+- (关系、属性、元组)
+- (表、列、行)
+- (文件、字段和记录)
+
+有时，这些术语是混合搭配的。 在本书中，术语“表“和“关系“是常用的同义词，我们将这样做，以平衡文本。
+
+> In a functional dependency, the value of one attribute, or attributes, determines the value of another. In the functional dependency A → B, attribute A is called the determinant. Some functional dependencies arise from equations, but many others do not. The purpose of a database is, in fact, to store instances of functional dependencies that do not arise from equations. Determinants that have more than one attribute are called composite determinants.
+>
+> If A → (B, C), then A → B and A → C.
+>
+> However, if (A, B) → C, then, in general, neither A → C nor B → C.
+>
+> If A→ B, the values of A may or may not be unique in a relation.
+>
+> However, every time a given value of A appears, it will be paired with the same value of B. A determinant is unique in a relation only if it determines every other attribute of the relation. You cannot always rely on determining functional dependencies from sample data. The best idea is to verify your conclusions with the users of the data.
+
+在函数依赖关系中，一个属性或一些属性的值决定另一个属性的值。 在函数依赖关系 a → b 中，属性 a 称为决定因素。 一些函数依赖源于方程，但是许多其他函数依赖并不是由方程产生的。 实际上，这些不是由方程产生的函数依赖，才是数据库存储的主要目标。具有多个属性的多值依赖称为组合决定因素。
+
+1. 如果 a →(b，c) ，那么 a → b 和 a → c
+
+2. 但是如果(a，b)→ c，那么，一般来说，a → c 和 b → c 一般不成立。
+
+3. 如果 a → b，那么 a 的值在关系中可能是唯一的，也可能不是唯一的。 然而，每次出现一个给定的值 a 时，它都会与相同的值 b 成对出现。
+
+**当且仅当决定因素决定了关系的其他所有属性时，决定因素在关系中唯一。** 然而不能总是依赖于从示例数据确定的函数依赖关系。 最好的办法是与数据的使用者一起验证你的结论。
+
+> - A key is a combination of one or more columns used to identify one or more rows.
+> - A composite key is a key with two or more attributes.
+> - A determinant that determines every other attribute is called a candidate key.
+> - A relation may have more than one candidate key. One of them is selected to be used by the DBMS for finding rows and is called the primary key.
+> - A surrogate key is an artificial attribute used as a primary key. The value of a surrogate key is supplied by the DBMS and has no meaning to the user.
+> - A foreign key is a key in one table that references the primary key of a second table.
+> - A referential integrity constraint is a limitation on data values of a foreign key that ensures that every value of the foreign key has a match to a value of a primary key.
+> - The three kinds of modification anomalies are insert, update, and delete.
+> - Codd and others defined normal forms for describing different table structures that lead to anomalies.
+
+- 键是用于标识一或多个行的一个或多个列的组合。
+- 复合键是具有两个或多个属性的键。
+- 决定其他所有属性的决定因素称为候选键。
+- 一个关系可能有多个候选键。 其中一个被选中用于 DBMS 来对行进行查找，称为主键。
+- 代理键是用作主键的一个人工制造的属性。 代理键的值由 DBMS 提供，对用户没有意义。
+- 外键是引用第二个表的主键的，第一个表中的键。
+- 参照完整性约束是对外键的数据值的限制，以确保外键的每个值都与主键的值匹配。
+- 三种修改异常是插入、更新和删除。
+- Codd 和其他人定义了范式，来优化可能会导致异常的不同表结构。
+
+> - A table that meets the conditions listed in Figure 3-4 is in 1NF.
+> - Some
+>   anomalies arise from functional dependencies. Three forms, 2NF, 3NF, and BCNF, are used to treat such anomalies. In this text, we are only concerned with the best of these forms, BCNF.
+> - If a relation is in BCNF, then no anomalies from functional dependencies can occur.
+> - A relation is in BCNF if every determinant is a candidate key.
+> - Relations can be normalized using either a “Step-by-Step” method or a
+>   “Straight-to-BCNF” method. Which method to use is a matter of personal preference, and both methods produce the same results.
+> - Some anomalies arise from multivalued dependencies. A multi determines B, or A →→ B, if A determines a set of values. If A multidetermines B, then any relation that contains A , B , and one or more other columns will have modification anomalies.
+> - Anomalies due to multivalued dependencies can be eliminated by placing the multivalued dependency in a table of its own. Such tables are in 4NF.
+> - here is a 5NF, but generally tables in 4NF are in 5NF. DK/NF has
+>   been defined, but in practical terms the definition of DK/NF is the same as the definition of BCNF.
+
+- 满足图3-4中所列条件的表满足 1NF 。
+- 一些异常来自于函数依赖。 而三种范式，2NF，3NF 和 BCNF 被用来处理这些异常。 在本文中，我们只关心这些形式中最优秀的，BCNF。
+- 如果关系满足 BCNF ，则不会出现函数依赖导致的异常。
+- 如果每个决定因素都是候选键，则关系满足BCNF 。
+- 关系可以使用“循序渐进”法或“直达 BCNF”法 进行归一化。 使用哪种方法取决于个人喜好，而且两种方法产生的结果是相同的。
+- 一些异常是由多值依赖关系引起的。 如果 a 多重决定b，或 a →→ b， 或 a 决定一组值。 如果 a 多重确定 b，那么任何包含有 a 、b 或者更多其他列的关系都会存在修改异常。
+- 由于多值依赖关系引起的异常，可以通过将多值依赖放在独立的表中来消除。 这种表即可满足4NF。
+- 对于5NF来说，通常满足 4NF 的表也满足 5NF 。 虽然已经定义了 dk / nf，但实际上 dk / nf 的定义与 BCNF 的定义相同。
+
+# 5. 第五章：用规范化理论完成数据库设计
+
+> In Chapter 4, we defined the ==relational model==, described ==modification anomalies==, and discussed normalization using ==BCNF== and ==4NF==. In this chapter, we apply those concepts to the design of databases that are created from existing data. The premise of this chapter, as it was in Chapter 4 is that you have received, from some source, one or more tables of data that are to be stored in a new database. The question is, should that data be stored as is, or should it be transformed in some way before it is stored? Normalization theory plays an important role, as you will see.
+
+在第4章中，我们定义了==关系模型==，描述了==修改异常==，并讨论了使用 ==BCNF== 和 ==4NF== 进行标准化。 在本章中，我们将这些概念应用到从现有数据创建的数据库的设计中。 本章的前提是，正如在第4章中一样，您已经从某个源接收到一个或多个数据表，这些数据表将存储在一个新的数据库中。 问题是，数据是否应该按原样存储，还是应该在存储之前以某种方式进行转换？ 正如你将看到的，规范化理论起着重要的作用。
+
+## 5.1. 评估表格结构
+
+> Assess Table Structure
+>
+> When someone gives you a set of tables and asks you to construct a database to store them, your first step should be to assess the tables’ structure and content. General guidelines for assessing a table’s structure are summarized in Figure 5-1.
+>
+> As shown in Figure 5-1, you should examine the data and determine the functional dependencies, multivalued dependencies, candidate keys, and each table’s primary key. Also, look for possible foreign keys. Again, you can base your conclusions on sample data, but that data might not have all of the possible data cases. Therefore, verify your assumptions and conclusions with the users. For example, suppose you receive data for the following SKU\_DATA and BUYER tables (with the primary keys logically determined at this point):
+>
+> $$SKU\_DATA (SKU, SKU\_Description, Buyer)$$
+>
+> $$BUYER (Buyer, Department)$$
+>
+> Begin by counting the number of rows in each table using the SQL COUNT(*) function. Then, to determine the number and type of the table’s columns, use an SQL SELECT * statement. If your table has thousands or millions of rows, however, a full query will take considerable time. One way to limit the results of this query is to use the SQL TOP {NumberOfRows} property. For example, to obtain all columns for the first 5 rows of the SKU\_DATA table, you would code:
+>
+> /* \*\*\* SQL-Query-CH04-01 \*\*\* */
+>
+> SELECT TOP 5 * FROM SKU\_DATA;
+>
+> This query will show you all columns and data for 5 rows, as shown in the following results. If you want the top 50 rows, just use TOP 50 instead of TOP 5, and so on. At this point you should confirm the primary key, and determine the data type for each of the columns in the table.
+
+当有人给您一组表并要求您构造一个数据库来存储它们时，您的第一步应该是评估表的结构和内容。 图5-1总结了评估表格结构的一般准则。
+
+如图5-1所示，您应该检查数据并确定函数依赖关系、多值依赖关系、候选键和每个表的主键。 此外，寻找可能的外键。 同样，您可以根据样本数据得出结论，但是这些数据可能不包含所有可能的数据案例。 因此，与用户一起验证你的假设和结论。 例如，假设您收到了下列 SKU\_data 和 BUYER 表的数据(此时已经确定了主键) :
+
+$$SKU\_data (SKU，SKU\_description，BUYER)$$
+
+$$BUYER (BUYER，Department)$$
+
+首先使用 SQL COUNT (*)函数计算每个表中的行数。 然后，要确定表中列的数量和类型，请使用 SQL SELECT * 语句。 但是，如果您的表有数千或数百万行，则完整的查询将花费相当长的时间。 限制此查询结果的一种方法是使用 sqltop { NumberOfRows }属性。 例如，要获取 SKU\_data 表前5行的所有列，您可以编写以下代码:
+
+```
+/ *** SQL-Query-CH04-01 *** * /
+
+SELECT TOP 5 * FROM SKU_data;
+```
+
+此查询将显示5行的所有列和数据，如下面的结果所示。 如果你想要前50行，只要使用 TOP 50而不是 TOP 5，依此类推。 此时，您应该确认主键，并确定表中每个列的数据类型。
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200702011549183.png" alt="image-20200702011549183" style="zoom:67%;" />
+
+> With regard to foreign keys, it is risky to assume that referential integrity constraints have been enforced on the data. Instead, check it yourself. Suppose that, after investigation, you confirm that SKU is the primary key of SKU\_DATA and that Buyer is the primary key of BUYER. You also think that SKU\_DATA.Buyer is likely a foreign key linking to BUYER.Buyer. The question is whether the following referential integrity constraint holds: SKU\_DATA.Buyer must exist in BUYER.Buyer
+
+关于外键，如果只是假设数据受到参照完整性约束，是存在风险的。 相反，你可以自己检查一下。 假设经过调查，你确认 SKU 是 SKU\_data 的主键，Buyer 是 Buyer 的主键。 你也认为 SKU\_DATA.Buyer 看上去像一个连接到BUYER.Buyer的外键。 n那么问题在于下面的参照完整性约束是否成立:
+
+SKU\_DATA.Buyer必须存在于BUYER.Buyer
+
+<img src="%E6%95%B0%E6%8D%AE%E5%BA%93.assets/image-20200702012109275.png" alt="image-20200702012109275" style="zoom:67%;" />
+
+> You can use SQL to determine whether this is true. The following query will return any values of the foreign key that violate the constraint:
+>
+> /* \*\*\* SQL-Query-CH04-02 \*\*\* */
+>
+> SELECT Buyer FROM SKU\_DATA
+>
+> WHERE Buyer NOT IN
+>
+> ​	(
+>
+> ​		SELECT Buyer FROM SKU\_DATA, BUYER
+>
+> ​		WHERE SKU\_DATA.Buyer = BUYER.Buyer
+>
+> ​	);
+>
+> The subquery finds all values of Buyer for which there is a match between SKU\_DATA.Buyer and BUYER.Buyer. If there is any value of Buyer that is not in this subquery, then that value will be displayed in the results of the main query. All such values violate(违反) the referential integrity constraint. In the following actual results of the query on the data in our dataset as shown in Figure 3-21 (where SKU\_DATA appears with the table name SKU\_DATA\_2), we get an empty set—there are no values returned in response to the query—which means that there are no foreign key values that violate the referential integrity constraint.
+>
+> After you have assessed the input tables, your next steps depend on whether you are creating an updatable database or a read-only database. We will consider updatable databases first.
+
+您可以使用 SQL 来确定这是否为真。 下面的查询将返回任何违反该约束的外键值:
+
+```sql
+/* *** SQL-Query-CH04-02 *** */
+
+SELECT Buyer FROM SKU_DATA  
+WHERE Buyer NOT IN
+	(
+		SELECT Buyer FROM SKU_DATA, BUYER
+		WHERE SKU_DATA.Buyer = BUYER.Buyer
+	);
+```
+
+子查询查找与 SKU\_DATA.Buyer 匹配的 BUYER.Buyer 的所有值。 买家和买家。 如果 Buyer 的任何值不在此子查询中，那么该值将显示在主查询的结果中。 所有这些值都违反参照完整性约束。 在对数据集中的数据进行查询的下列实际结果中，如图3-21所示(其中 SKU\_data 以表名 SKU\_data\_2显示) ，我们得到了一个空集：没有返回任何值作为对查询的响应。这意味着没有违反参照完整性约束的外键值。
+
+在评估了输入表之后，接下来的步骤取决于是创建可更新数据库还是只读数据库。 我们将首先考虑可更新的数据库。
