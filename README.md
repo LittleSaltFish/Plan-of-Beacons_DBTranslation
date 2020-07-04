@@ -110,7 +110,7 @@
 
 *（GFM语法：\=\= + 高亮内容 + \=\=）*
 
-<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/README.assets/image-20200701231805482.png" alt="image-20200701231805482" style="zoom: 33%;" />
+<img src="https://github.com/LittleSaltFish/Plan-of-Beacons_DBTranslation/blob/master/README.assets/image-20200701231805482.png" alt="image-20200701231805482" style="zoom: 33%;" />
 
 ### 1.6.5. 换行统一化
 
